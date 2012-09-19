@@ -1,0 +1,93 @@
+/** 
+ *	Application Profile CSS 
+ **/
+
+#community-wrap div.ccontentEditable table.ccontentTable td.listkey {
+	font-weight:bold;
+	text-align:right;
+	width:140px;
+    }
+
+#community-wrap div.ccontentEditable table.ccontentTable td {
+	padding:4px;	
+    }
+
+#community-wrap div.ccontentEditable {
+	display: none;
+    }
+
+
+
+#community-wrap #application-feeds {
+	overflow: auto;
+    }
+#application-feeds {
+	overflow: auto;
+    }
+#application-feeds img { display: block; max-width: 100% !important; height: auto !important; }
+#application-feeds .nopost {
+	position: relative;
+	min-height: 16px;
+    }
+#application-feeds .icon-nopost {
+	position: absolute;
+	top: 0;
+	left: 0;
+    }
+#application-feeds .content-nopost {
+	display: block;
+	margin: 0 0 0 24px;
+	padding: 0 0 5px;
+    }
+#application-feeds .fdClr {
+    clear: both;
+    }
+#application-feeds ul,
+#application-feeds ol,
+#application-feeds li {
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    }
+#application-feeds li {
+    margin-left: 15px;
+    }
+#application-feeds .fdList,
+#application-feeds .fdListLi {
+    margin: 0;
+    }
+#application-feeds h1 {
+    padding: 0 0 5px;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 100;
+    line-height: 18px;
+    }
+    .cSidebar div#application-feeds h1 { font-size: 14px; line-height: 15px; }
+    
+#application-feeds .fdDate {
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    width: 35px;
+    float: left;
+    margin: 2px 0;
+    }
+    .cSidebar #application-feeds .fdDate { width: 100%; text-align: left; font-size: 10px !important; }
+    
+#application-feeds .fdDate span {
+    display: none;
+    }
+    .cSidebar div#application-feeds .fdDate span { display: inline; }
+    
+#application-feeds .fdDate strong {
+    font-size: 18px;
+    }
+    .cSidebar #application-feeds .fdDate strong { font-size: 10px; }
+    
+#application-feeds .fdContent {
+    margin: 0 0 0 40px;
+    }
+    .cSidebar #application-feeds .fdContent { margin: 0;}

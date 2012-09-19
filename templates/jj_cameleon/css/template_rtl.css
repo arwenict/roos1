@@ -1,0 +1,114 @@
+/*---------------------------------------------------------------
+# Package - Tigra Framework  
+# ---------------------------------------------------------------
+# Author - Tigra Framework tigra.eucso.info
+# Copyright (C) 2011 Tigracon.com. All Rights Reserved.
+# license - GNU/GPL V2
+# Websites: http://www.tigracon.com 
+-----------------------------------------------------------------*/
+html{direction:rtl}
+a#logo,#logo-text {float:right}
+a#logo {background-position:100% 50%!important}
+
+/*Search*/
+#search{float:left}
+#search input#mod-search-searchword{background-position:2% 50%!important}
+
+div.font-sizer{right:auto;left:10px}
+#sp-leftcol, #sp-rightcol, #sp-maincol ,#inset1, #inset2, #inner_content, .sp-block{float:right!important}
+.sp-block .first {margin-left:0!important;margin-right:-10px}
+.sp-block .last {margin-right:0!important;margin-left:-10px}
+
+/*Hornav*/
+#hornav li .submenu,#sublevel li .submenu {direction:ltr}
+.submenu-inner {direction:rtl}
+#hornav .megacol {float:right!important}
+#hornav ul.level-0,
+#sublevel ul.level-1,#hornav ul.level-0 > li.menu-item,
+#sublevel ul.level-1 > li.menu-item
+{float:right!important}
+#hornav li.menu-item li,
+#sublevel li.menu-item li {background-position:100% 13px!important}
+#hornav ul.level-0 > li.parent > a.menu-item span.menu,
+#sublevel ul.level-1 > li.parent > a.menu-item span.menu {background: none!important}
+#hornav ul.level-0 > li.parent > a.menu-item span.menu,
+#sublevel ul.level-1 > li.parent > a.menu-item span.menu {padding-right: 0!important;padding-left: 12px!important;background:url(../images/big_daddy.png) no-repeat 0 50%!important}
+#hornav ul li.parent > a.menu-item span.menu,
+#sublevel ul li.parent > a.menu-item span.menu {padding-right: 0!important;padding-left: 12px!important;background:url(../images/daddy_rtl.png) no-repeat 0 50%!important}
+#hornav ul.level-0 > li.menu-item span.has-image,
+#sublevel ul.level-1 > li.menu-item span.has-image{padding-left:0!important;padding-right:18px;background-position:100% 50%!important}
+
+/*Tab*/
+ul.tabs_container li.tab {float:right!important}
+
+/*News Highlighter*/
+div.sp-nh-buttons{float:right!important}
+div.sp-nh-prev{right:auto!important;left:5px}
+div.sp-nh-next{right:auto!important;left:20px}
+div span.sp-nh-title,span.sp-nh-date{margin-right:0!important;margin-left:5px}
+span.sp-nh-title {float:right}
+
+/*Modules*/
+.mod-wrapper li a{background:url(../images/bullet_rtl.gif) no-repeat 100% 9px!important}
+
+span.badge_new,span.badge_free,span.badge_hot,span.badge_pick,span.badge_top,span.badge_event
+{right:auto!important;left:-3px!important}
+span.badge_new{background: url(../images/base_new_rtl.png) no-repeat 0 0!important}
+span.badge_free{background: url(../images/base_free_rtl.png) no-repeat 0 0!important}
+span.badge_hot{background: url(../images/base_hot_rtl.png) no-repeat 0 0!important}
+span.badge_pick{background: url(../images/base_pick_rtl.png) no-repeat 0 0!important}
+span.badge_top {background: url(../images/base_top_rtl.png) no-repeat 0 0!important}
+span.badge_event {background-position: 0 0!important}
+
+
+/* Breadcrumbs */
+#breadcrumbs span.showhome {margin:0 0 0 5px}
+#breadcrumbs a,#breadcrumbs span,#breadcrumbs strong{float:right}
+#breadcrumbs a,#breadcrumbs span.separator{margin:0 0 0 10px;padding:0 0 0 15px;background-position:0 50%}
+a#topofpage{float:left!important}
+
+/* Footer */
+#sp-footer .cp {float:right!important;}
+
+/*Footer Navigation*/
+#footer-nav{float:left!important}
+
+/* TigraLogo */
+.tigra-logo-light,.tigra-logo-dark,.tigra-logo-light-small,.tigra-logo-dark-small{float:right!important;padding:0 0 0 10px;margin:0 0 0 15px;border-right:0;border-left:1px solid #e5e5e5}
+
+/*Joomla*/
+fieldset dd{float:right}
+fieldset dt{float:right}
+ul.buttonheading{float:left}
+dl.article-info{float:right}
+#form-login-username label, #form-login-password label, #form-login-remember label {float: right;text-align: right}
+#adminForm table thead tr, #adminForm table thead tr th {text-align: right}
+div.pagination ul{text-align:right}
+div.pagination p.counter{float:left}
+.filter-search{float:right}
+div.categories-list dt {float: right}
+.sp_date {float:right!important;margin:0 0 0 10px!important}
+
+.login label,.profile-edit dl dt,.remind dl dt,.reset dl dt,.registration dl dt{float:right;text-align:left}
+.login .inputbox,.login input.required,.registration dl dd input.required,.remind dl dd input.required,.reset dl dd input.required,
+.profile-edit .inputbox,.profile-edit input.required,.profile-edit input,.profile-edit select{margin:0 10px 0 0}
+.login .button,.login button,.profile-edit button,.remind button,.reset button,.registration button{margin:0 160px 0 0}
+
+/*Edit*/
+.edit label{float:right;text-align:left}
+label#jform_description-lbl {text-align:right}
+.edit .inputbox,.edit input{margin:0 10px 0 0}
+.edit select{margin:0 10px 0 0}
+.edit div.formelm-buttons {margin:0 140px 20px 0}
+
+/*Typography*/
+div img.sp-slide-image{float:left!important;margin:0 20px 0 0!important}
+img.image-left{float:right!important;margin:.5em 0 .5em 1em!important}
+img.image-right{float:left!important;margin:.5em 1em .5em 0!important}
+p.stickynote,p.download{background-position:100% 0!important;padding:15px 60px 15px 10px!important}
+p.error,p.warn,p.tips,p.help,p.info,p.email,p.print,p.rss,p.save,p.lock,p.user,p.new,p.house,p.tag{background-position:100% 5px!important;padding:0 24px 5px 0!important}
+.dropcap:first-letter{float:right!important;padding:4px 0 0 8px!important}
+ul li {background-position:100% 6px;padding:0 10px 0 0}
+ul.rss li, ul.minus li, ul.delete li, ul.check li, ul.arrow li, ul.arrow-2 li, ul.add li, ul.star li {padding:0 20px 0 0!important;background-position:100% 2px!important}
+.bignumber{background-position:100% 0!important;float:right!important;margin-right:0!important;margin-left:8px}
+.legend-title{left:auto!important;right:7px!important}

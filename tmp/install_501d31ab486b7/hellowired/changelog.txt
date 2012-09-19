@@ -1,0 +1,21 @@
+﻿CHANGELOG
+¯¯¯¯¯¯¯¯¯
+A Add
+U Update
+D Delete
+
+Theme - HelloWired
+
+Version: 1.0
+
+<b>DEFAULT:</b>
+	->A skin/frontend/default/hellowired/css/*
+	->A skin/frontend/default/hellowired/image/*
+	->A skin/frontend/default/hellowired/js/*
+	->A app/design/frontend/default/hellowired/layout/*
+	->A app/design/frontend/default/hellowired/locale/*
+	->A app/design/frontend/default/hellowired/template/*
+	->A app/code/local/Mage/Cms/etc/config.xml
+	->A app/etc/modules/Mage_Local.xml
+	->A /install.xml
+	->A /staticblock/*

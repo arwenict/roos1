@@ -1,0 +1,234 @@
+[05-Aug-2012 19:39:51] PHP Fatal error:  Call to undefined method CCategoryHelper::getAllUsers() in /home/arw49555/public_html/b5/components/com_community/views/events/view.html.php on line 659
+[05-Aug-2012 19:40:23] PHP Fatal error:  Call to undefined method CCategoryHelper::getAllUsers() in /home/arw49555/public_html/b5/components/com_community/views/events/view.html.php on line 659
+[05-Aug-2012 19:44:51] PHP Fatal error:  Call to undefined method CommunityViewEvents::getDBO() in /home/arw49555/public_html/b5/components/com_community/models/events.php on line 615
+[05-Aug-2012 19:50:26] PHP Fatal error:  Call to undefined method JCCModel::getAllUsers() in /home/arw49555/public_html/b5/components/com_community/views/events/view.html.php on line 659
+[05-Aug-2012 19:50:29] PHP Fatal error:  Call to undefined method JCCModel::getAllUsers() in /home/arw49555/public_html/b5/components/com_community/views/events/view.html.php on line 659
+[05-Aug-2012 19:50:31] PHP Fatal error:  Call to undefined method JCCModel::getAllUsers() in /home/arw49555/public_html/b5/components/com_community/views/events/view.html.php on line 659
+[05-Aug-2012 20:32:59] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/database/database/mysql.php on line 383
+[05-Aug-2012 20:33:02] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/database/database/mysql.php on line 383
+[05-Aug-2012 20:33:02] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/database/table.php on line 406
+[06-Aug-2012 11:38:48] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/helpers/user.php on line 71
+[06-Aug-2012 11:38:48] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/helpers/category.php on line 128
+[06-Aug-2012 11:38:48] PHP Warning:  array_map() [<a href='function.array-map'>function.array-map</a>]: Argument #2 should be an array in /home/arw49555/public_html/b5/components/com_community/helpers/category.php on line 131
+[06-Aug-2012 11:38:48] PHP Warning:  array_multisort() [<a href='function.array-multisort'>function.array-multisort</a>]: Argument #1 is expected to be an array or a sort flag in /home/arw49555/public_html/b5/components/com_community/helpers/category.php on line 131
+[06-Aug-2012 11:38:48] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/html/html/select.php on line 504
+[06-Aug-2012 11:44:29] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/helpers/user.php on line 71
+[06-Aug-2012 11:44:29] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/helpers/category.php on line 128
+[06-Aug-2012 11:44:29] PHP Warning:  array_map() [<a href='function.array-map'>function.array-map</a>]: Argument #2 should be an array in /home/arw49555/public_html/b5/components/com_community/helpers/category.php on line 131
+[06-Aug-2012 11:44:29] PHP Warning:  array_multisort() [<a href='function.array-multisort'>function.array-multisort</a>]: Argument #1 is expected to be an array or a sort flag in /home/arw49555/public_html/b5/components/com_community/helpers/category.php on line 131
+[06-Aug-2012 11:44:29] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/html/html/select.php on line 504
+[06-Aug-2012 11:49:23] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/helpers/user.php on line 71
+[06-Aug-2012 11:49:23] PHP Warning:  array_multisort() [<a href='function.array-multisort'>function.array-multisort</a>]: Argument #1 is expected to be an array or a sort flag in /home/arw49555/public_html/b5/components/com_community/helpers/user.php on line 79
+[06-Aug-2012 11:49:23] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/helpers/category.php on line 128
+[06-Aug-2012 11:49:23] PHP Warning:  array_map() [<a href='function.array-map'>function.array-map</a>]: Argument #2 should be an array in /home/arw49555/public_html/b5/components/com_community/helpers/category.php on line 131
+[06-Aug-2012 11:49:23] PHP Warning:  array_multisort() [<a href='function.array-multisort'>function.array-multisort</a>]: Argument #1 is expected to be an array or a sort flag in /home/arw49555/public_html/b5/components/com_community/helpers/category.php on line 131
+[06-Aug-2012 11:49:23] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/html/html/select.php on line 504
+[06-Aug-2012 21:22:29] PHP Parse error:  syntax error, unexpected $end in /home/arw49555/public_html/b5/components/com_community/templates/default/frontpage.guests.php on line 100
+[06-Aug-2012 21:23:52] PHP Parse error:  syntax error, unexpected $end in /home/arw49555/public_html/b5/components/com_community/templates/default/frontpage.guests.php on line 100
+[06-Aug-2012 21:23:55] PHP Parse error:  syntax error, unexpected $end in /home/arw49555/public_html/b5/components/com_community/templates/default/frontpage.guests.php on line 100
+[06-Aug-2012 21:24:02] PHP Parse error:  syntax error, unexpected $end in /home/arw49555/public_html/b5/components/com_community/templates/default/frontpage.guests.php on line 100
+[06-Aug-2012 21:24:53] PHP Parse error:  syntax error, unexpected $end in /home/arw49555/public_html/b5/components/com_community/templates/default/frontpage.guests.php on line 100
+[06-Aug-2012 21:24:57] PHP Parse error:  syntax error, unexpected $end in /home/arw49555/public_html/b5/components/com_community/templates/default/frontpage.guests.php on line 100
+[06-Aug-2012 21:25:03] PHP Parse error:  syntax error, unexpected $end in /home/arw49555/public_html/b5/components/com_community/templates/default/frontpage.guests.php on line 100
+[06-Aug-2012 22:14:51] PHP Parse error:  syntax error, unexpected T_STRING in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 202
+[06-Aug-2012 22:16:32] PHP Parse error:  syntax error, unexpected T_STRING in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 202
+[06-Aug-2012 22:16:36] PHP Parse error:  syntax error, unexpected T_STRING in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 202
+[06-Aug-2012 22:17:17] PHP Parse error:  syntax error, unexpected T_STRING in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 202
+[06-Aug-2012 22:17:21] PHP Parse error:  syntax error, unexpected T_STRING in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 202
+[06-Aug-2012 22:17:32] PHP Parse error:  syntax error, unexpected T_STRING in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 202
+[06-Aug-2012 22:17:36] PHP Parse error:  syntax error, unexpected T_STRING in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 202
+[06-Aug-2012 22:17:37] PHP Parse error:  syntax error, unexpected T_STRING in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 202
+[06-Aug-2012 22:17:43] PHP Parse error:  syntax error, unexpected T_ECHO in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 205
+[06-Aug-2012 22:18:41] PHP Parse error:  syntax error, unexpected T_STRING in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 204
+[06-Aug-2012 22:18:42] PHP Parse error:  syntax error, unexpected T_STRING in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 204
+[06-Aug-2012 22:19:21] PHP Parse error:  syntax error, unexpected T_ECHO in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 204
+[06-Aug-2012 22:19:40] PHP Parse error:  syntax error, unexpected T_ECHO in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 204
+[06-Aug-2012 22:19:41] PHP Parse error:  syntax error, unexpected T_ECHO in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 204
+[06-Aug-2012 22:19:42] PHP Parse error:  syntax error, unexpected T_ECHO in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 204
+[06-Aug-2012 22:19:47] PHP Parse error:  syntax error, unexpected T_ECHO in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 204
+[06-Aug-2012 22:24:34] PHP Catchable fatal error:  Object of class stdClass could not be converted to string in /home/arw49555/public_html/b5/libraries/joomla/language/language.php on line 297
+[06-Aug-2012 22:26:31] PHP Fatal error:  Call to undefined function  dump_var() in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 192
+[06-Aug-2012 22:29:05] PHP Fatal error:  Cannot use object of type stdClass as array in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 192
+[06-Aug-2012 22:37:28] PHP Fatal error:  Cannot use object of type stdClass as array in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 208
+[06-Aug-2012 22:48:57] PHP Fatal error:  Cannot use object of type stdClass as array in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 209
+[06-Aug-2012 22:49:34] PHP Catchable fatal error:  Object of class stdClass could not be converted to string in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 209
+[06-Aug-2012 23:04:18] PHP Warning:  Illegal offset type in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 202
+[06-Aug-2012 23:16:03] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting T_STRING or T_VARIABLE or '{' or '$' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 206
+[06-Aug-2012 23:16:59] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting T_STRING or T_VARIABLE or '{' or '$' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 206
+[06-Aug-2012 23:17:05] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting T_STRING or T_VARIABLE or '{' or '$' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 206
+[06-Aug-2012 23:17:08] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting T_STRING or T_VARIABLE or '{' or '$' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 206
+[06-Aug-2012 23:34:15] PHP Parse error:  syntax error, unexpected '[', expecting ',' or ';' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 206
+[06-Aug-2012 23:34:34] PHP Parse error:  syntax error, unexpected '[', expecting ',' or ';' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 206
+[06-Aug-2012 23:34:40] PHP Parse error:  syntax error, unexpected '[', expecting ',' or ';' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 206
+[06-Aug-2012 23:35:06] PHP Parse error:  syntax error, unexpected '[', expecting ',' or ';' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 206
+[06-Aug-2012 23:35:20] PHP Parse error:  syntax error, unexpected '[', expecting ',' or ';' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 206
+[06-Aug-2012 23:38:29] PHP Parse error:  syntax error, unexpected '=', expecting ',' or ';' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 206
+[06-Aug-2012 23:44:25] PHP Fatal error:  Call to undefined function  var_dump_html() in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 200
+[06-Aug-2012 23:47:17] PHP Parse error:  syntax error, unexpected T_LNUMBER in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 208
+[06-Aug-2012 23:47:37] PHP Parse error:  syntax error, unexpected T_LNUMBER in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 208
+[06-Aug-2012 23:51:52] PHP Warning:  Illegal offset type in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 209
+[06-Aug-2012 23:51:52] PHP Warning:  Illegal offset type in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 209
+[06-Aug-2012 23:51:52] PHP Warning:  Illegal offset type in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 209
+[06-Aug-2012 23:51:52] PHP Warning:  Illegal offset type in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 209
+[06-Aug-2012 23:51:52] PHP Warning:  Illegal offset type in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 209
+[06-Aug-2012 23:51:52] PHP Warning:  Illegal offset type in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 209
+[06-Aug-2012 23:51:52] PHP Warning:  Illegal offset type in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 209
+[06-Aug-2012 23:51:52] PHP Warning:  Illegal offset type in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 209
+[06-Aug-2012 23:54:30] PHP Parse error:  syntax error, unexpected '=', expecting ',' or ';' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 208
+[06-Aug-2012 23:54:33] PHP Parse error:  syntax error, unexpected '=', expecting ',' or ';' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 208
+[06-Aug-2012 23:54:50] PHP Parse error:  syntax error, unexpected T_VAR in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 208
+[06-Aug-2012 23:55:04] PHP Parse error:  syntax error, unexpected ';', expecting ']' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 209
+[06-Aug-2012 23:55:08] PHP Parse error:  syntax error, unexpected ';', expecting ']' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 209
+[07-Aug-2012 00:43:34] PHP Parse error:  syntax error, unexpected T_IF in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 189
+[07-Aug-2012 00:47:19] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 190
+[07-Aug-2012 00:48:24] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 190
+[07-Aug-2012 00:48:25] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 190
+[07-Aug-2012 00:48:58] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 190
+[07-Aug-2012 00:49:01] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 190
+[07-Aug-2012 00:59:10] PHP Warning:  Unexpected character in input:  '\' (ASCII=92) state=1 in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 189
+[07-Aug-2012 01:00:00] PHP Warning:  Unexpected character in input:  '\' (ASCII=92) state=1 in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 189
+[07-Aug-2012 01:01:44] PHP Warning:  Unexpected character in input:  '\' (ASCII=92) state=1 in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 189
+[07-Aug-2012 01:01:44] PHP Parse error:  syntax error, unexpected '<' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 189
+[07-Aug-2012 01:26:58] PHP Parse error:  syntax error, unexpected T_ENDFOREACH in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 191
+[07-Aug-2012 01:31:04] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 192
+[14-Aug-2012 00:48:54] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/views/events/view.html.php on line 1062
+[14-Aug-2012 00:49:18] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/views/events/view.html.php on line 1062
+[14-Aug-2012 01:03:29] PHP Fatal error:  Call to undefined method CTemplate::formatAsDollars() in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 253
+[14-Aug-2012 01:03:57] PHP Fatal error:  Call to undefined method CTemplate::formatAsDollars() in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 253
+[14-Aug-2012 01:04:46] PHP Fatal error:  Call to undefined function  formatasdollars() in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 253
+[14-Aug-2012 01:06:56] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 253
+[14-Aug-2012 01:08:55] PHP Parse error:  syntax error, unexpected ';' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 253
+[14-Aug-2012 20:56:21] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/views/events/view.html.php on line 1062
+[14-Aug-2012 20:57:03] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/views/events/view.html.php on line 1062
+[14-Aug-2012 21:02:11] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/views/events/view.html.php on line 1062
+[14-Aug-2012 21:21:16] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/views/events/view.html.php on line 1062
+[14-Aug-2012 23:03:42] PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 178
+[14-Aug-2012 23:06:46] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 182
+[14-Aug-2012 23:24:04] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 182
+[14-Aug-2012 23:25:46] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 182
+[15-Aug-2012 00:22:16] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 253
+[15-Aug-2012 00:27:00] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 253
+[15-Aug-2012 00:27:23] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 253
+[15-Aug-2012 00:27:36] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 253
+[15-Aug-2012 00:28:07] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 253
+[15-Aug-2012 00:28:49] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 253
+[15-Aug-2012 00:29:55] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 253
+[15-Aug-2012 01:27:54] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 253
+[15-Aug-2012 01:29:20] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 253
+[15-Aug-2012 01:29:32] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 253
+[15-Aug-2012 01:31:47] PHP Parse error:  syntax error, unexpected '{' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 253
+[15-Aug-2012 01:32:49] PHP Parse error:  syntax error, unexpected T_IS_EQUAL in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 253
+[15-Aug-2012 01:47:15] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[15-Aug-2012 09:02:53] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/views/events/view.html.php on line 1062
+[15-Aug-2012 09:03:31] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/views/events/view.html.php on line 1062
+[15-Aug-2012 22:05:25] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[15-Aug-2012 22:55:10] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[15-Aug-2012 22:59:49] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[16-Aug-2012 11:51:04] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[16-Aug-2012 11:54:07] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[16-Aug-2012 12:16:52] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/views/events/view.html.php on line 1062
+[16-Aug-2012 12:17:16] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/views/events/view.html.php on line 1062
+[16-Aug-2012 12:17:43] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/views/events/view.html.php on line 1062
+[16-Aug-2012 12:19:55] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/views/events/view.html.php on line 1062
+[16-Aug-2012 12:20:42] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/views/events/view.html.php on line 1062
+[16-Aug-2012 12:27:03] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/views/events/view.html.php on line 1062
+[16-Aug-2012 12:27:13] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[16-Aug-2012 16:54:06] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[16-Aug-2012 16:55:53] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[17-Aug-2012 09:31:38] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[19-Aug-2012 19:48:22] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[19-Aug-2012 19:51:35] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[19-Aug-2012 19:54:45] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[19-Aug-2012 22:47:00] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[19-Aug-2012 22:47:17] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[19-Aug-2012 22:47:42] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[19-Aug-2012 22:48:57] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[19-Aug-2012 22:49:17] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[19-Aug-2012 22:49:31] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[19-Aug-2012 22:49:38] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[19-Aug-2012 22:49:52] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[19-Aug-2012 22:50:16] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[19-Aug-2012 22:51:38] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[19-Aug-2012 22:52:01] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[19-Aug-2012 22:52:09] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[19-Aug-2012 22:52:35] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[19-Aug-2012 22:54:05] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[19-Aug-2012 22:54:17] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[19-Aug-2012 22:58:02] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[19-Aug-2012 22:58:10] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[19-Aug-2012 22:58:48] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[20-Aug-2012 20:46:45] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[21-Aug-2012 00:12:34] PHP Parse error:  syntax error, unexpected T_STRING in /home/arw49555/public_html/b5/components/com_community/controllers/events.php on line 63
+[21-Aug-2012 01:27:04] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[21-Aug-2012 01:31:46] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[21-Aug-2012 01:38:22] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 199
+[21-Aug-2012 01:41:00] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 199
+[21-Aug-2012 01:43:59] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 195
+[21-Aug-2012 01:45:25] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 195
+[21-Aug-2012 01:47:10] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 195
+[21-Aug-2012 01:48:51] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 195
+[21-Aug-2012 01:50:14] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[21-Aug-2012 01:51:31] PHP Warning:  money_format() expects parameter 2 to be double, string given in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 198
+[21-Aug-2012 02:12:59] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/views/events/view.html.php on line 1062
+[21-Aug-2012 02:45:29] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting ',' or ';' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 87
+[21-Aug-2012 11:55:51] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/database/database/mysql.php on line 383
+[21-Aug-2012 11:55:51] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/database/database/mysql.php on line 383
+[21-Aug-2012 11:55:51] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/database/table.php on line 406
+[21-Aug-2012 12:06:32] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/views/events/view.html.php on line 1062
+[21-Aug-2012 12:06:35] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/views/events/view.html.php on line 1062
+[21-Aug-2012 12:11:44] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/views/events/view.html.php on line 1062
+[21-Aug-2012 15:28:36] PHP Fatal error:  Can't use method return value in write context in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 106
+[21-Aug-2012 15:36:06] PHP Fatal error:  Can't use method return value in write context in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 106
+[21-Aug-2012 15:36:18] PHP Fatal error:  Can't use method return value in write context in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 106
+[21-Aug-2012 15:36:50] PHP Fatal error:  Can't use method return value in write context in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 106
+[21-Aug-2012 15:36:53] PHP Fatal error:  Can't use method return value in write context in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 106
+[21-Aug-2012 15:36:54] PHP Fatal error:  Can't use method return value in write context in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 106
+[21-Aug-2012 15:38:21] PHP Fatal error:  Can't use method return value in write context in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 106
+[21-Aug-2012 15:39:48] PHP Fatal error:  Can't use method return value in write context in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 106
+[21-Aug-2012 15:41:16] PHP Fatal error:  Can't use method return value in write context in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 106
+[21-Aug-2012 15:41:27] PHP Fatal error:  Can't use method return value in write context in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 106
+[21-Aug-2012 15:41:34] PHP Fatal error:  Can't use method return value in write context in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 106
+[21-Aug-2012 15:48:11] PHP Fatal error:  Can't use method return value in write context in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 106
+[21-Aug-2012 15:48:51] PHP Fatal error:  Can't use method return value in write context in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 106
+[21-Aug-2012 15:51:33] PHP Fatal error:  Can't use method return value in write context in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 106
+[21-Aug-2012 15:51:37] PHP Fatal error:  Can't use method return value in write context in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 106
+[21-Aug-2012 15:51:51] PHP Fatal error:  Can't use method return value in write context in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 106
+[21-Aug-2012 15:55:12] PHP Fatal error:  Can't use method return value in write context in /home/arw49555/public_html/b5/components/com_community/templates/default/events.forms.php on line 106
+[21-Aug-2012 16:16:23] PHP Parse error:  syntax error, unexpected '}' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.viewevent.php on line 260
+[21-Aug-2012 16:19:19] PHP Parse error:  syntax error, unexpected '}' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.viewevent.php on line 258
+[21-Aug-2012 16:30:44] PHP Parse error:  syntax error, unexpected '}' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.viewevent.php on line 260
+[21-Aug-2012 16:31:02] PHP Parse error:  syntax error, unexpected '}' in /home/arw49555/public_html/b5/components/com_community/templates/default/events.viewevent.php on line 260
+[21-Aug-2012 17:15:52] PHP Parse error:  syntax error, unexpected '}' in /home/arw49555/public_html/b5/components/com_community/templates/default/people.browse.php on line 198
+[21-Aug-2012 22:08:48] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/views/events/view.html.php on line 1062
+[21-Aug-2012 22:09:06] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/components/com_community/controllers/events.php on line 522
+[21-Aug-2012 22:09:06] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/arw49555/public_html/b5/components/com_community/controllers/events.php:522) in /home/arw49555/public_html/b5/plugins/system/azrul.system/pc_includes/ajax.php on line 183
+[09-Sep-2012 21:01:09] PHP Parse error:  syntax error, unexpected '}', expecting ';' or '{' in /home/arw49555/public_html/b5/components/com_community/views/profile/view.html.php on line 30
+[19-Sep-2012 11:23:30] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/database/database/mysql.php on line 383
+[19-Sep-2012 11:23:30] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/database/database/mysql.php on line 383
+[19-Sep-2012 11:23:30] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/database/table.php on line 406
+[19-Sep-2012 11:28:29] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/database/database/mysql.php on line 383
+[19-Sep-2012 11:28:29] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/database/database/mysql.php on line 383
+[19-Sep-2012 11:28:29] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/database/table.php on line 406
+[19-Sep-2012 11:29:14] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/database/database/mysql.php on line 383
+[19-Sep-2012 11:29:14] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/database/database/mysql.php on line 383
+[19-Sep-2012 11:29:14] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/database/table.php on line 406
+[19-Sep-2012 11:44:06] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/database/database/mysql.php on line 383
+[19-Sep-2012 11:44:06] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/database/database/mysql.php on line 383
+[19-Sep-2012 11:44:06] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/database/table.php on line 406
+[19-Sep-2012 11:44:50] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/database/database/mysql.php on line 383
+[19-Sep-2012 11:44:50] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/database/database/mysql.php on line 383
+[19-Sep-2012 11:44:50] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/database/table.php on line 406
+[19-Sep-2012 11:44:56] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/database/database/mysql.php on line 383
+[19-Sep-2012 11:44:56] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/database/database/mysql.php on line 383
+[19-Sep-2012 11:44:56] PHP Warning:  Invalid argument supplied for foreach() in /home/arw49555/public_html/b5/libraries/joomla/database/table.php on line 406
+[19-Sep-2012 12:07:21] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arw49555/public_html/b5/plugins/system/azrul.system/pc_includes/JSON.php on line 654
+[19-Sep-2012 12:09:57] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arw49555/public_html/b5/plugins/system/azrul.system/pc_includes/JSON.php on line 716
+[19-Sep-2012 12:13:36] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arw49555/public_html/b5/plugins/system/azrul.system/pc_includes/JSON.php on line 651
+[19-Sep-2012 12:20:35] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arw49555/public_html/b5/plugins/system/azrul.system/pc_includes/JSON.php on line 525
+[19-Sep-2012 12:49:33] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arw49555/public_html/b5/plugins/system/azrul.system/pc_includes/JSON.php on line 701
+[19-Sep-2012 12:51:27] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arw49555/public_html/b5/plugins/system/azrul.system/pc_includes/JSON.php on line 651
+[19-Sep-2012 18:14:10] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arw49555/public_html/b5/plugins/system/azrul.system/pc_includes/JSON.php on line 651
+[19-Sep-2012 18:18:02] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arw49555/public_html/b5/plugins/system/azrul.system/pc_includes/JSON.php on line 716
+[19-Sep-2012 18:28:32] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arw49555/public_html/b5/plugins/system/azrul.system/pc_includes/JSON.php on line 716
+[19-Sep-2012 18:32:13] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arw49555/public_html/b5/plugins/system/azrul.system/pc_includes/JSON.php on line 651
+[19-Sep-2012 21:19:43] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arw49555/public_html/b5/plugins/system/azrul.system/pc_includes/JSON.php on line 698

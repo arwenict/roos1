@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 1.7//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.7/template-install.dtd">
+<extension version="1.6" type="template" client="site">
+	<name>jj_cameleon</name>
+	<version>1.0.0</version>
+	<creationDate>Feb 2012</creationDate>
+	<author>JJ Design</author>
+	<authorEmail>info@eucso.info</authorEmail>
+	<authorUrl>http://www.eucso.info</authorUrl>
+    <copyright>Copyright (C) 2005 - 2012 euCSO</copyright>
+    <license>euCSO member license</license>
+	<description>Free Joomla 1.7 and 2.5 template.</description>
+<languages>
+		<language tag="en-GB">en-GB.tpl_jj_cameleon.ini</language>
+	</languages>
+		
+	<positions>
+		<position>panel1</position>
+		<position>panel2</position>
+		<position>panel3</position>
+		<position>panel4</position>
+		<position>panel5</position>
+		<position>panel6</position>
+		<position>search</position>
+		<position>slides</position>
+		<position>user1</position>			
+		<position>user2</position>			
+		<position>user3</position>			
+		<position>user4</position>			
+		<position>user5</position>			
+		<position>user6</position>			
+		<position>left</position>	
+		<position>right</position>
+		<position>user-top</position>
+		<position>user-bottom</position>
+		<position>content1</position>
+		<position>content2</position>
+		<position>content3</position>
+		<position>content4</position>
+		<position>content5</position>
+		<position>content6</position>
+		<position>content7</position>
+		<position>content8</position>
+		<position>inset1</position>
+		<position>inset2</position>
+		<position>bottom1</position>
+		<position>bottom2</position>
+		<position>bottom3</position>
+		<position>bottom4</position>
+		<position>bottom5</position>
+		<position>bottom6</position>
+		<position>breadcrumbs</position>
+		<position>footer-nav</position>
+		<position>menuload1</position>
+		<position>menuload2</position>
+		<position>menuload3</position>
+		<position>menuload4</position>
+		<position>menuload5</position>
+		<position>menuload6</position>
+		<position>menuload7</position>
+		<position>menuload8</position>
+		<position>menuload9</position>
+		<position>menuload10</position>
+	</positions>
+	<files>
+		<file>index.php</file>
+		<file>index.html</file>
+		<file>component.php</file>
+		<file>error.php</file>
+		<file>offline.php</file>			
+		<file>template_preview.png</file>
+		<file>template_thumbnail.png</file>
+		<file>templateDetails.xml</file>
+		<folder>css/</folder>
+		<folder>html/</folder>
+		<folder>images/</folder>
+		<folder>js/</folder>
+		<folder>layout/</folder>
+		<folder>features/</folder>
+		<folder>lib/</folder>
+	</files>
+	
+	<config>		
+		<fields name="params">		
+			<fieldset name="Basic" addfieldpath="/plugins/system/tigra/elements">
+
+				<!--Start Basic Tab-->
+				<field name="logo_type" 
+					type="radio" 
+					default="text" 
+					label="LOGO_TYPE" 
+					description="LOGO_TYPE_TEXT">
+					<option value="image">Image</option>
+					<option value="text">Text</option>
+				</field>
+				
+				<field name="logo_text" type="text" 
+					default="Cameleon" 
+					label="LOGO_TEXT" 
+					description="LOGO_TEXT_DESC" />
+					
+				<field name="logo_slogan" 
+					type="text" default="free Joomla! 2.5 Template" 
+					label="LOGO_SLOGAN" 
+					description="LOGO_SLOGAN_DESC" />
+					
+				<field name="logo_width" 
+					type="text" 
+					default="260" 
+					label="LOGO_WIDTH" 
+					description="LOGO_WIDTH_DESC" />
+					
+				<field name="logo_height" 
+					type="text" 
+					default="100" 
+					label="LOGO_HEIGHT" 
+					description="LOGO_HEIGHT_DESC" />
+					
+				
+				<field type="line" text="LINE_PRESETS" />
+				
+				<field name="style" 
+					type="list" 
+					default="style1" 
+					label="PRESET" 
+					description="PRESET_DESC">
+					<option value="style1">Orange</option>
+					<option value="style2">Green</option>
+					<option value="style3">Blue</option>
+					<option value="style4">Red</option>
+					<option value="style5">Dark Orange</option>
+					<option value="style6">Dark Green</option>
+					<option value="style7">Dark Blue</option>
+					<option value="style8">Dark Red</option>
+				</field>
+				
+				<field type="line" text="LINE_CP" />
+				
+				<field name="showcp" 
+					type="radio" 
+					default="1" 
+					label="SHOW_CP" 
+					description="SHOW_CP_DESC">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				
+				<field name="copyright" 
+					type="textarea" 
+					rows="6" 
+					cols="30" 
+					default="euCSO.info | All Rights Reserved." 
+					label="COPYRIGHT" 
+					description="COPYRIGHT_DESC" />	
+					
+				<field type="line" text="LINE_TIGRA" />
+				
+				<field name="show_tigra_logo" 
+					type="radio" 
+					default="0" 
+					label="SHOW_TIGRA" 
+					description="SHOW_TIGRA_DESC">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				
+				<field name="tigra_logo" 
+					type="list" 
+					default="small" 
+					label="TIGRA_LOGO" 
+					description="TIGRA_LOGO_DESC">
+					<option value="small">Small Logo</option>
+					<option value="big">Regular Logo</option>
+				</field>
+				
+			</fieldset>	
+			<!--End Basic Tab-->
+				
+			<!--Start Menu Tab-->
+			<fieldset name="MENU">	
+				<field name="menutype" 
+					type="menu" 
+					default="mainmenu" 
+					label="SELECT_MENU" 
+					description="SELECT_MENU_DESC" />
+					
+				<field name="tcmenu" 
+					type="list" 
+					default="mega" 
+					label="MENU_TYPE" 
+					description="MENU_TYPE_DESC">
+				  <option value="mega">Mega Menu</option>
+				  <option value="moo">Moo Menu</option>
+				  <option value="split">Split Menu</option>
+				  <option value="dropline">Dropline Menu</option>
+				</field>
+				
+				<field name="menu_col_width" 
+					type="text" 
+					default="200" 
+					label="DROP_COL_WIDTH" 
+					description="DROP_COL_WIDTH_DESC" />
+					
+				<field name="show_menu_image" 
+					type="radio" 
+					default="1" 
+					label="SHOW_MENU_IMAGE" 
+					description="SHOW_MENU_IMAGE_DESC">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				
+				<field name="menu_animation" 
+					type="list" 
+					default="slidefade" 
+					label="ANIMATION_TYPE" 
+					description="ANIMATION_TYPE_DESC">
+					<option value="none">No Animation</option>
+					<option value="fade">Fade</option>
+					<option value="slide">Slide</option>
+					<option value="slidefade">Slide and Fade</option>
+				</field>		
+				
+				<field name="menu_duration" 
+					type="text" 
+					default="300" 
+					label="DURATION" 
+					description="DURATION_DESC" />
+					
+				<field name="menu_transition" 
+					type="list" 
+					default="linear" 
+					label="TRANSITION" 
+					description="TRANSITION_DESC">
+					<option value="linear">linear</option>
+					<option value="Quad.easeOut">Quad.easeOut</option>
+					<option value="Quad.easeIn">Quad.easeIn</option>
+					<option value="Quad.easeInOut">Quad.easeInOut</option>
+					<option value="Cubic.easeOut">Cubic.easeOut</option>
+					<option value="Cubic.easeIn">Cubic.easeIn</option>
+					<option value="Cubic.easeInOut">Cubic.easeInOut</option>
+					<option value="Quart.easeOut">Quart.easeOut</option>
+					<option value="Quart.easeIn">Quart.easeIn</option>
+					<option value="Quart.easeInOut">Quart.easeInOut</option>
+					<option value="Quint.easeOut">Quint.easeOut</option>
+					<option value="Quint.easeIn">Quint.easeIn</option>
+					<option value="Quint.easeInOut">Quint.easeInOut</option>
+					<option value="Expo.easeOut">Expo.easeOut</option>
+					<option value="Expo.easeIn">Expo.easeIn</option>
+					<option value="Expo.easeInOut">Expo.easeInOut</option>
+					<option value="Circ.easeOut">Circ.easeOut</option>
+					<option value="Circ.easeIn">Circ.easeIn</option>
+					<option value="Circ.easeInOut">Circ.easeInOut</option>
+					<option value="Sine.easeOut">Sine.easeOut</option>
+					<option value="Sine.easeIn">Sine.easeIn</option>
+					<option value="Sine.easeInOut">Sine.easeInOut</option>
+					<option value="Back.easeOut">Back.easeOut</option>
+					<option value="Back.easeIn">Back.easeIn</option>
+					<option value="Back.easeInOut">Back.easeInOut</option>
+					<option value="Bounce.easeOut">Bounce.easeOut</option>
+					<option value="Bounce.easeIn">Bounce.easeIn</option>
+					<option value="Bounce.easeInOut">Bounce.easeInOut</option>
+					<option value="Elastic.easeOut">Elastic.easeOut</option>
+					<option value="Elastic.easeIn">Elastic.easeIn</option>
+					<option value="Elastic.easeInOut">Elastic.easeInOut</option>
+				</field>
+				
+				<field name="init_x" 
+					type="text" 
+					default="5" 
+					label="X_OFFSET1" 
+					description="X_OFFSET1_DESC" />
+					
+				<field name="init_y" 
+					type="text" 
+					default="0" 
+					label="Y_OFFSET1" 
+					description="Y_OFFSET1_DESC" />
+					
+				<field name="sub_x" 
+					type="text" 
+					default="-10" 
+					label="X_OFFSET2" 
+					description="X_OFFSET2_DESC" />
+					
+				<field name="sub_y" 
+					type="text" 
+					default="5" 
+					label="Y_OFFSET2" 
+					description="Y_OFFSET2_DESC" />
+					
+			</fieldset>	
+			<!--End Menu Tab-->
+				
+			<!--Start Font Tab-->
+			<fieldset name="FONTS">	
+				<field name="body_font" 
+					type="fonts" 
+					default="standard\|Verdana, Geneva, sans-serif\|none" 
+					label="BODY_FONT"  
+					description="BODY_FONT_DESC" />
+					
+				<field name="body_selectors" 
+					type="textarea" 
+					rows="6" 
+					cols="30" 
+					label="BODY_SELECTORS" 
+					description="BODY_SELECTORS_DESC" />
+					
+				<field type="line" />
+				
+				<field name="header_font" 
+					type="fonts" 
+					default="standard\|Verdana, Geneva, sans-serif\|none" 
+					label="HEADER_FONT"  
+					description="HEADER_FONT_DESC" />
+					
+				<field name="header_selectors" 
+					type="textarea" 
+					rows="6" 
+					cols="30" 
+					label="HEADER_SELECTORS" 
+					description="HEADER_SELECTORS_DESC" />
+					
+				<field type="line" />
+				
+				<field name="other_font" 
+					type="fonts" 
+					default="standard\|Verdana, Geneva, sans-serif\|none" 
+					label="OTHER_FONT"  
+					description="OTHER_FONT_DESC"/>
+					
+				<field name="other_selectors" 
+					type="textarea" 
+					rows="6" 
+					cols="30" 
+					label="OTHER_SELECTORS" 
+					description="OTHER_SELECTORS_DESC" />
+					
+			</fieldset>
+				<!--End Font Tab-->		
+				
+				<!--Start Advanced Tab-->
+			<fieldset name="ADVANCED">	
+				<field name="cache_time" 
+					type="text" 
+					default="60" 
+					label="CACHE_TIME" 
+					description="CACHE_TIME_DESC" /> 	
+					
+				<field name="compress_css" 
+					type="radio" 
+					default="0" 
+					label="CSS_COMPRESS" 
+					description="CSS_COMPRESS_DESC">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				
+				<field name="compress_js" 
+					type="radio" 
+					default="0" 
+					label="JS_COMPRESS" 
+					description="JS_COMPRESS_DESC">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				
+				<field type="line" text="LINE_GA" />
+				
+				<field name="enable_ga" 
+					type="radio" 
+					default="0" 
+					label="ENABLE_GA" 
+					description="ENABLE_GA_DESC">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				
+				<field name="ga_code" 
+					type="text" 
+					default="" 
+					label="GA_CODE" 
+					description="GA_CODE_DESC" />
+					
+				<field type="line" text="LINE_OTHERS" />
+				
+				<field name="direction" 
+					type="radio" 
+					default="ltr" 
+					label="DIRECTION" 
+					description="DIRECTION_DESC">
+					<option value="ltr">LTR</option>
+					<option value="rtl">RTL</option>
+				</field>
+				
+				<field name="showtop" 
+					type="radio" 
+					default="1" 
+					label="SHOW_GOTO_TOP" 
+					description="SHOW_GOTO_TOP_DESC">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				
+				<field name="fontsizer" 
+					type="radio" 
+					default="1" 
+					label="FONT_SIZER" 
+					description="FONT_SIZER_DESC">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				
+				<field name="ie6warn" 
+					type="radio" 
+					default="1" 
+					label="IE6WARN" 
+					description="IE6WARN_DESC">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				
+				<field name="jquery" 
+					type="radio" 
+					default="0" 
+					label="JQUERY" 
+					description="JQUERY_DESC">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				
+				<field type="line" text="LINE_HIDE_COMPONENT" />
+				
+				<field name="hide_component" 
+					type="radio" 
+					default="0" 
+					label="HIDE_COMPONENT" 
+					description="HIDE_COMPONENT_DESC">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>	
+				
+				<field name="hide_menu_items" 
+					type="menuitem" 
+					multiple="multiple"
+					size="20"	
+					default="0" 
+					label="HIDE_MENU_ITEMS"
+					description="HIDE_MENU_ITEMS_DESC" />
+					
+				<!--End Advanced Tab-->
+				<field type="asset" assettype="css" filename="tigra.css" /><!--Add CSS-->
+				<field type="asset" assettype="js" filename="tigra.js" /><!--Add JS-->			
+			</fieldset>
+		
+		</fields>
+	</config>	
+</extension>			

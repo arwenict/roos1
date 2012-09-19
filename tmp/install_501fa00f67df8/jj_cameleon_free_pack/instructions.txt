@@ -1,0 +1,26 @@
+JJ Cameleon - free Joomla 2.5 template by JJ Design - part of euCSO Web Solutions - www.eucso.info
+
+Free pack includes:
+
+- Joomla 2.5 template
+- Tigra framework (install before template)
+- addon modules
+
+
+If you want to use this template on existing joomla 1.7 installation, first install Tigra template framework, and then JJ Cameleon template. 
+
+For any questions - help visit our help forum at:
+
+http://www.eucso.info/help-forum.html
+
+or simply email us at:
+
+web@eucso.info
+
+Enjoy!
+
+
+p.s. Pro Version can be purchased for 10EU and consists of Third Party styling for:
+
+- JomSocial
+- Yoo Zoo Profiles application

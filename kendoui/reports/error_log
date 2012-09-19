@@ -1,0 +1,11 @@
+[06-Sep-2012 22:44:11] PHP Parse error:  syntax error, unexpected '=' in /home/arw49555/public_html/b5/kendoui/reports/classes.php on line 18
+[06-Sep-2012 22:44:55] PHP Parse error:  syntax error, unexpected '=' in /home/arw49555/public_html/b5/kendoui/reports/classes.php on line 18
+[06-Sep-2012 22:44:57] PHP Parse error:  syntax error, unexpected '=' in /home/arw49555/public_html/b5/kendoui/reports/classes.php on line 18
+[19-Sep-2012 21:21:32] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting '(' in /home/arw49555/public_html/b5/kendoui/reports/classes.php on line 17
+[19-Sep-2012 21:23:02] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting '(' in /home/arw49555/public_html/b5/kendoui/reports/classes.php on line 17
+[19-Sep-2012 21:30:54] PHP Parse error:  syntax error, unexpected ';' in /home/arw49555/public_html/b5/kendoui/reports/classes.php on line 17
+[19-Sep-2012 21:31:12] PHP Parse error:  syntax error, unexpected ';' in /home/arw49555/public_html/b5/kendoui/reports/classes.php on line 17
+[19-Sep-2012 21:53:46] PHP Fatal error:  Class 'Date' not found in /home/arw49555/public_html/b5/kendoui/reports/class_stat.php on line 16
+[19-Sep-2012 21:53:59] PHP Fatal error:  Call to undefined function  getfullyear() in /home/arw49555/public_html/b5/kendoui/reports/class_stat.php on line 16
+[19-Sep-2012 21:56:30] PHP Parse error:  syntax error, unexpected ';' in /home/arw49555/public_html/b5/kendoui/reports/class_stat.php on line 16
+[19-Sep-2012 21:59:12] PHP Fatal error:  Call to undefined function  getmonth() in /home/arw49555/public_html/b5/kendoui/reports/class_stat.php on line 16

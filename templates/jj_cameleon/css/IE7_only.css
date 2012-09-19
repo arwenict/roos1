@@ -1,0 +1,18 @@
+/*---------------------------------------------------------------
+# Package - Tigra Framework  
+# ---------------------------------------------------------------
+# Author - Tigra Framework tigra.eucso.info
+# Copyright (C) 2011 Tigracon.com. All Rights Reserved.
+# license - GNU/GPL V2
+# Websites: http://www.tigracon.com 
+-----------------------------------------------------------------*/
+#hornav {z-index:1}
+#hornav ul.level-0 > li.menu-item span.has-image,
+#sublevel ul.level-1 > li.menu-item span.has-image,
+#hornav ul.level-0 > li.menu-item > a.menu-item,
+#hornav ul.level-0 > li.parent > a.menu-item span.menu,
+#sublevel ul.level-1 > li.parent > a.menu-item span.menu,
+#hornav ul.level-0 > li.menu-item:hover > a.menu-item,
+.mod-inner-wrapper, .content-inner-wrapper,
+.sp_date,
+.mod-wrapper,.content-wrapper {zoom:1}

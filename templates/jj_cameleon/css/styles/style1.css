@@ -1,0 +1,32 @@
+/*---------------------------------------------------------------
+# Package - Tigra Framework  
+# ---------------------------------------------------------------
+# Author - Tigra Framework tigra.eucso.info
+# Copyright (C) 2011 Tigra. All Rights Reserved.
+# license - GNU/GPL V2
+# Websites: http://tigra.eucso.info 
+-----------------------------------------------------------------*/
+
+
+a,.mod-wrapper h3.header{color:#ff9933}
+a:hover,a:active,a:focus,h4.tc-news-title a:hover{color:#ff6600}
+a.readmore:hover,a.tc-slide-morein:hover,.adminform button:hover,#adminForm button:hover,.button:hover,button[type=submit]:hover,input[type=submit]:hover,input[type=button]:hover {
+	color:#ff6600;}
+
+form input[type=text]:focus,
+form input[type=password]:focus,
+form textarea:focus,
+input:focus,select:focus,text:focus {
+outline:none;border-color:#fcb25f;-webkit-border-radius: 5px;-moz-border-radius: 5px; border-radius: 5px;	-moz-box-shadow:inset 0px 0px 10px rgba(252,178,95,0.7);
+	-webkit-box-shadow:inset 0px 0px 10px rgba(252,178,95,0.7);	box-shadow:inset 0px 0px 10px rgba(252,178,95,0.7);
+}
+
+
+/*Menu*/
+#hornav ul.level-0 > li.menu-item > a.menu-item{color:rgba(0,0,0,0.3);}
+
+#hornav ul.level-0 > li.menu-item.active > a.menu-item,#hornav ul.level-0 > li.menu-item:hover > a.menu-item,
+#sublevel ul.level-1 > li.menu-item.active > a.menu-item,#sublevel ul.level-1 > li.menu-item:hover > a.menu-item,
+#hornav li.menu-item li:hover > a,#hornav li.menu-item li.active > a,
+#sublevel li.menu-item li:hover > a,#sublevel li.menu-item li.active > a
+{color:#ff9933!important}

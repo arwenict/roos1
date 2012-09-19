@@ -1,0 +1,12 @@
+/*---------------------------------------------------------------
+# Package - Tigra Framework  
+# ---------------------------------------------------------------
+# Author - Tigra Framework tigra.eucso.info
+# Copyright (C) 2011 Tigracon.com. All Rights Reserved.
+# license - GNU/GPL V2
+# Websites: http://www.tigracon.com 
+-----------------------------------------------------------------*/
+#hornav ,#sublevel {direction:ltr}
+#slides{direction:ltr}/*IE7 Hack*/
+#slides .sp-slide-inner{direction:rtl}/*IE7 Hack*/
+div img.sp-image{zoom:1}
