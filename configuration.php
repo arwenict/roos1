@@ -53,8 +53,8 @@ class JConfig {
 	public $sef_suffix = '0';
 	public $unicodeslugs = '0';
 	public $feed_limit = '10';
-	public $log_path = '/home/arw49555/public_html/b5/logs';
-	public $tmp_path = '/home/arw49555/public_html/b5/tmp';
+	public $log_path = '/var/www/roos1/logs';
+	public $tmp_path = '/var/www/roos1/tmp';
 	public $lifetime = '60';
 	public $session_handler = 'database';
 	public $MetaRights = '';
