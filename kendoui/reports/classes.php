@@ -96,7 +96,7 @@
 				{ field: "HourlyRate" , title: "Hourly Rate", format:"{0:c2}", filterable: false},
 				{ field: "AttendeeNumber" , title: "Attendees" },
 				{ field: "AttendeeTarget" , title: "Target" },
-				{ field: "ApprovedByManager", title: "Ok To Pay", template: "<input type='checkbox' #= (ApprovedByManager === true) ? checked='checked' : '' # enabled />" }
+				{ field: "ApprovedByManager", title: "Ok To Pay", template: "<input type='checkbox' #= (ApprovedByManager === true) ? checked='checked' : '' # disabled />" }
                                 ],
 				toolbar: [ 
 				
