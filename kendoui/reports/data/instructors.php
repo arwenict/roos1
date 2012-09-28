@@ -29,23 +29,9 @@ $verb = $_SERVER["REQUEST_METHOD"];
 
 // handle a GET
 if ($verb == "GET") {
-         $datefrom= mysql_real_escape_string($_GET["datefrom"]);
-         if($datefrom=="")
-         { $datefrom = date("Y-m-d"); };
-         
-         $dateto= mysql_real_escape_string($_GET["dateto"]);
-         if($dateto=="")
-         { $dateto = date("Y-m-d"); };   
        
 	$arr = array();
-	$rs = mysql_query("SELECT ce.id, title as ClassName, LocationName as Location, StartDate, MID(TIME(`startdate`),1,5) AS StartTime, EndDate, instructorID, u.Name as InstructorName, HourlyRate,
-	                      (hour(TIMEDIFF(  `enddate` ,  `startdate` ))*60)  + (Minute(TIMEDIFF(  `enddate` ,  `startdate` )))   AS Minutes, 
-                              ((hour(TIMEDIFF(  `enddate` ,  `startdate` )))   + (Minute(TIMEDIFF(  `enddate` ,  `startdate` ))/60 ) )* HourlyRate  as TotalPayable, 
-                              CASE ApprovedByManager WHEN 0 THEN 'false' ELSE 'true' END AS ApprovedByManager, AttendeeNumber, Paid, BankTransactionID, AttendeeTarget FROM pr_community_events
-                              ce Inner Join pr_users u on ce.InstructorID=u.Id inner join pr_locations loc
-                              on ce.location=loc.locid
-                              Where published=1 AND parent<>0 AND CatId=5 AND StartDate >='" .  $datefrom   .  "'  AND  StartDate <='" .  $dateto   .  "' Order by StartDate, LocationName, u.Name, AttendeeNumber,ApprovedByManager LIMIT 0,500");
-	//WHERE ApprovedByManager=0
+	$rs = mysql_query("SELECT id, name, username, email FROM pr_users LIMIT 0,1000");
 	while($obj = mysql_fetch_object($rs)) {
 		$arr[] = $obj;
 	}
