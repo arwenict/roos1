@@ -1,11 +1,11 @@
 <?php
 class JConfig {
 	public $offline = '0';
-	public $offline_message = 'This site is down for maintenance.<br /> Please check back again Soooon.';
+	public $offline_message = 'This site is down for maintenance.<br /> Please check back again Soon.';
 	public $display_offline_message = '1';
 	public $offline_image = '';
 	public $sitename = 'RoosTer';
-	public $editor = 'tinymce';
+	public $editor = 'jce';
 	public $captcha = '0';
 	public $list_limit = '20';
 	public $access = '1';
