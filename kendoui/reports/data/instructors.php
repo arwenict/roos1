@@ -41,19 +41,11 @@ if ($verb == "GET") {
 
 // handle a POST
 if ($verb == "POST") {
-	$location = mysql_real_escape_string($_POST["location"]);
-	$HourlyRate = mysql_real_escape_string($_POST["HourlyRate"]);
-	$AttendeeNumber= mysql_real_escape_string($_POST["AttendeeNumber"]);
-	$AttendeeTarget= mysql_real_escape_string($_POST["AttendeeTarget"]);
-	
-        $ApprovedByManager=0;
-	if(mysql_real_escape_string($_POST["ApprovedByManager"])=="true")
-	{	$ApprovedByManager=1 ;}
-	else {$ApprovedByManager=0 ;}
-		
-	$id = mysql_real_escape_string($_POST["id"]);
-	
-	$rs = mysql_query("UPDATE pr_community_events SET AttendeeNumber= " .$AttendeeNumber .", AttendeeTarget= " .$AttendeeTarget .", HourlyRate = " .$HourlyRate .", ApprovedByManager= " .$ApprovedByManager ." WHERE id = " .$id);
+	$name = mysql_real_escape_string($_POST["name"]);
+	$username = mysql_real_escape_string($_POST["username"]);
+	$email = mysql_real_escape_string($_POST["email"]);
+
+	$rs = mysql_query("UPDATE pr_users SET name= " .$name ." WHERE id = " .$id);
 
 	if ($rs) {
 		echo json_encode($rs);
