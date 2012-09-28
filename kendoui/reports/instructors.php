@@ -14,14 +14,11 @@
             <div id="classesDB">
             <div style="margin-top: -6px; ">
 
-                   Pick Date From <input id="datefrom" name="datefrom" value="<?php echo ($_GET['datefrom']=='') ? date('Y-m-d', mktime(0,0,0,date('m'),1)) : $_GET['datefrom']; ?>" style="width:150px;" /> &nbsp;&nbsp;
-                   Pick Date To <input id="dateto" name="dateto" value="<?php echo ($_GET['dateto']=='') ? date('Y-m-d', mktime(0,0,0,date('m')+1,1)-1) : $_GET['dateto']; ?>" style="width:150px;" /> &nbsp;&nbsp;
-                    <button id="submit" name="submit" type="submit" value="show">Show</button>
             </div>
                 </br></br>
 
 
-                <div id="grid" style="height: 580px"></div>
+            <div id="grid" style="height: 580px"></div>
 
             </div>
         </form>
@@ -40,11 +37,7 @@
 	<script>
 
 		//kendo.culture("en-US");
-			var now = new Date()
-		        $("#datefrom").kendoDatePicker({value: datepickedfrom , format: "yyyy-MM-dd"});
-                	$("#dateto").kendoDatePicker({value: datepickedto , format: "yyyy-MM-dd"});             
-                        var datepickedfrom = $("#datefrom").val();
-                        var datepickedto = $("#dateto").val();   
+  
 
 
 		$(document).ready(function() {
@@ -54,9 +47,9 @@
 			$("#grid").kendoGrid({
 				dataSource: {
 					transport: {
-						read: "data/classes.php?datefrom=" + datepickedfrom + "&dateto=" + datepickedto ,
+						read: "data/instructors.php" ,
 						update: {
-							url: "data/classes.php",
+							url: "data/instructors.php",
 							type: "POST"
 						}		
 					},
@@ -68,16 +61,9 @@
 						model: {
 							id: "id",
 							fields: {
-								ClassName: { editable: false },
-								StartDate: { type: "date", editable: false },
-                                                                StartTime: { type: "text", editable: false },
-								Location: { editable: false },
-								InstructorName: { editable: false},
-								Minutes: { editable: false},
-								HourlyRate: { type: "number", validation: { required: true, min: 0} },
-								AttendeeNumber: { type: "number", validation: { required: true, min: 0} },
-								AttendeeTarget: { type: "number", validation: { required: true, min: 0} }, 
-								ApprovedByManager:  { type: "boolean" }
+								name: { editable: true },
+								username: { type: "text", editable: false },
+                                                                email: { type: "text", editable: false }
 							}
 						}
 					},
@@ -87,16 +73,10 @@
     					//},
                       
 				},
-				columns: [{ field: "ClassName", title: "Class Name",  width: 140 }, 
-				{ field: "StartDate", title: "Start Date", format: "{0:ddd dd-MMM-yyyy}",  width: 100 },
-				{ field: "StartTime", title: "Start Time", width: 60, filterable: false },
-				{ field: "Location" }, 
-				{ field: "InstructorName", title: "Instructor Name", width: 100  }, 
-				{ field: "Minutes", width: 60 },
-				{ field: "HourlyRate" , title: "Hourly Rate", format:"{0:c2}", filterable: false},
-				{ field: "AttendeeNumber" , title: "Attendees" },
-				{ field: "AttendeeTarget" , title: "Target" },
-				{ field: "ApprovedByManager", title: "Ok To Pay", template: "<input type='checkbox' #= (ApprovedByManager === true) ? checked='checked' : '' # disabled />" }
+				columns: [
+                                { field: "name", title: "Name",  width: 140 }, 
+				{ field: "username", title: "Username", width: 100 },
+				{ field: "email", title: "Email", width: 140, filterable: false }                                
                                 ],
 				toolbar: [ 
 				
