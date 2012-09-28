@@ -27,7 +27,7 @@
                 #classesDB{
                     width: 900px;
                     height: 650px;
-                    font-family: Tahoma, Verdana, sans-serif; font-size:10px;
+                    font-family: Tahoma, Verdana, sans-serif; font-size:12px;
                     //margin: 30px auto;
                     //padding: 51px 4px 0 4px;
                     //background: url('../grid/clientsDb.png') no-repeat 0 0;
