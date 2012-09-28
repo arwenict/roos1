@@ -44,6 +44,7 @@ if ($verb == "POST") {
 	$name = mysql_real_escape_string($_POST["name"]);
 	$username = mysql_real_escape_string($_POST["username"]);
 	$email = mysql_real_escape_string($_POST["email"]);
+	$id = mysql_real_escape_string($_POST["id"]);
 
 	$rs = mysql_query("UPDATE pr_users SET name= " .$name ." WHERE id = " .$id);
 
