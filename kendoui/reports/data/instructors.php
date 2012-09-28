@@ -46,7 +46,7 @@ if ($verb == "POST") {
 	//$email = mysql_real_escape_string($_POST["email"]);
 	$id = mysql_real_escape_string($_POST["id"]);
 
-	$rs = mysql_query("UPDATE pr_users SET name= " .$name ." WHERE id = " .$id);
+	$rs = mysql_query("UPDATE pr_users SET name= '" .$name ."' WHERE id = " .$id);
 
 	if ($rs) {
 		echo json_encode($rs);
