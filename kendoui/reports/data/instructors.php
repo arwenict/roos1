@@ -31,7 +31,7 @@ $verb = $_SERVER["REQUEST_METHOD"];
 if ($verb == "GET") {
        
 	$arr = array();
-	$rs = mysql_query("SELECT id, name, username, email FROM pr_users LIMIT 0,1000");
+	$rs = mysql_query("SELECT u.id, name, username, email, cfv.value FROM pr_users u Inner Join pr_community_fields_values cfv on u.id=cfv.user_id");
 	while($obj = mysql_fetch_object($rs)) {
 		$arr[] = $obj;
 	}
