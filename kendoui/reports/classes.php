@@ -72,7 +72,7 @@
 								StartDate: { type: "date", editable: false },
                                                                 StartTime: { type: "text", editable: false },
 								Location: { editable: false },
-								InstructorName: { editable: true},
+								InstructorName: { editable: false},
 								Minutes: { editable: false},
 								HourlyRate: { type: "number", validation: { required: true, min: 0} },
 								AttendeeNumber: { type: "number", validation: { required: true, min: 0} },
