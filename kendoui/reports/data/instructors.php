@@ -31,7 +31,8 @@ $verb = $_SERVER["REQUEST_METHOD"];
 if ($verb == "GET") {
        
 	$arr = array();
-	$rs = mysql_query("SELECT u.id, name, username, email, cfv.value as fieldvalue FROM pr_users u Inner Join pr_community_fields_values cfv on u.id=cfv.user_id AND cfv.field_id=6");
+	$rs = mysql_query("SELECT u.id, name, username, email, cfv.value as fieldvalue 
+	FROM pr_users u Inner Join pr_cocammunity_fields_values cfv on u.id=cfv.user_id AND cfv.field_id=6");
 	while($obj = mysql_fetch_object($rs)) {
 		$arr[] = $obj;
 	}
