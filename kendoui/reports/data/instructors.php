@@ -31,8 +31,7 @@ $verb = $_SERVER["REQUEST_METHOD"];
 if ($verb == "GET") {
        
 	$arr = array();
-	$mycomm="SELECT u.id, name, username, email, cfvm.value as mobile, cfvs.value as skills FROM pr_users u Inner Join pr_community_fields_values cfvm on u.id=cfvm.user_id AND cfvm.field_id=6 Inner Join pr_community_fields_values cfvs on u.id=cfvs.user_id AND cfvs.field_id=19";	
-	$rs = mysql_query($mycomm);
+	$rs = mysql_query("SELECT u.id, name, username, email, cfvm.value as mobile, cfvs.value as skills FROM pr_users u Inner Join pr_community_fields_values cfvm on u.id=cfvm.user_id AND cfvm.field_id=6 Inner Join pr_community_fields_values cfvs on u.id=cfvs.user_id AND cfvs.field_id=19");
 	while($obj = mysql_fetch_object($rs)) {
 		$arr[] = $obj;
 	}
