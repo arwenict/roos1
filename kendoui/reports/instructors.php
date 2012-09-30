@@ -62,10 +62,11 @@
 							id: "id",
 							fields: {
 								name: { editable: true },
-								username: { type: "text", editable: false },
+                                                                mobile: { type: "text", editable: false },								
                                                                 email: { type: "text", editable: false },
-                                                                mobile: { type: "text", editable: false },
-                                                                skills: { type: "text", editable: false }
+                                                                skills: { type: "text", editable: false },
+                                                                permcov: { type: "text", editable: false },
+                                                                locations: { type: "text", editable: false }
 							}
 						}
 					},
@@ -76,11 +77,12 @@
                       
 				},
 				columns: [
-                                { field: "name", title: "Name",  width: 140 }, 
-				{ field: "username", title: "Username", width: 100 },
+                                { field: "name", title: "Name",  width: 140 },
+				{ field: "mobile", title: "Mobile", width: 140, filterable: false }, 
 				{ field: "email", title: "Email", width: 140, filterable: false },
-				{ field: "mobile", title: "Mobile", width: 140, filterable: false },     
-				{ field: "skills", title: "Skills", width: 140, filterable: false } 				
+				{ field: "skills", title: "Skills", width: 140, filterable: false },     
+				{ field: "permcov", title: "Perm / Cover", width: 140, filterable: false },
+				{ field: "locations", title: "Locations", width: 140, filterable: false }, 
                                 ],
 				toolbar: [ 
 				
