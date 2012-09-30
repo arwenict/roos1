@@ -48,7 +48,7 @@
 
 //--RI--   
 var items = [{ text: "Item 1", value: "1" }, { text: "Item 2", value: "2" }];
-$("#comboBox").kendoComboBox({
+var comboBox = $("#comboBox").kendoComboBox({
     dataTextField: "text",
     dataValueField: "value",
     dataSource: items
