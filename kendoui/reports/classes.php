@@ -44,7 +44,16 @@
 		        $("#datefrom").kendoDatePicker({value: datepickedfrom , format: "yyyy-MM-dd"});
                 	$("#dateto").kendoDatePicker({value: datepickedto , format: "yyyy-MM-dd"});             
                         var datepickedfrom = $("#datefrom").val();
-                        var datepickedto = $("#dateto").val();   
+                        var datepickedto = $("#dateto").val();
+
+//--RI--   
+var items = [{ text: "Item 1", value: "1" }, { text: "Item 2", value: "2" }];
+$("#comboBox").kendoComboBox({
+    dataTextField: "text",
+    dataValueField: "value",
+    dataSource: items
+});
+//--RI--
 
 
 		$(document).ready(function() {
