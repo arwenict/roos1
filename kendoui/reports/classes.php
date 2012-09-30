@@ -46,14 +46,7 @@
                         var datepickedfrom = $("#datefrom").val();
                         var datepickedto = $("#dateto").val();
 
-//--RI--   
-var items = [{ text: "Item 1", value: "1" }, { text: "Item 2", value: "2" }];
-$("#InstructorName").kendoComboBox({
-    dataTextField: "text",
-    dataValueField: "value",
-    dataSource: items
-});
-//--RI--
+
 
 
 		$(document).ready(function() {
@@ -81,7 +74,7 @@ $("#InstructorName").kendoComboBox({
 								StartDate: { type: "date", editable: false },
                                                                 StartTime: { type: "text", editable: false },
 								Location: { editable: false },
-								InstructorName: { type: "comboBox", editable: true },
+								InstructorName: { editable: false},
 								Minutes: { editable: false},
 								HourlyRate: { type: "number", validation: { required: true, min: 0} },
 								AttendeeNumber: { type: "number", validation: { required: true, min: 0} },
