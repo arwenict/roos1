@@ -79,7 +79,7 @@
                                 { field: "name", title: "Name",  width: 140 }, 
 				{ field: "username", title: "Username", width: 100 },
 				{ field: "email", title: "Email", width: 140, filterable: false },
-				{ field: "mobile", title: "Mobile", width: 140, filterable: false }     
+				{ field: "mobile", title: "Mobile", width: 140, filterable: false },     
 				{ field: "skills", title: "Skills", width: 140, filterable: false } 				
                                 ],
 				toolbar: [ 
