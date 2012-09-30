@@ -64,7 +64,8 @@
 								name: { editable: true },
 								username: { type: "text", editable: false },
                                                                 email: { type: "text", editable: false },
-                                                                fieldvalue: { type: "text", editable: false }
+                                                                mobile: { type: "text", editable: false },
+                                                                skills: { type: "text", editable: false }
 							}
 						}
 					},
@@ -78,7 +79,8 @@
                                 { field: "name", title: "Name",  width: 140 }, 
 				{ field: "username", title: "Username", width: 100 },
 				{ field: "email", title: "Email", width: 140, filterable: false },
-				{ field: "fieldvalue", title: "Value", width: 140, filterable: false }                            
+				{ field: "mobile", title: "Mobile", width: 140, filterable: false }     
+				{ field: "skills", title: "Skills", width: 140, filterable: false } 				
                                 ],
 				toolbar: [ 
 				
