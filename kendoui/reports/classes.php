@@ -91,7 +91,7 @@
 				{ field: "StartDate", title: "Start Date", format: "{0:ddd dd-MMM-yyyy}",  width: 100 },
 				{ field: "StartTime", title: "Start Time", width: 60, filterable: false },
 				{ field: "Location" }, 
-				{ field: "InstructorName", title: "Instructor Test", width: 100  }, 
+				{ field: "InstructorName", title: "Instructor Name", width: 100  }, 
 				{ field: "Minutes", width: 60 },
 				{ field: "HourlyRate" , title: "Hourly Rate", format:"{0:c2}", filterable: false},
 				{ field: "AttendeeNumber" , title: "Attendees" },
