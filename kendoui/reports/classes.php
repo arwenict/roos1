@@ -39,25 +39,6 @@
 	
 	<script>
 
-//--RI--
-var products = [ {
-                    "ProductID": 1,
-                        "ProductName": "Chai",
-                        "Category": {
-                            "CategoryID": 1,
-                            "CategoryName": "Beverages"
-                        },
-                        "UnitPrice": "18.00"
-                }, {
-                    "ProductID": 2,
-                        "ProductName": "Chang",
-                        "Category": {
-                            "CategoryID": 1,
-                            "CategoryName": "Beverages"
-                        },
-                        "UnitPrice": "19.00"
-                }];
-//--RI--
 
 		//kendo.culture("en-US");
 			var now = new Date()
@@ -99,8 +80,7 @@ var products = [ {
 								HourlyRate: { type: "number", validation: { required: true, min: 0} },
 								AttendeeNumber: { type: "number", validation: { required: true, min: 0} },
 								AttendeeTarget: { type: "number", validation: { required: true, min: 0} }, 
-								ApprovedByManager:  { type: "boolean" },
-Category: { defaultValue: { CategoryID: 1, CategoryName: "Beverages"} }
+								ApprovedByManager:  { type: "boolean" }
 							}
 						}
 					},
@@ -119,8 +99,7 @@ Category: { defaultValue: { CategoryID: 1, CategoryName: "Beverages"} }
 				{ field: "HourlyRate" , title: "Hourly Rate", format:"{0:c2}", filterable: false},
 				{ field: "AttendeeNumber" , title: "Attendees" },
 				{ field: "AttendeeTarget" , title: "Target" },
-				{ field: "ApprovedByManager", title: "Ok To Pay", template: "<input type='checkbox' #= (ApprovedByManager === true) ? checked='checked' : '' # disabled />" },
-{ field: "Category", title: "Category", width: "150px", editor: categoryDropDownEditor, template: "#=Category.CategoryName#" }
+				{ field: "ApprovedByManager", title: "Ok To Pay", template: "<input type='checkbox' #= (ApprovedByManager === true) ? checked='checked' : '' # disabled />" }
                                 ],
 				toolbar: [ 
 				
@@ -142,21 +121,7 @@ Category: { defaultValue: { CategoryID: 1, CategoryName: "Beverages"} }
 		
 		});
 
-//--RI--
-function categoryDropDownEditor(container, options) {
-                    $('<input data-text-field="CategoryName" data-value-field="CategoryID" data-bind="value:' + options.field + '"/>')
-                        .appendTo(container)
-                        .kendoDropDownList({
-                            autoBind: false,
-                            dataSource: {
-                                type: "odata",
-                                transport: {
-                                    read: "http://demos.kendoui.com/service/Northwind.svc/Categories"
-                                }
-                            }
-                        });
-                }
-//--RI--
+
 	</script>
 
 </body>
