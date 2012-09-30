@@ -27,7 +27,7 @@
                 #classesDB{
                     width: 900px;
                     height: 650px;
-                    font-family: Tahoma, Verdana, sans-serif; font-size:14px;
+                    font-family: Tahoma, Verdana, sans-serif; font-size:12px;
                     //margin: 30px auto;
                     //padding: 51px 4px 0 4px;
                     //background: url('../grid/clientsDb.png') no-repeat 0 0;
@@ -77,12 +77,12 @@
                       
 				},
 				columns: [
-                                { field: "name", title: "Name",  width: 140 },
-				{ field: "mobile", title: "Mobile", width: 140, filterable: false }, 
-				{ field: "email", title: "Email", width: 140, filterable: false },
+                                { field: "name", title: "Name",  width: 120 },
+				{ field: "mobile", title: "Mobile", width: 80, filterable: false }, 
+				{ field: "email", title: "Email", width: 180, filterable: false },
 				{ field: "skills", title: "Skills", width: 140, filterable: false },     
-				{ field: "permcov", title: "Perm / Cover", width: 140, filterable: false },
-				{ field: "locations", title: "Locations", width: 140, filterable: false }, 
+				{ field: "permcov", title: "Perm / Cover", width: 70, filterable: false },
+				{ field: "locations", title: "Locations", width: 100, filterable: false }, 
                                 ],
 				toolbar: [ 
 				
