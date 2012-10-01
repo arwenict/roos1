@@ -128,7 +128,7 @@ function categoryDropDownEditor(container, options) {
                         .kendoDropDownList({
                             autoBind: false,
                             dataSource: {
-                                type: "odata",
+                                type: "GET",
                                 transport: {
                                     read: "data/instructors.php"
                                 }
