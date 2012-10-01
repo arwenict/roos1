@@ -63,7 +63,7 @@
 							fields: {
 								name: { editable: true },
                                                                 mobile: { type: "text", editable: true },								
-                                                                email: { type: "text", editable: false },
+                                                                email: { type: "text", editable: true },
                                                                 skills: { type: "text", editable: false },
                                                                 permcov: { type: "text", editable: false },
                                                                 locations: { type: "text", editable: false }
