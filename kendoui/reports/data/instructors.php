@@ -60,7 +60,7 @@ if ($verb == "POST") {
 		echo "Update failed for ID: " .$id;
 	}
 	
-		$rs = mysql_query("UPDATE pr_community_fields_values SET value= '" .$mobile."' WHERE field_id=6 AND user_id = " .$id);
+	$rs = mysql_query("UPDATE pr_community_fields_values SET value= '" .$mobile."' WHERE field_id=6 AND user_id = " .$id);
 
 	if ($rs) {
 		echo json_encode($rs);
@@ -69,7 +69,6 @@ if ($verb == "POST") {
 		header("HTTP/1.1 500 Internal Server Error");
 		echo "Mobile update failed for ID: " .$id;
 	}
-}
 }
 
 ?>
