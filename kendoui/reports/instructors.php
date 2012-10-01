@@ -81,8 +81,8 @@
 				{ field: "mobile", title: "Mobile", width: 80, filterable: false }, 
 				{ field: "email", title: "Email", width: 180, filterable: false },
 				{ field: "skills", title: "Skills", width: 140, filterable: false },     
-				{ field: "permcov", title: "Perm / Cover", width: 70, filterable: false },
-				{ field: "locations", title: "Locations", width: 100, filterable: false }, 
+				{ field: "permcov", title: "Perm / Cover", width: 70, filterable: true },
+				{ field: "locations", title: "Locations", width: 100, filterable: true }, 
                                 ],
 				toolbar: [ 
 				
