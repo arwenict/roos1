@@ -62,7 +62,7 @@
 							id: "id",
 							fields: {
 								name: { editable: true },
-                                                                mobile: { type: "text", editable: false },								
+                                                                mobile: { type: "text", editable: true },								
                                                                 email: { type: "text", editable: false },
                                                                 skills: { type: "text", editable: false },
                                                                 permcov: { type: "text", editable: false },
