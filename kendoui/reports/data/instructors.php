@@ -44,8 +44,10 @@ if ($verb == "GET") {
 // handle a POST
 if ($verb == "POST") {
 	$name = mysql_real_escape_string($_POST["name"]);
-	//$username = mysql_real_escape_string($_POST["username"]);
-	//$email = mysql_real_escape_string($_POST["email"]);
+	$mobile = mysql_real_escape_string($_POST["mobile"]);
+
+//$username = mysql_real_escape_string($_POST["username"]);
+	$email = mysql_real_escape_string($_POST["email"]);
 	$id = mysql_real_escape_string($_POST["id"]);
 
 	$rs = mysql_query("UPDATE pr_users SET name= '" .$name ."' WHERE id = " .$id);
@@ -57,6 +59,17 @@ if ($verb == "POST") {
 		header("HTTP/1.1 500 Internal Server Error");
 		echo "Update failed for ID: " .$id;
 	}
+	
+		$rs = mysql_query("UPDATE pr_community_fields_values SET value= '" .$mobile."' WHERE field_id=6 AND user_id = " .$id);
+
+	if ($rs) {
+		echo json_encode($rs);
+	}
+	else {
+		header("HTTP/1.1 500 Internal Server Error");
+		echo "Mobile update failed for ID: " .$id;
+	}
+}
 }
 
 ?>
