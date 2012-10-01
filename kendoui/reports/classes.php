@@ -75,7 +75,7 @@
 								StartDate: { type: "date", editable: false },
                                                                 StartTime: { type: "text", editable: false },
 								Location: { editable: false },
-								InstructorName: { editable: true },
+								InstructorName: { editable: false },
 								Minutes: { editable: false},
 								HourlyRate: { type: "number", validation: { required: true, min: 0} },
 								AttendeeNumber: { type: "number", validation: { required: true, min: 0} },
@@ -94,7 +94,7 @@
 				{ field: "StartDate", title: "Start Date", format: "{0:ddd dd-MMM-yyyy}",  width: 100 },
 				{ field: "StartTime", title: "Start Time", width: 60, filterable: false },
 				{ field: "Location" }, 
-				{ field: "InstructorName", title: "Instructor Name", width: 100, editor: categoryDropDownEditor, template: "#=InstructorName.name#" }, 
+				{ field: "InstructorName", title: "Instructor Name", width: 100 }, 
 				{ field: "Minutes", width: 60 },
 				{ field: "HourlyRate" , title: "Hourly Rate", format:"{0:c2}", filterable: false},
 				{ field: "AttendeeNumber" , title: "Attendees" },
@@ -122,19 +122,6 @@
 		});
 
 
-function categoryDropDownEditor(container, options) {
-                    $('<input data-text-field="name" data-value-field="id" data-bind="value:' + options.field + '"/>')
-                        .appendTo(container)
-                        .kendoDropDownList({
-                            autoBind: false,
-                            dataSource: {
-                                type: "GET",
-                                transport: {
-                                    read: "data/instructors.php"
-                                }
-                            }
-                        });
-                }
 
 	</script>
 
