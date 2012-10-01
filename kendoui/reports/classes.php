@@ -123,7 +123,7 @@
 
 
 function categoryDropDownEditor(container, options) {
-                    $('<input data-text-field="CategoryName" data-value-field="CategoryID" data-bind="value:' + options.field + '"/>')
+                    $('<input data-text-field="InstructorName" data-value-field="ID" data-bind="value:' + options.field + '"/>')
                         .appendTo(container)
                         .kendoDropDownList({
                             autoBind: false,
