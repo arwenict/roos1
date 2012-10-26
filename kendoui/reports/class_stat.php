@@ -151,7 +151,7 @@
                 //detailInit: detailInit,
                 editable: false,
                 navigatable: true,
-                groupable: false,
+                groupable: true,
                 filterable: true,
                 pageable: false, 
                 scrollable : true,
