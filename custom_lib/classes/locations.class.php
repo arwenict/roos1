@@ -13,7 +13,7 @@ class Locations {
             throw new Exception("DB connection required.");
     }
     
-    public function getAllStudios() {
+    public function getAllStudios($inclCompany=false) {
         $studios = array();
         $sql = "SELECT * FROM rooster.locations WHERE `type`='studio'";
         
@@ -25,7 +25,8 @@ class Locations {
             
             $code = "";
             foreach ($tree as $node) {
-                $code = "{$node['code']}-".$code;  
+                if ($node['parentID'] != 0 || $inclCompany)
+                    $code = "{$node['code']}-".$code;  
             }
             $code = trim($code, "-");
            
