@@ -41,7 +41,7 @@ class Locations {
         $currentNode = $this->getNodeInfoAsArray($nodeID);
         $outputArray[$currentNode['nodeID']] = $currentNode;
         $count=0;
-        while($currentNode['parentID'] != null ) {
+        while($currentNode['parentID'] != 0 ) {
             $count++;
             if($count>=16)
                 throw new Exception("Walk up the tree too far, walked up $count levels, max 16");
