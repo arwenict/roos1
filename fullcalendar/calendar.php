@@ -1,3 +1,13 @@
+<?php
+    include_once("/custom_lib/dbTools.php");
+    
+    if (function_exists('mysqli_connect')) {
+        echo "mysqli installed";
+    }  
+    else
+        echo "mysqli is not installed";
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
@@ -234,7 +244,7 @@ content : event.description+'<br><a href="../index.php/jomsocial/events/vieweven
             
             <div id="classesDB">
             <div style="margin-top: -6px; ">
-            Please select location
+            Select studio:
             <select id="locationID" name="locationID" >
               
             </select>
