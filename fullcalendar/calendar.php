@@ -1,7 +1,7 @@
 <?php
     ini_set("display_errors", 1);
-    include_once("/custom_lib/core/dbTools.php");
-    include_once("/custom_lib/classes/locations.class.php");
+    include_once("../custom_lib/core/dbTools.php");
+    include_once("../custom_lib/classes/locations.class.php");
     
     echo get_include_path();
     $db = new DBHandler();
