@@ -14,14 +14,27 @@ class Locations {
     }
     
     public function getAllStudios() {
+        $studios = array();
         $sql = "SELECT * FROM rooster.locations WHERE `type`='studio'";
         
-        $studios = $this->db->getMultiDimensionalArray($sql);
+        $studiosArr = $this->db->getMultiDimensionalArray($sql);
         
-        foreach ($studios as $studio) {
-            $result = $this->walkUpTreeFromNode($studio['nodeID']);
-            print_r($result);
+        foreach ($studiosArr as $studio) {
+            $resultArray = $studio;
+            $tree = $this->walkUpTreeFromNode($studio['nodeID']);
+            
+            $code = "";
+            foreach ($tree as $node) {
+                $code = "{$node['code']}-".$code;  
+            }
+            $code = trim($code, "-");
+           
+            $resultArray['displayCode'] = $code;
+            
+            $studios[$resultArray['name']] = $resultArray;
         }
+        
+        print_r($studios);
     }
     
     public function getNodeInfoAsArray($nodeID) {
