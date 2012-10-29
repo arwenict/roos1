@@ -73,7 +73,7 @@ function setMyView() {
 	          var locationPicked= $("#location").val();
 	          
 	          if (locationPicked=="")
-	              {locationPicked= $.cookie('location') || "9";}
+	              {locationPicked= "9";}
 
 	           var data = [
                            // { text: "CBD - Hero", value: "1" },
