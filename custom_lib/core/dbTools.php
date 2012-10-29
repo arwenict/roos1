@@ -22,7 +22,7 @@ function tryConnect(&$retVar, $dbHost, $user, $pass, $schema="", $errorDescripto
     } else return true;
 }
 
-class dbTool
+class DBHandler
 {
     /**
      * @var mysqli the database object
@@ -57,7 +57,7 @@ class dbTool
      *
      * @throws Exception on database connection fail
      */
-    function connectContent($account="root",$host="") {	
+    function connect($account="root",$host="") {	
         if($account=="root") {
             $user = "arw49555_b5";
             $pass = "f1shb0ard";
@@ -100,8 +100,7 @@ class dbTool
      * @return array associative array containing the results
      *
      */
-    function getMultiDimensionalArray($sql,$calcRows=false)
-    {		
+    function getMultiDimensionalArray($sql,$calcRows=false) {		
         $data = array();
         if($result = $this->doQuery($sql))
         {
@@ -120,8 +119,40 @@ class dbTool
 
         return $data;
     }
+    
+    function getResults($sql, $calcRows=false) {
+        if($result = $this->doQuery($sql)) {
+            if($calcRows) {
+                $rows = $this->doQuery("SELECT FOUND_ROWS() AS 'found_rows';",true);
+                $rows = $rows->fetch_assoc();
+                $this->total_rows = $rows['found_rows'];
+            }
 
+            return $result;
+        }
+        else
+            throw( new Exception("Query failed! $sql ".$this->_mysqli_last->error));
+    }
+    
+    /**
+     * Closes the mysqli connection
+     */
+    function close() {
+        $this->mysqli->close();
+    }
         
-        
+    /**
+     * Takes a mysqli results object and iterates over it to convert it into a hash table
+     * @param mysqli_result $results
+     * @return array array containing results
+     */
+    function convertResultsToHashtable($results)  {
+        $hash = array();
+        $count = $results->num_rows;
+        for($i=0;$i<$count;$i++)  {
+             $hash[] = $results->fetch_assoc();
+		}
+        return $hash;
+    }
 }
 ?>

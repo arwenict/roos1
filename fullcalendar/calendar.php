@@ -1,11 +1,17 @@
 <?php
-    include_once("/custom_lib/dbTools.php");
+    include_once("/custom_lib/core/dbTools.php");
+    include_once("/custom_lib/classes/locations.class.php");
     
-    if (function_exists('mysqli_connect')) {
-        echo "mysqli installed";
-    }  
-    else
-        echo "mysqli is not installed";
+    ini_set("display_errors", 1);
+    
+    $db = new DBHandler();
+    $db->connect();
+    
+    $locations = new Locations($db);
+    
+    $locations->getAllStudios();
+    
+    $db->close();
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
