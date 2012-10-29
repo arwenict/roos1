@@ -83,9 +83,9 @@ function setMyView() {
  			   // { text: "CBD - Cobra", value: "5" },
                            // { text: "CBD - Warrior", value: "6" },
                            // { text: "CBD - Rooftop", value: "7" },
-                            { text: "Chatswood", value: "8" }, 
-                            { text: "Liverpool", value: "9" }      
-                           <?php //echo $jsStudiosArray ?>
+                           // { text: "Chatswood", value: "8" }, 
+                           // { text: "Liverpool", value: "9" }      
+                           <?php echo $jsStudiosArray ?>
                     ];                        
 /*Hero	1
 Mountain	2
