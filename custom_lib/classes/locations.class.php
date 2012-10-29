@@ -19,7 +19,7 @@ class Locations {
         $studios = $this->db->getMultiDimensionalArray($sql);
         
         foreach ($studios as $studio) {
-            $result = $studio->walkUpTreeFromNode($studio['nodeID']);
+            $result = $this->walkUpTreeFromNode($studio['nodeID']);
             print_r($result);
         }
     }
