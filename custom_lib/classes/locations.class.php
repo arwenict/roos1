@@ -32,10 +32,10 @@ class Locations {
            
             $resultArray['displayCode'] = $code;
             
-            $studios[$resultArray['name']] = $resultArray;
+            $studios[$resultArray['nodeID']] = $resultArray;
         }
         
-        print_r($studios);
+        return $studios;
     }
     
     public function getNodeInfoAsArray($nodeID) {

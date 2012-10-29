@@ -8,7 +8,14 @@
     
     $locations = new Locations($db);
     
-    $locations->getAllStudios();
+    $studios = $locations->getAllStudios();
+    
+    $jsStudiosArray = "";
+    
+    foreach ($studios as $studio) {
+        $jsStudiosArray .= "{ text: '{$studio['displayCode']}', value: '{$studio['nodeID']}' },";
+    }
+    $jsStudiosArray = rtrim($jsStudiosArray, ",");
     
     $db->close();
 ?>
@@ -76,8 +83,10 @@ function setMyView() {
  			   // { text: "CBD - Cobra", value: "5" },
                            // { text: "CBD - Warrior", value: "6" },
                            // { text: "CBD - Rooftop", value: "7" },
-                            { text: "Chatswood", value: "8" }, 
-                            { text: "Liverpool", value: "9" }      ];                        
+                           // { text: "Chatswood", value: "8" }, 
+                           // { text: "Liverpool", value: "9" }      
+                           <?php echo $jsStudiosArray ?>
+                    ];                        
 /*Hero	1
 Mountain	2
 Reformer	3
