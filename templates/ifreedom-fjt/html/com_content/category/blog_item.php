@@ -38,7 +38,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 <?php endif; ?>
 
 <?php if ($canEdit ||  $params->get('show_print_icon') || $params->get('show_email_icon')) : ?>
-		<div class="buttonheading2">
+		<div class="buttonheading">
 		<?php if (!$this->print) : ?>
 				<?php if ($params->get('show_print_icon')) : ?>
 				<div class="print">

@@ -62,7 +62,7 @@ $canEdit	= $this->item->params->get('access-edit');
 
 <?php if ($canEdit ||  $params->get('show_print_icon') || $params->get('show_email_icon')) : ?>
 
-		<div class="buttonheading1">
+		<div class="buttonheading">
 
 		<?php if (!$this->print) : ?>
 
