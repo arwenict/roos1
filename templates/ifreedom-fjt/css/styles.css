@@ -312,7 +312,7 @@ span.pagination { background:none;}
 .print-icon,.email-icon{float: right; list-style: none; padding-left:5px;}
 
 /*POP-UP*/
-.popup-wrapper{display:none;}
+.popup-wrapper{display:none; background: url(../images/bg-trans.png) repeat; position:fixed; height:100%; left:0; top:0; z-index:100}
 .popup{position:fixed; left:30%; top:25%; width:700px; z-index:1;}
 .popup .top, .popup .bot{background:url(../images/bg-popup2.png) no-repeat; height:15px; position:relative;}
 .popup .top{background-position:0 0; width:100%; bottom:15px;}
