@@ -1,5 +1,10 @@
         window.addEvent('domready', function () {
-            alert('hello Work1');
+            alert('hello Work');
+            $("#open-help").click(function(e){
+                alert("yeah");
+                e.preventDefault();
+                $("#overlay").show();
+            });
             // initialize Nivoo-Slider
 				if ($('Slider')) new NivooSlider($('Slider'), {
 				effect: 'random',
@@ -8,11 +13,3 @@
 			});
         }); 
         
-        $(function(){
-            alert('hello Work');
-            $("#open-help").click(function(e){
-                alert("yeah");
-                e.preventDefault();
-                $("#overlay").show();
-            });
-        });
