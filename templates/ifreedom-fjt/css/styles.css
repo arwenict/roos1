@@ -326,4 +326,4 @@ span.pagination { background:none;}
 .popup .mid a:active {text-decoration:none;}
 .popup .mid table td {padding-left:10px;} 
 
-.help-link {display:block; background:url(../images/help.png)}
+.help-link {height:18px; width:18px; display:block; background:url(../images/help.png)}
