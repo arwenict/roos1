@@ -105,6 +105,7 @@
 		});
                 
                 function locationsDropDownEditor(container, options) {
+                    alert(options);
                     $('<input data-text-field="LocationName" data-value-field="LocationID" data-bind="value:' + options.field + '"/>')
                         .appendTo(container)
                         .kendoDropDownList({

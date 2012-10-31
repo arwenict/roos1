@@ -13,14 +13,13 @@
 
         $studios = $locations->getAllStudios();
 
-        $jsStudiosArray = "";
-
         foreach ($studios as $studio) {
-            $jsStudiosArray .= "{ LocationName: '{$studio['displayCode']}', LocationID: '{$studio['nodeID']}' },";
+            $studiosJS["LocationName"] = $studio['displayCode'];
+            $studiosJS["LocationID"] = $studio['nodeID'];
         }
-        $jsStudiosArray = rtrim($jsStudiosArray, ",");
         
-        echo $jsStudiosArray;
+        $studiosJS = json_encode($studiosJS);
+        echo $studiosJS;
     }
     
     
