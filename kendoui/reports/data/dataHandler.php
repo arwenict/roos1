@@ -14,8 +14,8 @@
         $studios = $locations->getAllStudios();
 
         foreach ($studios as $studio) {
-            $studiosJS[]["LocationName"] = $studio['displayCode'];
-            $studiosJS[]["LocationID"] = $studio['nodeID'];
+            $studiosJS[]["text"] = $studio['displayCode'];
+            $studiosJS[]["value"] = $studio['nodeID'];
         }
         
         $studiosJS = json_encode($studiosJS);

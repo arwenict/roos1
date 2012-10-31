@@ -43,10 +43,9 @@
 		$(document).ready(function() {
                         $('#dropDown').kendoDropDownList({
                             autoBind: true,
-                            dataTextField: "LocationName",
-                            dataValueField: "LocationID",
+                            dataTextField: "text",
+                            dataValueField: "value",
                             dataSource: {
-                                type: "odata",
                                 transport: {
                                     read: "data/dataHandler.php?type=locations",
                                     dataType: "json"
