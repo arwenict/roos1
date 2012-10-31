@@ -25,7 +25,7 @@ function iFrameHeight() {
     <div class="popup resizable">
         <div id='cpt_lghtbx' class="mid fixedBox" style='overflow-y:scroll;'>
             <a href="#" id="close-captions" onclick="javascript:closePopUp()" class="close">&nbsp;</a>
-            <h2>Help</h2>
+            <h2>Help <?php echo $this->params->get('page_title')  ?></h2>
 
             <div class="hightlight-box">
                 <h3>Sub heading 1 </h3>
@@ -48,7 +48,15 @@ function iFrameHeight() {
 		<?php endif; ?>
 	</h1>
 <?php endif; ?>
-<a style='float:right; position:absolute; right:45px; top:45px;' href="#" id='open-help' onclick="javascript:openPopUp();"class="help-link"> </a>
+<?php
+if ($this->params->get('page_title') == "Timetable") 
+    $styles = "float:right; position:absolute; right:45px; top:45px;";
+elseif ($this->params->get('page_title') == "Attendance" || $this->params->get('page_title') == "Instructor Pay") 
+    $styles = "float:right; position:absolute; right:50px; top:20px;";
+
+
+?>
+<a style='<?php echo $styles ?>' href="#" id='open-help' onclick="javascript:openPopUp();"class="help-link"> </a>
 <iframe <?php echo $this->wrapper->load; ?>
 	id="blockrandom"
 	name="iframe"
