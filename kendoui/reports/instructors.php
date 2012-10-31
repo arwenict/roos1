@@ -105,7 +105,6 @@
 		});
                 
                 function locationsDropDownEditor(container, options) {
-                    alert(options);
                     $('<input name=" ' + options.field + '"/>')
                         .appendTo(container)
                         .kendoDropDownList({
