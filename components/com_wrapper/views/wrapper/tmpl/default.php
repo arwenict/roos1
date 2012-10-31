@@ -51,7 +51,7 @@ function iFrameHeight() {
 <?php
 if ($this->params->get('page_title') == "Timetable") 
     $styles = "float:right; position:absolute; right:45px; top:45px;";
-elseif ($this->params->get('page_title') == "Attendance" || $this->params->get('page_title') == "Instructor Pay") 
+else 
     $styles = "float:right; position:absolute; right:50px; top:20px;";
 
 
