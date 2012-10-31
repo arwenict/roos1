@@ -31,6 +31,14 @@ function iFrameHeight() {
                 <h3>Sub heading 1 </h3>
                 <?php if ($this->params->get('page_title') == "Timetable") {?>
                 <p>Timetable help</p>
+                <?php } elseif ($this->params->get('page_title') == "Instructors") { ?>
+                <p>Instructors help</p>
+                <?php } elseif ($this->params->get('page_title') == "Attendance") { ?>
+                <p>Attendance help</p>
+                <?php } elseif ($this->params->get('page_title') == "Instructor Pay") { ?>
+                <p>Instructor Pay help</p>
+                <?php } elseif ($this->params->get('page_title') == "Class Stats") { ?>
+                <p>Class Stats help</p>
                 <?php } ?>
             </div>
 
