@@ -17,7 +17,7 @@
             </div>
                 </br></br>
 
-
+                <div id="dropDown"></div>
             <div id="grid" style="height: 580px"></div>
 
             </div>
@@ -41,7 +41,18 @@
 
 
 		$(document).ready(function() {
-
+                        $('#dropDown').kendoDropDownList({
+                            autoBind: true,
+                            dataTextField: "LocationName",
+                            dataValueField: "LocationID",
+                            dataSource: {
+                                type: "odata",
+                                transport: {
+                                    read: "data/dataHandler.php?type=locations",
+                                    dataType: "json"
+                                }
+                            }
+                        });
 
                                                 
 			$("#grid").kendoGrid({
@@ -120,6 +131,8 @@
                             }
                         });
                 }
+                
+                
 
 	</script>
 
