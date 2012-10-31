@@ -66,7 +66,7 @@
                                                                 email: { type: "text", editable: true },
                                                                 skills: { type: "text", editable: false },
                                                                 permcov: { type: "text", editable: false },
-                                                                locations: { type: "text", editable: false }
+                                                                locations: { type: "text", editable: true }
 							}
 						}
 					},
@@ -82,7 +82,7 @@
 				{ field: "email", title: "Email", width: 180, filterable: false },
 				{ field: "skills", title: "Skills", width: 140, filterable: false },     
 				{ field: "permcov", title: "Perm / Cover", width: 70, filterable: true },
-				{ field: "locations", title: "Locations", width: 100, filterable: true }, 
+				{ field: "locations", title: "Locations", width: 100, editor: locationsDropDownEditor, template: "#=Location.LocationName#", filterable: true }, 
                                 ],
 				toolbar: [ 
 				
@@ -99,11 +99,25 @@
                 groupable: false,
                 filterable: true, 
                 scrollable : true,
-                selectable: "row",
+                selectable: "row"
 			});
 		
 		});
-
+                
+                function locationsDropDownEditor(container, options) {
+                    $('<input data-text-field="LocationName" data-value-field="LocationID" data-bind="value:' + options.field + '"/>')
+                        .appendTo(container)
+                        .kendoDropDownList({
+                            autoBind: false,
+                            dataSource: {
+                                type: "odata",
+                                transport: {
+                                    read: "data/dataHanler.php?type=locations",
+                                    dataType: "json"
+                                }
+                            }
+                        });
+                }
 
 	</script>
 
