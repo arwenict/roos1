@@ -29,7 +29,9 @@ function iFrameHeight() {
 
             <div class="hightlight-box">
                 <h3>Sub heading 1</h3>
-                <p><?php print_r($this->params) ?></p>
+                <?php if ($this->params->page_title == "Timetable") {?>
+                <p>Timetable help</p>
+                <?php } ?>
             </div>
 
 
@@ -46,7 +48,7 @@ function iFrameHeight() {
 		<?php endif; ?>
 	</h1>
 <?php endif; ?>
-<a style='float:right; position:relative; right:45px; bottom:30px;' href="#" id='open-help' onclick="javascript:openPopUp();"class="help-link"> </a>
+<a style='float:right; position:relative; right:45px; top:40px;' href="#" id='open-help' onclick="javascript:openPopUp();"class="help-link"> </a>
 <iframe <?php echo $this->wrapper->load; ?>
 	id="blockrandom"
 	name="iframe"
