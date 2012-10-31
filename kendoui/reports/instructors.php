@@ -66,7 +66,7 @@
                                                                 email: { type: "text", editable: true },
                                                                 skills: { type: "text", editable: false },
                                                                 permcov: { type: "text", editable: false },
-                                                                locations: { type: "text", editable: true }
+                                                                locations: { type: "text", defaultValue: { LocationID: 1, LocationName: "Sample location"} }
 							}
 						}
 					},
@@ -82,7 +82,7 @@
 				{ field: "email", title: "Email", width: 180, filterable: false },
 				{ field: "skills", title: "Skills", width: 140, filterable: false },     
 				{ field: "permcov", title: "Perm / Cover", width: 70, filterable: true },
-				{ field: "locations", title: "Locations", width: 100, editor: locationsDropDownEditor}, 
+				{ field: "locations", title: "Locations", width: 100, editor: locationsDropDownEditor, template: "#=Category.CategoryName#"}, 
                                 ],
 				toolbar: [ 
 				
@@ -106,7 +106,7 @@
                 
                 function locationsDropDownEditor(container, options) {
                     alert(options);
-                    $('<input data-text-field="LocationName" data-value-field="LocationID" data-bind="value:' + options.field + '"/>')
+                    $('<input name=" ' + options.field + '"/>')
                         .appendTo(container)
                         .kendoDropDownList({
                             autoBind: false,
