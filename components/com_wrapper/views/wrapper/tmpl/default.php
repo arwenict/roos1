@@ -48,7 +48,7 @@ function iFrameHeight() {
 		<?php endif; ?>
 	</h1>
 <?php endif; ?>
-<a style='float:right; position:relative; right:45px; top:30px;' href="#" id='open-help' onclick="javascript:openPopUp();"class="help-link"> </a>
+<a style='float:right; position:absolute; right:45px; top:45px;' href="#" id='open-help' onclick="javascript:openPopUp();"class="help-link"> </a>
 <iframe <?php echo $this->wrapper->load; ?>
 	id="blockrandom"
 	name="iframe"
