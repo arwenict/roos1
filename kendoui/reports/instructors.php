@@ -108,7 +108,9 @@
                     $('<input name=" ' + options.field + '"/>')
                         .appendTo(container)
                         .kendoDropDownList({
-                            autoBind: false,
+                            autoBind: true,
+                            dataTextField: "LocationName",
+                            dataValueField: "LocationID",
                             dataSource: {
                                 type: "odata",
                                 transport: {
