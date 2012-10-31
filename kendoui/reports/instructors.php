@@ -47,8 +47,7 @@
                             dataValueField: "value",
                             dataSource: {
                                 transport: {
-                                    read: "data/dataHandler.php?type=locations",
-                                    dataType: "json"
+                                    read: "data/dataHandler.php?type=locations"
                                 }
                             }
                         });
