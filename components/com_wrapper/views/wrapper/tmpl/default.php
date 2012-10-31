@@ -28,7 +28,7 @@ function iFrameHeight() {
             <h2>Help</h2>
 
             <div class="hightlight-box">
-                <h3>Sub heading 1</h3>
+                <h3>Sub heading 1 <?php echo $this->params->page_title ?></h3>
                 <?php if ($this->params->page_title == "Timetable") {?>
                 <p>Timetable help</p>
                 <?php } ?>
