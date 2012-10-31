@@ -112,7 +112,7 @@
                             dataSource: {
                                 type: "odata",
                                 transport: {
-                                    read: "data/dataHanler.php?type=locations",
+                                    read: "data/dataHandler.php?type=locations",
                                     dataType: "json"
                                 }
                             }
