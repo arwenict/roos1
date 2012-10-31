@@ -82,7 +82,7 @@
 				{ field: "email", title: "Email", width: 180, filterable: false },
 				{ field: "skills", title: "Skills", width: 140, filterable: false },     
 				{ field: "permcov", title: "Perm / Cover", width: 70, filterable: true },
-				{ field: "locations", title: "Locations", width: 100, editor: locationsDropDownEditor, template: "#=Location.LocationName#", filterable: true }, 
+				{ field: "locations", title: "Locations", width: 100, editor: locationsDropDownEditor}, 
                                 ],
 				toolbar: [ 
 				
