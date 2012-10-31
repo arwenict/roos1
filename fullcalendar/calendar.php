@@ -26,6 +26,8 @@
 <link rel='stylesheet' type='text/css' href='fullcalendar/fullcalendar.css' />
 <link rel='stylesheet' type='text/css' href='fullcalendar/fullcalendar.print.css' media='print' />
 
+<link rel='stylesheet' type='text/css' href='../templates/ifreedom-fjt/css/styles.css' />
+
  <style>
 #simplemodal-overlay {background-color:#000;}
 #simplemodal-container {background-color:#333; border:8px solid #444; padding:12px;}
@@ -38,6 +40,8 @@
 <script type='text/javascript' src='basic/js/jquery.simplemodal.js'></script>   
 <script type="text/javascript" src="basic/js/jquery.qtip-1.0.0-rc3.min.js"></script>
 <script type="text/javascript" src="jquery-cookie/jquery.cookie.js"></script> 
+
+<script type="text/javascript" src="../templates/ifreedom-fjt/js/common.js"></script> 
 
 <script  type='text/javascript'  src="../kendoui/trial/js/kendo.all.min.js"></script>
 <link href="../kendoui/styles/kendo.common.min.css" rel="stylesheet">
@@ -266,6 +270,22 @@ content : event.description+'<br><a href="../index.php/jomsocial/events/vieweven
                     <button id="submit" name="submit" type="submit" value="show">Show</button>
              <input type="hidden" id="location"  name="location" value="<?php echo $_GET['locationID']; ?>" />       
         </form>
+        <a href="#" id='open-help' onclick="javascript:openPopUp();"class="help-link"> </a>
+        <div id="overlay" class="popup-wrapper" >
+            <div class="popup resizable">
+                <div id='cpt_lghtbx' class="mid fixedBox" style='overflow-y:scroll;'>
+                    <a href="#" id="close-captions" onclick="javascript:closePopUp()" class="close">&nbsp;</a>
+                    <h2>Help</h2>
+
+                    <div class="hightlight-box">
+                        <h3>Sub heading 1</h3>
+                        <p>HTML formatted text goes here</p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
 </br>
 </br>
  </br>
