@@ -64,16 +64,6 @@
 
 
 		$(document).ready(function() {
-                        $('#dropDown').kendoDropDownList({
-                            autoBind: true,
-                            dataTextField: "text",
-                            dataValueField: "value",
-                            dataSource: {
-                                transport: {
-                                    read: "data/dataHandler.php?type=locations"
-                                }
-                            }
-                        });
 
                         var locations = <?php echo $jsStudiosArray ?>;
                                                 
@@ -99,7 +89,7 @@
                                                                 email: { type: "text", editable: true },
                                                                 skills: { type: "text", editable: false },
                                                                 permcov: { type: "text", editable: false },
-                                                                locations: { type: "text", editable: true }
+                                                                locations: {editable: true }
 							}
 						}
 					},
