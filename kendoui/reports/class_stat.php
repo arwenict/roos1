@@ -49,10 +49,10 @@
        # if (Participation < "0.3" && Participation > 0) {  #
       <td style="background-color:rgb(255,84,104)"> ${ (Participation*100).toFixed(0) } % </td>
        # } else { #
-		# if (Participation < "0.7" && Participation > 0) {  #
+		# if (Participation < "0.6" && Participation > 0) {  #
 	      	<td style="background-color:rgb(250,190,77)"> ${ (Participation*100).toFixed(0) } % </td>
 		# } else { #      
-			# if (Participation >= "0.7" && Participation > 0) {  #        
+			# if (Participation >= "0.8" && Participation > 0) {  #        
       	   		<td style="background-color:rgb(77,250,144)"> ${ (Participation*100).toFixed(0) } % </td>
        			# } else { #
        			<td></td>
