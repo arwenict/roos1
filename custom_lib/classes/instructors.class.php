@@ -68,6 +68,7 @@ class Instructors {
             case "locations":
             case "skills":
                 $valuesTableSQL = "UPDATE b5.pr_community_fields_values SET `value` = \"$value\" WHERE `user_id`=$instructorID AND `field_id` = {$this->mappingID[$field]}";
+                echo $valuesTableSQL."\n";
                 $this->db->update($valuesTableSQL);
                 break;
                 

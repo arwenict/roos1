@@ -52,8 +52,6 @@ if ($verb == "POST") {
    
         
         $result = $instructors->updateInstructorFields($id, $updateFields);
-        
-        echo json_encode("success");
 
 }
 
