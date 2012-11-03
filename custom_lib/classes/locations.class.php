@@ -74,7 +74,7 @@ class Locations {
             
         $code = "";
         foreach ($tree as $node) {
-            if ($node['parentID'] != 0 || $inclCompany)
+            if ($node['parentID'] != 0 )
                 $code = "{$node['code']}-".$code;  
         }
         $code = trim($code, "-");
