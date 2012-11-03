@@ -14,10 +14,10 @@
     $jsStudiosArray = "[";
     
     foreach ($studios as $studio) {
-        $jsStudiosArray .= "{ text: '{$studio['displayCode']}', value: '{$studio['nodeID']}' },";
+        $jsStudiosArray .= "{ text: '{$studio['displayCode']}', value: {$studio['nodeID']} },";
     }
-    $jsStudiosArray = rtrim($jsStudiosArray, ",");
-    $jsStudiosArray .= "]";
+    //$jsStudiosArray = rtrim($jsStudiosArray, ",");
+    $jsStudiosArray .= "{text: 'No club selected', value:'null'}]";
     
     $db->close();
 ?>
