@@ -1,26 +1,3 @@
-<?php
-    ini_set("display_errors", 1);
-    ini_set('include_path', '../../custom_lib/');
-    include_once("core/dbTools.php");
-    include_once("classes/locations.class");
-
-    $db = new DBHandler();
-    $db->connect();
-    
-    $locations = new Locations($db);
-    
-    $studios = $locations->getAllStudios();
-    
-    $jsStudiosArray = "[";
-    
-    foreach ($studios as $studio) {
-        $jsStudiosArray .= "{ text: '{$studio['displayCode']}', value: '{$studio['nodeID']}' },";
-    }
-    $jsStudiosArray = rtrim($jsStudiosArray, ",");
-    $jsStudiosArray .= "]";
-    
-    $db->close();
-?>
 <!doCTYpe html>
 <html>
 <head>
@@ -75,7 +52,6 @@
                             }
                         });
 
-                        var locations = <?php echo $jsStudiosArray ?>;
                                                 
 			$("#grid").kendoGrid({
 				dataSource: {
@@ -99,7 +75,7 @@
                                                                 email: { type: "text", editable: true },
                                                                 skills: { type: "text", editable: false },
                                                                 permcov: { type: "text", editable: false },
-                                                                locations: { type: "text", editable: true }
+                                                                locations: { type: "text", defaultValue: { LocationID: 1, LocationName: "Sample location"} }
 							}
 						}
 					},
@@ -115,7 +91,7 @@
 				{ field: "email", title: "Email", width: 180, filterable: false },
 				{ field: "skills", title: "Skills", width: 140, filterable: false },     
 				{ field: "permcov", title: "Perm / Cover", width: 70, filterable: true },
-				{ field: "locations", title: "Locations", width: 100, values:locations} 
+				{ field: "locations", title: "Locations", width: 100, editor: locationsDropDownEditor}, 
                                 ],
 				toolbar: [ 
 				
@@ -136,6 +112,25 @@
 			});
 		
 		});
+                
+                function locationsDropDownEditor(container, options) {
+                    $('<input name=" ' + options.field + '"/>')
+                        .appendTo(container)
+                        .kendoDropDownList({
+                            autoBind: true,
+                            dataTextField: "LocationName",
+                            dataValueField: "LocationID",
+                            dataSource: {
+                                type: "odata",
+                                transport: {
+                                    read: "data/dataHandler.php?type=locations",
+                                    dataType: "json"
+                                }
+                            }
+                        });
+                }
+                
+                
 
 	</script>
 
