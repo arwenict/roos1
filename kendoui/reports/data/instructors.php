@@ -74,11 +74,3 @@ if ($verb == "POST") {
 }
 
 ?>
-SELECT u.id, u.name, cfvm.value as mobile, email, cfvs.value as skills,cfvp.value as permcov, rosl.`name` as locations 
-FROM pr_users u
-LEFT JOIN pr_community_fields_values cfvm on u.id=cfvm.user_id AND cfvm.field_id=6 
-LEFT JOIN pr_community_fields_values cfvs on u.id=cfvs.user_id AND cfvs.field_id=19 
-LEFT JOIN pr_community_fields_values cfvp on u.id=cfvp.user_id AND cfvp.field_id=21 
-LEFT JOIN pr_community_fields_values cfvl on u.id=cfvl.user_id AND cfvl.field_id=22 
-LEFT JOIN rooster.locations rosl on cfvl.value = rosl.nodeID
-ORDER BY u.name
