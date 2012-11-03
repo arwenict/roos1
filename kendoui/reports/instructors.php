@@ -1,6 +1,6 @@
 <?php
     ini_set("display_errors", 1);
-    ini_set('include_path', '../../custom_lib/');
+    ini_set('include_path', '/var/www/roos1/custom_lib/');
     include_once("core/dbTools.php");
     include_once("classes/locations.class");
 
