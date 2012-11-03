@@ -40,19 +40,25 @@ $verb = $_SERVER["REQUEST_METHOD"];
 // handle a GET
 if ($verb == "GET") {
         $instructorsArr = $instructors->getListOfInstructors("name", "ASC");
-
+/*
         $i=0;
         $results = array();
         foreach ($instructorsArr as $instructor) {
             $results[$i] = $instructor;
             if (!empty($instructor['locationID'])){
-                $locationCode = $locations->getStudioCode($instructor['locationID']);
-                $results[$i]['locations'] = $locationCode;
+                try {
+                    $locationCode = $locations->getStudioCode($instructor['locationID']);
+                    $results[$i]['locations'] = $locationCode;
+                }
+                catch (Exception $e) {
+                    //TODO: error handling
+                }
             }
             $i++;
         }
+*/
 
-	echo "{\"data\":" .json_encode($results). "}";	
+	echo "{\"data\":" .json_encode($instructorsArr). "}";	
 }
 
 // handle a POST
