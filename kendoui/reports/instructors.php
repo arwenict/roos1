@@ -73,7 +73,7 @@
 						read: "data/instructors.php" ,
 						update: {
 							url: "data/instructors.php",
-							type: "POST"
+							type: "GET"
 						}		
 					},
 					error: function(e) {
