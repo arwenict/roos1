@@ -34,6 +34,7 @@ $validPassword = JText::sprintf( JText::_( 'VALID_AZ09', true ), JText::_( 'Pass
 
 <div id="basicSet" class="section"> <!-- Profile Basic Setting -->
 <?php
+print_r($fields);
 foreach ( $fields as $name => $fieldGroup )
 {
 		if ($name != 'ungrouped')
