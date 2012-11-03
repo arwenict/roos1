@@ -25,7 +25,7 @@ class Instructors {
      */
     public function getListOfInstructors($order="", $direction = "DESC") {
         $sql = " 
-            SELECT u.id, u.name, cfvm.value as mobile, email, cfvs.value as skills,cfvp.value as permcov, rosl.`name` as locationID 
+            SELECT u.id, u.name, cfvm.value as mobile, email, cfvs.value as skills,cfvp.value as permcov, cfvl.value as locationID 
             FROM pr_users u
             LEFT JOIN pr_community_fields_values cfvm on u.id=cfvm.user_id AND cfvm.field_id=6 
             LEFT JOIN pr_community_fields_values cfvs on u.id=cfvs.user_id AND cfvs.field_id=19 
