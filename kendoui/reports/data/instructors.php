@@ -44,12 +44,11 @@ if ($verb == "GET") {
         $i=0;
         $results = array();
         foreach ($instructorsArr as $instructor) {
-            print_r($instructor);
-            die;
             $results[$i] = $instructor;
-            $locationCode = $locations->getStudioCode($instructor['locationID']);
-            $results[$i]['locations'] = $locationCode;
-            
+            if (!empty($instructor['locationID'])){
+                $locationCode = $locations->getStudioCode($instructor['locationID']);
+                $results[$i]['locations'] = $locationCode;
+            }
             $i++;
         }
 
