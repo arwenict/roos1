@@ -7,6 +7,22 @@
  */
 defined('_JEXEC') or die();
 $validPassword = JText::sprintf( JText::_( 'VALID_AZ09', true ), JText::_( 'Password', true ), 4 );
+
+ini_set("display_errors", 1); //displaying errors. Should be removed on production
+ini_set('include_path', '/var/www/roos1/custom_lib/'); // Set default path to custom library.
+
+/* Including neccessary libraries */
+include_once("core/dbTools.php");
+include_once("classes/locations.class.php");
+
+/* Inititalising objects */
+$db = new DBHandler();
+$db->connect();
+
+$locations = new Locations($db);
+
+$studios = $locations->getAllStudios(); 
+
 ?>
 <?php if( $showProfileType ){ ?>
 <div class="com-notice">
@@ -34,6 +50,7 @@ $validPassword = JText::sprintf( JText::_( 'VALID_AZ09', true ), JText::_( 'Pass
 
 <div id="basicSet" class="section"> <!-- Profile Basic Setting -->
 <?php
+print_r($studios);
 print_r($fields);
 foreach ( $fields as $name => $fieldGroup )
 {
@@ -44,7 +61,7 @@ foreach ( $fields as $name => $fieldGroup )
 			<h2><?php echo JText::_( $name );?></h2>
 		</div>
 <?php
-		}
+		} 
 ?>
 		<table class="formtable" cellspacing="1" cellpadding="0" style="width: 98%;">
 		<tbody>
@@ -53,21 +70,41 @@ foreach ( $fields as $name => $fieldGroup )
 				{
 					$f = JArrayHelper::toObject ( $f );
 					
-					// DO not escape 'SELECT' values. Otherwise, comparison for
-					// selected values won't work
-					if($f->type != 'select'){
-						$f->value	= $this->escape( $f->value );
-					}
-			?>
-					<tr>
-	 					<td class="key"><label id="lblfield<?php echo $f->id;?>" for="field<?php echo $f->id;?>" class="label"><?php if($f->required == 1) echo '*'; ?><?php echo JText::_( $f->name );?></label></td>	 					
-	 					<td class="value"><?php echo CProfileLibrary::getFieldHTML( $f , '' ); ?></td>
-	 					<td class="privacy">
-	 						<?php echo CPrivacy::getHTML( 'privacy' . $f->id , $f->access ); ?>
-	 					</td>
-	 				</tr>
+                                        $fieldRequired = "";
+                                        if ($f->required)
+                                            $fieldRequired = "*";
+                                        
+                                        if ($f->name == "Locations") {
+                                            echo "
+                                                <tr> 
+                                                    <td class='key'>
+                                                        <label id=\"lblfield{$f->id}\" for=\"field{$f->id}\" class='label'>$fieldRequired {$f->name}</label>
+                                                    </td>
+                                                </tr>
+                                                <td class='value'>
+                                                
+                                                </td>
+                                            ";
+                                        }
+                                        else{
+                                            $value = CProfileLibrary::getFieldHTML( $f , '' );
+                                            // DO not escape 'SELECT' values. Otherwise, comparison for
+                                            // selected values won't work
+                                            if($f->type != 'select'){
+                                                    $f->value	= $this->escape( $f->value );
+                                            }
+                        ?>
+                                            <tr>
+                                                    <td class="key"><label id="lblfield<?php echo $f->id;?>" for="field<?php echo $f->id;?>" class="label"><?php echo $fieldRequired; echo JText::_( $f->name );?></label></td>	 					
+                                                    <td class="value"><?php echo $value ?></td>
+                                                    <td class="privacy">
+                                                            <?php echo CPrivacy::getHTML( 'privacy' . $f->id , $f->access ); ?>
+                                                    </td>
+                                            </tr>
 	 		<?php
-				}
+                                        }
+                        
+                                }
 			?>
 		</tbody>
 		</table>
