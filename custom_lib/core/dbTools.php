@@ -246,6 +246,41 @@ class DBHandler
     }
     
     /**
+     * Runs a query and returns a single row as an enumerated array.
+     *
+     * @param string $sql the SQL query to be run. Please make sure this query has been sanitised!
+     * @return array enumerated array containing the results
+     *
+     * @throws Exception if there are no results returned
+     * @throws Exception if there are more than 1 rows returned
+     * @throws Exception if there is a MySQL error
+     */
+    function getSingleRow($sql)
+    {
+            if($result = $this->doQuery($sql, true))
+            {
+                    if($result->num_rows == 0)
+                    {
+                            throw new Exception(sprintf("Failed! Couldn't find result. '%s'",$sql));
+
+                    }
+                    else if($result->num_rows > 1)
+                    {
+                            throw new Exception(printf("Failed! Duplicate results(%d) found for '%s'",$result->num_rows,$sql));
+                    }
+                    $row = $result->fetch_row();
+                    $result->close();
+                    return $row;
+            }
+            else
+            {
+                    throw( new Exception("Query failed! $sql ".$this->_mysqli_last->error));
+            }
+            return null;
+    }
+
+    
+    /**
      * Runs a query and returns a single value. Since this function calls getSingleRow
      * it will throw all the usual exceptions.
      *
