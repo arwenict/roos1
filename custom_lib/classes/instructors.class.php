@@ -30,7 +30,7 @@ class Instructors {
      */
     public function getListOfInstructors($order="", $direction = "DESC") {
         $sql = " 
-            SELECT u.id, u.name, cfvm.value as mobile, email, cfvs.value as skills,cfvp.value as permcov, cfvl.value as locations 
+            SELECT u.id, u.name, cfvm.value as mobile, email, cfvs.value as skills,cfvp.value as permcov, COALESCE(cfvl.value, -1) as locations 
             FROM b5.pr_users u
             LEFT JOIN b5.pr_community_fields_values cfvm on u.id=cfvm.user_id AND cfvm.field_id=6 
             LEFT JOIN b5.pr_community_fields_values cfvs on u.id=cfvs.user_id AND cfvs.field_id=19 
@@ -43,6 +43,8 @@ class Instructors {
         }
         
         $instructors = $this->db->getMultiDimensionalArray($sql);
+        
+        $results = array();
         
         return $instructors;
         
@@ -65,7 +67,7 @@ class Instructors {
             case "mobile":
             case "locations":
             case "skills":
-                $valuesTableSQL = "UPDATE b5.pr_community_fields_values SET `value` = $value WHERE `user_id`=$instructorID AND `field_id` = {$this->mappingID[$field]}";
+                $valuesTableSQL = "UPDATE b5.pr_community_fields_values SET `value` = \"$value\" WHERE `user_id`=$instructorID AND `field_id` = {$this->mappingID[$field]}";
                 $this->db->update($valuesTableSQL);
                 break;
                 

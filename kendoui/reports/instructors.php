@@ -17,7 +17,7 @@
         $jsStudiosArray .= "{ text: '{$studio['displayCode']}', value: {$studio['nodeID']} },";
     }
     //$jsStudiosArray = rtrim($jsStudiosArray, ",");
-    $jsStudiosArray .= "{text: 'No club selected', value:null}]";
+    $jsStudiosArray .= "{text: 'No club selected', value:-1}]";
     
     $db->close();
 ?>
