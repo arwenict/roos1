@@ -67,7 +67,15 @@ class Instructors {
             case "mobile":
             case "locations":
             case "skills":
-                $valuesTableSQL = "INSERT INTO b5.pr_community_fields_values (`user_id`, `field_id`, `value`) VALUES ($instructorID, {$this->mappingID[$field]}, \"$value\") ON DUPLICATE KEY UPDATE `value` = \"$value\" ";
+                
+                try {
+                    $id = $this->db->getSingleRowAssoc("SELECT `id` FROM b2.pr_community_fields_values WHERE `user_id`=$instructorID AND `field_id`={$this->mappingID[$field]}");
+                    $this->db->update("UPDATE b2.pr_community_fields_values SET `value` = \"$value\" WHERE `id` = $id");
+                }
+                catch (Exception $e) {
+                    $valuesTableSQL = "INSERT INTO b5.pr_community_fields_values (`user_id`, `field_id`, `value`) VALUES ($instructorID, {$this->mappingID[$field]}, \"$value\")";
+                    $this->db->insert($valuesTableSQL);
+                }
                 //echo $valuesTableSQL."\n";
                 $this->db->update($valuesTableSQL);
                 break;

@@ -219,5 +219,30 @@ class DBHandler
         }
         return $this->mysqli->affected_rows;
     }
+    
+    /**
+     * Runs a query which should be an INSERT query, as it will return the MySQL insert ID.
+     *
+     * @param string $sql the SQL query to be run. Please make sure this query has been sanitised!
+     * @return integer the MySQL insert ID
+     *
+     * @throws Exception a string containing the mysql error
+     */
+    function insert($sql)
+    {
+
+        if(stripos($sql,"INSERT")===false && stripos($sql,"REPLACE")===false)
+        {
+            die("Not an insert or replace query: ".$sql."  ".$this->mysqli->error);
+        }
+
+            $err = $this->doQuery($sql);
+            if(!$err)
+            {
+                    throw( new Exception("Query failed! $sql ".$this->_mysqli_last->error));
+            }
+
+            return $this->_mysqli_last->insert_id;
+    }
 }
 ?>
