@@ -71,7 +71,7 @@ class Instructors {
                 try {
                     $idSQL = "SELECT `id` FROM b5.pr_community_fields_values WHERE `user_id`=$instructorID AND `field_id`={$this->mappingID[$field]}";
                     $id = $this->db->getSingleRowAssoc($idSQL);
-                    $this->db->update("UPDATE b5.pr_community_fields_values SET `value` = \"$value\" WHERE `id` = $id");
+                    $this->db->update("UPDATE b5.pr_community_fields_values SET `value` = \"$value\" WHERE `id` = {$id[0]}");
                 }
                 catch (Exception $e) {
                     echo $e->getMessage();
