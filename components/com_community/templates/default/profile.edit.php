@@ -78,17 +78,17 @@ foreach ( $fields as $name => $fieldGroup )
                                             
                                             $options = "";
                                             foreach($studios as $studio) {
-                                                $options .= "<input type='checkbox' name='field22' value='{$studio['nodeID']}'>{$studio['displayCode']}</input>";
+                                                $options .= "<input type='checkbox' name='field22' value='{$studio['nodeID']}' />{$studio['displayCode']}<br />";
                                             }
                                             echo "
                                                 <tr> 
                                                     <td class='key'>
                                                         <label id=\"lblfield{$f->id}\" for=\"field{$f->id}\" class='label'>$fieldRequired {$f->name}</label>
                                                     </td>
-                                                </tr>
-                                                <td class='value'>
+                                                    <td class='value'>
                                                         $options
-                                                </td>
+                                                    </td>    
+                                                </tr>
                                             ";
                                         }
                                         else{
