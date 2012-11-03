@@ -50,8 +50,8 @@ $studios = $locations->getAllStudios();
 
 <div id="basicSet" class="section"> <!-- Profile Basic Setting -->
 <?php
-print_r($studios);
-print_r($fields);
+//print_r($studios);
+//print_r($fields);
 foreach ( $fields as $name => $fieldGroup )
 {
 		if ($name != 'ungrouped')
@@ -75,6 +75,11 @@ foreach ( $fields as $name => $fieldGroup )
                                             $fieldRequired = "*";
                                         
                                         if ($f->name == "Locations") {
+                                            
+                                            $options = "";
+                                            foreach($studios as $studio) {
+                                                $options .= "<input type='checkbox' name='field22' value='{$studio['nodeID']}'>{$studio['displayCode']}</input>";
+                                            }
                                             echo "
                                                 <tr> 
                                                     <td class='key'>
@@ -82,7 +87,7 @@ foreach ( $fields as $name => $fieldGroup )
                                                     </td>
                                                 </tr>
                                                 <td class='value'>
-                                                
+                                                        $options
                                                 </td>
                                             ";
                                         }
