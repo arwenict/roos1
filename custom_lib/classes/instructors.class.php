@@ -69,7 +69,9 @@ class Instructors {
             case "skills":
                 
                 try {
-                    $id = $this->db->getSingleRowAssoc("SELECT `id` FROM b2.pr_community_fields_values WHERE `user_id`=$instructorID AND `field_id`={$this->mappingID[$field]}");
+                    $idSQL = "SELECT `id` FROM b2.pr_community_fields_values WHERE `user_id`=$instructorID AND `field_id`={$this->mappingID[$field]}";
+                    echo $idSQL;
+                    $id = $this->db->getSingleRowAssoc($idSQL);
                     $this->db->update("UPDATE b2.pr_community_fields_values SET `value` = \"$value\" WHERE `id` = $id");
                 }
                 catch (Exception $e) {
@@ -77,7 +79,6 @@ class Instructors {
                     $this->db->insert($valuesTableSQL);
                 }
                 //echo $valuesTableSQL."\n";
-                $this->db->update($valuesTableSQL);
                 break;
                 
             default:
