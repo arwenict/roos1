@@ -64,5 +64,23 @@ class Locations {
         }
         return $outputArray;
     }
+    
+    function getStudioCode($nodeID) {
+        $sql = "SELECT * FROM rooster.locations WHERE `type`='studio' AND `nodeID`=$nodeID";
+        
+        $studio = $this->db->getSingleRowAssoc($sql);
+        
+        $tree = $this->walkUpTreeFromNode($studio['nodeID']);
+            
+        $code = "";
+        foreach ($tree as $node) {
+            if ($node['parentID'] != 0 || $inclCompany)
+                $code = "{$node['code']}-".$code;  
+        }
+        $code = trim($code, "-");
+
+        return $code;
+
+    }
 }
 ?>

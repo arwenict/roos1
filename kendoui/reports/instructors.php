@@ -73,7 +73,7 @@
 						read: "data/instructors.php" ,
 						update: {
 							url: "data/instructors.php",
-							type: "GET"
+							type: "POST"
 						}		
 					},
 					error: function(e) {
@@ -105,7 +105,7 @@
 				{ field: "email", title: "Email", width: 180, filterable: false },
 				{ field: "skills", title: "Skills", width: 140, filterable: false },     
 				{ field: "permcov", title: "Perm / Cover", width: 70, filterable: true },
-				{ field: "locations", title: "Locations", width: 100} 
+				{ field: "locations", title: "Locations", width: 100, values:location_array} 
                                 ],
 				toolbar: [ 
 				

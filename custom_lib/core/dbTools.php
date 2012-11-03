@@ -154,5 +154,39 @@ class DBHandler
 		}
         return $hash;
     }
+    
+    /**
+     * Runs a query and returns a single row as an associative array.
+     *
+     * @param string $sql the SQL query to be run. Please make sure this query has been sanitised!
+     * @return array associative array containing the results
+     *
+     * @throws Exception if there are no results returned
+     * @throws Exception if there are more than 1 rows returned
+     * @throws Exception if there is a MySQL error
+     */
+    function getSingleRowAssoc($sql)
+    {
+            if($result = $this->doQuery($sql, true))
+            {
+                    if($result->num_rows == 0)
+                    {
+                            throw new Exception(sprintf("Failed! Couldn't find result. '%s'",$sql));
+
+                    }
+                    else if($result->num_rows > 1)
+                    {
+                            throw new Exception(printf("Failed! Duplicate results(%d) found for '%s'",$result->num_rows,$sql));
+                    }
+                    $row = $result->fetch_assoc();
+                    $result->close();
+                    return $row;
+            }
+            else
+            {
+                    throw( new Exception("Query failed! $sql ".$this->_mysqli_last->error));
+            }
+            return null;
+    }
 }
 ?>
