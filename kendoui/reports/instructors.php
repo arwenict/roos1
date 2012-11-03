@@ -65,7 +65,7 @@
 
 		$(document).ready(function() {
 
-                        var locations = <?php echo $jsStudiosArray ?>;
+                        var location_array = <?php echo $jsStudiosArray ?>;
                                                 
 			$("#grid").kendoGrid({
 				dataSource: {
@@ -105,7 +105,7 @@
 				{ field: "email", title: "Email", width: 180, filterable: false },
 				{ field: "skills", title: "Skills", width: 140, filterable: false },     
 				{ field: "permcov", title: "Perm / Cover", width: 70, filterable: true },
-				{ field: "locations", title: "Locations", width: 100, values:locations} 
+				{ field: "locations", title: "Locations", width: 100, values:location_array} 
                                 ],
 				toolbar: [ 
 				
