@@ -70,13 +70,13 @@ class Instructors {
                 
                 try {
                     $idSQL = "SELECT `id` FROM b2.pr_community_fields_values WHERE `user_id`=$instructorID AND `field_id`={$this->mappingID[$field]}";
-                    echo $idSQL;
                     $id = $this->db->getSingleRowAssoc($idSQL);
                     $this->db->update("UPDATE b2.pr_community_fields_values SET `value` = \"$value\" WHERE `id` = $id");
                 }
                 catch (Exception $e) {
+                    echo $e->getMessage();
                     $valuesTableSQL = "INSERT INTO b5.pr_community_fields_values (`user_id`, `field_id`, `value`) VALUES ($instructorID, {$this->mappingID[$field]}, \"$value\")";
-                    $this->db->insert($valuesTableSQL);
+                    //$this->db->insert($valuesTableSQL);
                 }
                 //echo $valuesTableSQL."\n";
                 break;
