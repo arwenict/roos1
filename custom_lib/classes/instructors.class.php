@@ -67,8 +67,8 @@ class Instructors {
             case "mobile":
             case "locations":
             case "skills":
-                $valuesTableSQL = "UPDATE b5.pr_community_fields_values SET `value` = \"$value\" WHERE `user_id`=$instructorID AND `field_id` = {$this->mappingID[$field]}";
-                echo $valuesTableSQL."\n";
+                $valuesTableSQL = "INSERT INTO b5.pr_community_fields_values (`user_id`, `field_id`, `value`) VALUES ($instructorID, {$this->mappingID[$field]}, \"$value\") ON DUPLICATE KEY UPDATE `value` = \"$value\" ";
+                //echo $valuesTableSQL."\n";
                 $this->db->update($valuesTableSQL);
                 break;
                 
