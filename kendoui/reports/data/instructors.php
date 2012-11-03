@@ -12,14 +12,12 @@ ini_set('include_path', '/var/www/roos1/custom_lib/'); // Set default path to cu
 
 /* Including neccessary libraries */
 include_once("core/dbTools.php");
-include_once("classes/locations.class.php");
 include_once("classes/instructors.class.php");
 
 /* Inititalising objects */
 $db = new DBHandler();
 $db->connect();
 
-$locations = new Locations($db);
 $instructors = new Instructors($db);
 
 /* Create the Application */
@@ -40,49 +38,22 @@ $verb = $_SERVER["REQUEST_METHOD"];
 // handle a GET
 if ($verb == "GET") {
         $instructorsArr = $instructors->getListOfInstructors("name", "ASC");
-/*
-        $i=0;
-        $results = array();
-        foreach ($instructorsArr as $instructor) {
-            $results[$i] = $instructor;
-            if (!empty($instructor['locationID'])){
-                try {
-                    $locationCode = $locations->getStudioCode($instructor['locationID']);
-                    $results[$i]['locations'] = $locationCode;
-                }
-                catch (Exception $e) {
-                    //TODO: error handling
-                }
-            }
-            $i++;
-        }
-*/
-
 	echo "{\"data\":" .json_encode($instructorsArr). "}";	
 }
 
 // handle a POST
 if ($verb == "POST") {
-	$name = mysql_real_escape_string($_POST["name"]);
-	$mobile = mysql_real_escape_string($_POST["mobile"]);
-
-//$username = mysql_real_escape_string($_POST["username"]);
-	$email = mysql_real_escape_string($_POST["email"]);
-	$id = mysql_real_escape_string($_POST["id"]);
-
-	$rs = mysql_query("UPDATE pr_users SET name= '" .$name ."',email= '".$email."' WHERE id = " .$id);
-	$rs = mysql_query("UPDATE pr_community_fields_values SET value= '" .$mobile."' WHERE field_id=6 AND user_id = " .$id);
-//	$rs = mysql_query("UPDATE pr_community_fields_values SET value= '" .$mobile."' WHERE field_id=6 AND user_id = " .$id);
-
-
-	if ($rs) {
-		echo json_encode($rs);
-	}
-	else {
-		header("HTTP/1.1 500 Internal Server Error");
-		echo "Update failed for ID: " .$id;
-	}
-	
+        $id = $db->escape($_POST["id"]);
+        $updateFields['name'] = $db->escape($_POST["name"]);
+        $updateFields['email'] = $db->escape($_POST["email"]);
+        $updateFields['mobile'] = $db->escape($_POST["mobile"]);
+        $updateFields['locations'] = $db->escape($_POST["locations"]);
+        $updateFields['skills'] = $db->escape($_POST["skills"]);
+   
+        
+        $result = $instructors->updateInstructorFields($id, $updateFields);
+        
+        echo json_encode("success");
 
 }
 

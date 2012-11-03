@@ -188,5 +188,36 @@ class DBHandler
             }
             return null;
     }
+    
+    /*
+     * Function to expose the MySQLi escape_string() function
+     */
+    function escape($str)
+    {
+            return $this->mysqli->real_escape_string($str);	
+    }
+    
+    /**
+     * Runs a query which should be an UPDATE query, as it will return the MySQL affected rows.
+     *
+     * @param string $sql the SQL query to be run. Please make sure this query has been sanitised!
+     * @return integer the MySQL affected rows
+     *
+     * @throws Exception a string containing the mysql error
+     */
+    function update($sql)
+    {
+
+        if(stripos($sql,"UPDATE")===false)
+        {
+            die("Not an update query: ".$sql."  ".$this->mysqli->error);
+        }
+
+        if(!$this->doQuery($sql))
+        {
+                throw( new Exception("Query failed! $sql ".$this->_mysqli_last->error));
+        }
+        return $this->mysqli->affected_rows;
+    }
 }
 ?>

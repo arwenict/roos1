@@ -5,6 +5,11 @@
  */
 class Instructors {
     private $db;
+    private $mappingID = array(
+        "mobile" => 6,
+        "locations" => 22,
+        "skills" => 19
+    );
     
     public function __construct($db=null) {
         if ($db != null)
@@ -42,5 +47,42 @@ class Instructors {
         return $instructors;
         
     }
+     
+    public function updateInstructorFields($instructorID, $fields) {
+        $userTableConditionSQL = "";
+        
+        foreach ($fields as $field => $value) {
+            if (empty($value))
+                continue;
+            
+            switch ($field) {
+
+            case "name":
+            case "email":
+                $userTableConditionSQL .= " `$field`='$value',";
+                break;
+                
+            case "mobile":
+            case "locations":
+            case "skills":
+                $valuesTableSQL = "UPDATE b5.pr_community_fields_values SET `value` = $value WHERE `user_id`=$instructorID AND `field_id` = {$this->mappingID[$field]}";
+                $this->db->update($valuesTableSQL);
+                break;
+                
+            default:
+                break;
+            }
+        }
+        
+        if (!empty($userTableConditionSQL)) {
+            $userTableConditionSQL = rtrim($userTableConditionSQL, ",");
+            $sql = "UPDATE b5.pr_users SET $userTableConditionSQL WHERE `id`=$instructorID";
+            $this->db->update($sql);
+        }
+        
+        return true;
+        
+    }
+
 }
 ?>
