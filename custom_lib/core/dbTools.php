@@ -244,5 +244,23 @@ class DBHandler
 
             return $this->_mysqli_last->insert_id;
     }
+    
+    /**
+     * Runs a query and returns a single value. Since this function calls getSingleRow
+     * it will throw all the usual exceptions.
+     *
+     * @param string $sql the SQL query to be run. Please make sure this query has been sanitised!
+     * @return mixed    the value of the first field of the row returned by the query.
+     *
+     * @throws Exception if there are no results returned
+     * @throws Exception if there are more than 1 rows returned
+     * @throws Exception if there is a MySQL error
+     */
+    function getSingleValue($sql)
+    {
+            $row = $this->getSingleRow($sql);
+            //error_log("wtf: $row[0]");
+            return $row[0];
+    }
 }
 ?>
