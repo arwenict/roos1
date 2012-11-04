@@ -100,7 +100,7 @@ class CommunityModelProfiles extends JModel
 		{
 			$db->setQuery( $query );
 		}		
-		echo $query; exit();
+		
 		$fields	= $db->loadObjectList();
 		
 		return $fields;
