@@ -38,7 +38,14 @@ $verb = $_SERVER["REQUEST_METHOD"];
 // handle a GET
 if ($verb == "GET") {
         $instructorsArr = $instructors->getListOfInstructors("name", "ASC");
-	echo "{\"data\":" .json_encode($instructorsArr). "}";	
+        
+        $i=0;
+        $results = array();
+        foreach ($instructorsArr as $instructor) {
+            $results[$i] = $instructor;
+            $results[$i]["edit_link"] = "<a href='#?id={$instructor['id']}' class='instr_edit'></a>";
+        }
+	echo "{\"data\":" .json_encode($results). "}";	
 }
 
 // handle a POST
