@@ -1043,7 +1043,6 @@ class CommunityViewProfile extends CommunityView {
 		$isUseFirstLastName	= CUserHelper::isUseFirstLastName();
 		
 		$data->profile ['fields']	=	$profileField;
-                print_r($data); exit();
 		$tmpl	= new CTemplate();
 		echo $tmpl	->set( 'showProfileType'	, $showProfileType )
 					->set( 'multiprofile'		, $multiprofile )
