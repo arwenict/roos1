@@ -107,7 +107,7 @@
 				{ field: "skills", title: "Skills", width: 140, filterable: false },     
 				{ field: "permcov", title: "Perm / Cover", width: 70, filterable: true },
 				{ field: "locations", title: "Locations", width: 100, values:location_array},
-                                { field: "edit_link", title: "Edit", width: 50, template:"<a href='javascript:editSettings();' >#=edit_link#</a>"}
+                                { field: "edit_link", title: "Edit", width: 50}
                                 ],
 				toolbar: [ 
 				
