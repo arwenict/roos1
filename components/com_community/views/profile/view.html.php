@@ -973,7 +973,6 @@ class CommunityViewProfile extends CommunityView {
 	 */
 	public function edit(& $data)
 	{
-                print_r($data);exit;
 		$mainframe =& JFactory::getApplication();
 		
 		// access check
