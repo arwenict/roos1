@@ -145,8 +145,6 @@ class JRequest
 		}
 		elseif (!isset($GLOBALS['_JREQUEST'][$name][$sig]))
 		{
-                    if ($type=='ALNUM')
-                        print_r($GLOBALS);
 			if (isset($input[$name]) && $input[$name] !== null)
 			{
 				// Get the variable from the input hash and clean it
