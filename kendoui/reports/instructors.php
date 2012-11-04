@@ -41,7 +41,7 @@
                 </br></br>
 
                 <div id="dropDown"></div>
-            <div id="grid" style="height: 680px"></div>
+            <div id="grid" style="height: 580px"></div>
 
             </div>
         </form>
@@ -90,7 +90,7 @@
                                                                 skills: { type: "text", editable: false },
                                                                 permcov: { type: "text", editable: false },
                                                                 locations: {editable: true },
-                                                                edit_link: {type: "link", editable: false}
+                                                                edit_link: {type: "hyperlink", editable: false}
 							}
 						}
 					},
