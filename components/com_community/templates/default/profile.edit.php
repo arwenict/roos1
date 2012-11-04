@@ -92,7 +92,7 @@ foreach ( $fields as $name => $fieldGroup )
                                                 if (in_array($studio['nodeID'], $values))
                                                     $checked = "checked=checked";
                                                 
-                                                $options .= "<label class='lblradio-block'><input style='margin: 0 5px 5px 0;' onchange='javascript:saveLocations()' type='checkbox' $checked class='field22 checkbox  jomNameTips tipRight' value='{$studio['nodeID']}' />{$studio['displayCode']}</label>";
+                                                $options .= "<label class='lblradio-block'><input style='margin: 0 5px 5px 0;' name='field22[]' type='checkbox' $checked class='field22' value='{$studio['nodeID']}' />{$studio['displayCode']}</label>";
                                             }
                                             echo "
                                                 <tr> 
@@ -102,7 +102,7 @@ foreach ( $fields as $name => $fieldGroup )
                                                     <td class='value'>
                                                         <div class='jomNameTips tipRight' original-title='Which club locations are preferred by instructor'>
                                                             $options
-                                                            <input type='hidden' id='field22' name='field22' />
+                                                            
                                                         </div>
                                                     </td>    
                                                 </tr>
