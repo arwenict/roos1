@@ -973,6 +973,7 @@ class CommunityViewProfile extends CommunityView {
 	 */
 	public function edit(& $data)
 	{
+                print_r($data);exit;
 		$mainframe =& JFactory::getApplication();
 		
 		// access check
@@ -1043,7 +1044,6 @@ class CommunityViewProfile extends CommunityView {
 		$isUseFirstLastName	= CUserHelper::isUseFirstLastName();
 		
 		$data->profile ['fields']	=	$profileField;
-                print_r($data); exit();
 		$tmpl	= new CTemplate();
 		echo $tmpl	->set( 'showProfileType'	, $showProfileType )
 					->set( 'multiprofile'		, $multiprofile )
