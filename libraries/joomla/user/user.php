@@ -532,6 +532,7 @@ class JUser extends JObject
 			{
 				$file = $parampath . '/' . 'user.xml';
 			}
+                        echo "file: $file"; exit;
 			$this->_params->loadSetupFile($file);
 		}
 
