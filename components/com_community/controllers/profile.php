@@ -929,6 +929,8 @@ class CommunityProfileController extends CommunityBaseController
 	
 	public function save()
 	{
+            print_r($_POST);
+            exit;
 		// Check for request forgeries
 		$mainframe	=& JFactory::getApplication();
 		JRequest::checkToken() or jexit( JText::_( 'COM_COMMUNITY_INVALID_TOKEN' ) );
