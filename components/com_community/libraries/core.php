@@ -508,7 +508,7 @@ class CFactory
 			$classname = $prefix.'CommunityView'. ucfirst($name);
 			$viewInstances[$name.$prefix.$viewType] = new $classname;
 		}
-
+		print_r($viewInstances); exit;
 		return $viewInstances[$name.$prefix.$viewType];
 	}
 		
