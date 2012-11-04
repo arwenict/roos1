@@ -90,7 +90,7 @@
                                                                 skills: { type: "text", editable: false },
                                                                 permcov: { type: "text", editable: false },
                                                                 locations: {editable: true },
-                                                                edit_link: {type: "link", editable: false}
+                                                                edit_link: {editable: false}
 							}
 						}
 					},
