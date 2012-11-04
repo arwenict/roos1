@@ -43,7 +43,9 @@ class Instructors {
         }
         
         $instructors = $this->db->getMultiDimensionalArray($sql);
-
+        
+        $results = array();
+        
         return $instructors;
         
     }
