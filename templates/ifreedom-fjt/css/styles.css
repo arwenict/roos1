@@ -138,7 +138,7 @@ box-shadow: 0 1px 0 rgba(253, 253, 255, 0.2) inset, 0 1px 1px rgba(0, 0, 2, 0.2)
 #centercontent td {border: 1px solid #e1e1e1;vertical-align: middle;}
 #centercontent th {border: 1px solid #e1e1e1;vertical-align: middle;}
 #centercontent_md{width: 725px;float:left;overflow:hidden;padding-left: 3px; }
-#centercontent_bg{width: 930px;margin:0px 5px 0px 5px;padding:0px;overflow:hidden;}
+#centercontent_bg{width: 930px;float:left;margin:0px 5px 0px 5px;padding:0px;overflow:hidden;}
 
 div.clearpad {padding:3px 3px 3px 11px;}
 div.clearpad ul {clear: both; margin-left:16px;}
