@@ -92,7 +92,7 @@ foreach ( $fields as $name => $fieldGroup )
                                                 if (in_array($studio['nodeID'], $values))
                                                     $checked = "checked=checked";
                                                 
-                                                $options .= "<input style='margin-right:10px;' onchange='javascript:saveLocations()' type='checkbox' original-title='Which club locations are preferred by instructor' $checked class='field22 jomNameTips' value='{$studio['nodeID']}' />{$studio['displayCode']}<br />";
+                                                $options .= "<input style='margin-right:10px;' onchange='javascript:saveLocations()' type='checkbox' $checked class='field22' value='{$studio['nodeID']}' />{$studio['displayCode']}<br />";
                                             }
                                             echo "
                                                 <tr> 
@@ -100,8 +100,10 @@ foreach ( $fields as $name => $fieldGroup )
                                                         <label id=\"lblfield{$f->id}\" for=\"field{$f->id}\" class='label'>$fieldRequired {$f->name}</label>
                                                     </td>
                                                     <td class='value'>
-                                                        $options
-                                                        <input type='hidden' id='field22' name='field22' />
+                                                        <div class='jomNameTips' original-title='Which club locations are preferred by instructor'>
+                                                            $options
+                                                            <input type='hidden' id='field22' name='field22' />
+                                                        </div>
                                                     </td>    
                                                 </tr>
                                             ";
