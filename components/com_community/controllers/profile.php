@@ -1002,7 +1002,9 @@ class CommunityProfileController extends CommunityBaseController
 		$params		=& $my->getParams();
 		$postvars	= $post['daylightsavingoffset'];
 		$params->set('daylightsavingoffset', $postvars);
-
+		print_r($params);
+		exit;
+                
 		// Store FB prefernce o ly FB connect data
 		$connectModel	= CFactory::getModel( 'Connect' );
 		if( $connectModel->isAssociated( $user->id ) )
@@ -1018,7 +1020,7 @@ class CommunityProfileController extends CommunityBaseController
 		$jUser			=& JFactory::getUser();
 
 		$my->save('params');
-		print_r($my);exit;
+		//print_r($my);exit;
 		// Bind the form fields to the user table
 		if(!$jUser->bind($post))
 		{
