@@ -778,10 +778,7 @@ class CommunityProfileController extends CommunityBaseController
 		{
 			if($user->authorize( COM_USER_NAME, 'edit' )) {
 				$params		= $user->getParameters(true);
-                                echo "1\n";
-                                unset($params->data->language);
-                                print_r($params);
-			
+
 				//In Joomla 1.6, $params will be a JRegistry class, whereas it was JParameter in 1.5 
 				//render() does not exist in JRegistry. Will need to translate the JForm XML in 1.6 to those acceptable for JParameter in 1.5.
 				if((get_class($params) != 'JParameter' || get_class($params) != 'CParameter') && C_JOOMLA_15==0){
@@ -799,8 +796,6 @@ class CommunityProfileController extends CommunityBaseController
 			}else{
 				//user can only edit front end value [ > 1.5, user can only edit timezone and language ]
 				$params		= $user->getParameters(true);
-				echo "2\n";
-                                print_r($params);
                                 
 				if((get_class($params) != 'JParameter' || get_class($params) != 'CParameter') && C_JOOMLA_15==0){
 					CFactory::load( 'libraries' , 'jform' );
