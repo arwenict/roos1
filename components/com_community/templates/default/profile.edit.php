@@ -85,10 +85,14 @@ foreach ( $fields as $name => $fieldGroup )
                                             $fieldRequired = "*";
                                         
                                         if ($f->name == "Locations") {
-                                            print_r($f);
+                                            $values = explode(",", $f->value);
                                             $options = "";
                                             foreach($studios as $studio) {
-                                                $options .= "<input onchange='javascript:saveLocations()' type='checkbox' class='field22' value='{$studio['nodeID']}' />{$studio['displayCode']}<br />";
+                                                $checked = "";
+                                                if (in_array($studio['nodeID'], $values))
+                                                    $checked = "checked=checked";
+                                                
+                                                $options .= "<input onchange='javascript:saveLocations()' type='checkbox' $checked class='field22' value='{$studio['nodeID']}' />{$studio['displayCode']}<br />";
                                             }
                                             echo "
                                                 <tr> 
