@@ -147,7 +147,6 @@ class JRequest
 		}
 		elseif (!isset($GLOBALS['_JREQUEST'][$name][$sig]))
 		{
-                    if ($type=='ALNUM')
                         print_r($input);
 			if (isset($input[$name]) && $input[$name] !== null)
 			{
