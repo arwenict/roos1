@@ -102,7 +102,7 @@ foreach ( $fields as $name => $fieldGroup )
                                                     <td class='value'>
                                                         <div style='width:200px;' class='jomNameTips tipRight' original-title='{$f->tips}'>
                                                             $options
-                                                            <input type='hidden' id='field22' name='field22' value='{$f->value}' />
+                                                            <input type='hidden' id='field22' name='field22' />
                                                         </div>
                                                     </td>    
                                                 </tr>
