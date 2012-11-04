@@ -189,7 +189,6 @@ class CommunityModelProfile extends JCCModel
 			. ' ORDER BY '.$db->nameQuote('id').' DESC ';
 
 		$db->setQuery( $query );
-                echo $query;exit();
 		if($db->getErrorNum()) {
 			JError::raiseError( 500, $db->stderr());
 		}
