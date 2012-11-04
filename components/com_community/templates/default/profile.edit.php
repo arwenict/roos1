@@ -100,7 +100,7 @@ foreach ( $fields as $name => $fieldGroup )
                                                         <label id=\"lblfield{$f->id}\" for=\"field{$f->id}\" class='label'>$fieldRequired {$f->name}</label>
                                                     </td>
                                                     <td class='value'>
-                                                        <div style='width:200px;' class='jomNameTips tipRight' original-title='Which club locations are preferred by instructor'>
+                                                        <div style='width:200px;' class='jomNameTips tipRight' original-title='{$f->tips}'>
                                                             $options
                                                             <input type='hidden' id='field22' name='field22' />
                                                         </div>
