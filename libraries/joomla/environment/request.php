@@ -141,6 +141,8 @@ class JRequest
 			// Get the variable from the input hash
 			$var = (isset($input[$name]) && $input[$name] !== null) ? $input[$name] : $default;
 			$var = self::_cleanVar($var, $mask, $type);
+                        if ($type=='alnum')
+                            echo "var is here 1";exit;
 		}
 		elseif (!isset($GLOBALS['_JREQUEST'][$name][$sig]))
 		{
@@ -166,10 +168,14 @@ class JRequest
 			{
 				$var = $default;
 			}
+                        if ($type=='alnum')
+                            echo "var is here 2";exit;
 		}
 		else
 		{
 			$var = $GLOBALS['_JREQUEST'][$name][$sig];
+                        if ($type=='alnum')
+                            echo "var is here 3";exit;
 		}
 
 		return $var;
