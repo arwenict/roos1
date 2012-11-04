@@ -510,10 +510,10 @@ class JRequest
 	public static function checkToken($method = 'post')
 	{
 		$token = JSession::getFormToken();
-                echo "Token is $token"; exit();
 		if (!self::getVar($token, '', $method, 'alnum'))
 		{
 			$session = JFactory::getSession();
+                        print_r($session);exit();
 			if ($session->isNew())
 			{
 				// Redirect to login screen.
