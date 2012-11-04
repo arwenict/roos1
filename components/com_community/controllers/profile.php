@@ -1003,8 +1003,7 @@ class CommunityProfileController extends CommunityBaseController
 		$postvars	= $post['daylightsavingoffset'];
 		$params->set('daylightsavingoffset', $postvars);
 		print_r($params);
-		exit;
-                
+		
 		// Store FB prefernce o ly FB connect data
 		$connectModel	= CFactory::getModel( 'Connect' );
 		if( $connectModel->isAssociated( $user->id ) )
