@@ -107,7 +107,7 @@ class JRequest
 			$hash = strtoupper($_SERVER['REQUEST_METHOD']);
 		}
 		$type = strtoupper($type);
-		echo "type is $type\n";
+
                 $sig = $hash . $type . $mask;
 
 		// Get the input hash
@@ -147,6 +147,7 @@ class JRequest
 		}
 		elseif (!isset($GLOBALS['_JREQUEST'][$name][$sig]))
 		{
+                        print_r($input);
 			if (isset($input[$name]) && $input[$name] !== null)
 			{
 				// Get the variable from the input hash and clean it
