@@ -382,7 +382,7 @@ class CommunityModelProfile extends JCCModel
 		}
 
 		$query	.= ' ORDER BY field.'.$db->nameQuote('ordering');
-                echo $query;exit;
+
 		$db->setQuery( $query );
 
 		$result	= $db->loadAssocList();

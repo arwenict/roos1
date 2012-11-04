@@ -764,6 +764,7 @@ class CommunityProfileController extends CommunityBaseController
 
 		$data = new stdClass();
 		$data->profile	= $model->getEditableProfile($user->id , $user->getProfileType() );
+                print_r($data);exit;
 		$lang	=& JFactory::getLanguage();
 		$lang->load(COM_USER_NAME);
 
