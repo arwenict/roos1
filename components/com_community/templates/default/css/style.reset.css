@@ -13,7 +13,6 @@
  * standart styling for all html elements in JomSocial application
  * this section also included HTML-fix to support JomSocial application
  */
- /*
 #community-wrap div,
 #community-wrap dl,
 #community-wrap dt,
@@ -40,7 +39,6 @@
 	padding:0;
 
 }
- */
 #community-wrap table {
 	border-collapse:collapse;
 	border-spacing:0;

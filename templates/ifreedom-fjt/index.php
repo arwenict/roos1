@@ -75,7 +75,25 @@ define( 'YOURBASEPATH', dirname(__FILE__) );
     elseif(!$this->countModules('left') and !$this->countModules('right'))$maincol_sufix = '_bg';
     else $maincol_sufix = ''; ?>  
 <div id="centercontent<?php echo $maincol_sufix; ?>">
-<div class="clearpad"><jdoc:include type="component" /> </div></div>  
+<div class="clearpad">
+    <a href="#" style="position:absolute; right:0px; top:5px;" id='open-help' onclick="javascript:openPopUp();"class="help-link"> </a>
+    <div id="overlay" class="popup-wrapper" >
+        <div class="popup resizable">
+            <div id='cpt_lghtbx' class="mid fixedBox" style='overflow-y:scroll;'>
+                <a href="#" id="close-captions" onclick="javascript:closePopUp()" class="close">&nbsp;</a>
+                <h2>Help</h2>
+
+                <div class="hightlight-box">
+                    <h3>Sub heading 1</h3>
+                    <p>HTML formatted text goes here</p>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <jdoc:include type="component" /> 
+</div></div>  
     <?php if($this->countModules('right') and JRequest::getCmd('layout') != 'form') : ?>
   
 <div id="rightbar-w">
