@@ -929,8 +929,6 @@ class CommunityProfileController extends CommunityBaseController
 	
 	public function save()
 	{
-            print_r($_POST);
-            exit;
 		// Check for request forgeries
 		$mainframe	=& JFactory::getApplication();
 		JRequest::checkToken() or jexit( JText::_( 'COM_COMMUNITY_INVALID_TOKEN' ) );
@@ -1020,7 +1018,7 @@ class CommunityProfileController extends CommunityBaseController
 		$jUser			=& JFactory::getUser();
 
 		$my->save('params');
-                //print_r($post);exit;
+                print_r($post);exit;
 		//print_r($my);exit;
 		// Bind the form fields to the user table
 		if(!$jUser->bind($post))
