@@ -818,7 +818,6 @@ class CommunityControllerProfiles extends CommunityController
 
 		$model			=& $this->getModel( 'profiles' );
 		$fieldGroups	= $model->getGroups();
-		print_r($fieldGroups); exit();
 		// Load the JTable Object.
 		$row	=& JTable::getInstance( 'profiles' , 'CommunityTable' );
 
