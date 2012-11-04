@@ -513,6 +513,7 @@ class JRequest
 		if (!self::getVar($token, '', $method, 'alnum'))
 		{
 			$session = JFactory::getSession();
+                        print_r($session);exit();
 			if ($session->isNew())
 			{
 				// Redirect to login screen.
