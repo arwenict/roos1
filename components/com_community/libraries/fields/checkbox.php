@@ -77,8 +77,7 @@ class CFieldsCheckbox extends CProfileField
 				
 
 				$html .= '<label class="lblradio-block">';
-                                $html .= '<input type="checkbox" name="field' . $field->id . '[]" value="' . $option . '"' . $selected . ' class="checkbox"' .$style.' />'; // do not include $class variable as it already included in parent Div
-				//$html .= '<input type="checkbox" name="field' . $field->id . '[]" value="' . $option . '"' . $selected . ' class="checkbox '.$class . '"' .$style.' />';
+				$html .= '<input type="checkbox" name="field' . $field->id . '[]" value="' . $option . '"' . $selected . ' class="checkbox '.$class . '"' .$style.' />';
 				$html .= JText::_( $option ) . '</label>';
 				$elementCnt++;
 
