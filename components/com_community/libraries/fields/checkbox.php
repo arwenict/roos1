@@ -55,8 +55,6 @@ class CFieldsCheckbox extends CProfileField
 		$style 				= ' style="margin: 0 5px 5px 0;' .$this->getStyle() . '" ';
 		$cnt = 0;
 		CFactory::load( 'helpers' , 'string' );
-                print_r($field);
-                exit();
 		$class	.= !empty( $field->tips ) ? ' jomNameTips tipRight' : '';
 		
 		$html	.= '<div class="' . $class . '" style="display: inline-block;" title="' . CStringHelper::escape( JText::_( $field->tips ) ). '">';
