@@ -299,7 +299,7 @@ class CommunityControllerUsers extends CommunityController
 	public function save()
 	{
 		// Check for request forgeries
-		JRequest::checkToken() or jexit( 'Invalid Token' );
+		//JRequest::checkToken() or jexit( 'Invalid Token' );
 
 		$lang	=& JFactory::getLanguage();
 		$lang->load('com_users');

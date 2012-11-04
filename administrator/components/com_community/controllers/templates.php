@@ -23,7 +23,7 @@ class CommunityControllerTemplates extends CommunityController
 	
 	public function publish()
 	{
-	    //JRequest::checkToken() or jexit( 'Invalid Token' );
+	    JRequest::checkToken() or jexit( 'Invalid Token' );
 	    
 	    $template   = JRequest::getVar( 'template' , 'POST' );
 	    $model		= $this->getModel( 'Configuration' );
