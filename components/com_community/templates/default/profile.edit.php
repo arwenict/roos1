@@ -108,12 +108,6 @@ foreach ( $fields as $name => $fieldGroup )
                                                 </tr>
                                             ";
                                         }
-                                        /*
-                                        elseif ($f->name == "") {
-                                            
-                                        }
-                                         * 
-                                         */
                                         else{
                                             $value = CProfileLibrary::getFieldHTML( $f , '' );
                                             // DO not escape 'SELECT' values. Otherwise, comparison for
@@ -125,11 +119,9 @@ foreach ( $fields as $name => $fieldGroup )
                                             <tr>
                                                     <td class="key"><label id="lblfield<?php echo $f->id;?>" for="field<?php echo $f->id;?>" class="label"><?php echo $fieldRequired; echo JText::_( $f->name );?></label></td>	 					
                                                     <td class="value"><?php echo $value ?></td>
-                                                    <!-- Hidden Lock
                                                     <td class="privacy">
                                                             <?php echo CPrivacy::getHTML( 'privacy' . $f->id , $f->access ); ?>
                                                     </td>
-                                                    -->
                                             </tr>
 	 		<?php
                                         }
