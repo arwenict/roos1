@@ -66,9 +66,9 @@ foreach ( $fields as $name => $fieldGroup )
     <script type='text/javascript'>
         function saveLocations() {
             joms.jQuery('.field22').each(function(index) {
-                alert(joms.jQuery(this).val());
-                if (joms.jQuery(this).checked == 1)
-                    alert(index);
+                //alert(joms.jQuery(this).val());
+                if (joms.jQuery(this).checked)
+                    alert("hey");
             });
         }
     </script>
