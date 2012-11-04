@@ -92,7 +92,7 @@ foreach ( $fields as $name => $fieldGroup )
                                                 if (in_array($studio['nodeID'], $values))
                                                     $checked = "checked=checked";
                                                 
-                                                $options .= "<input style='margin-right:10px;' onchange='javascript:saveLocations()' type='checkbox' $checked class='field22' value='{$studio['nodeID']}' />{$studio['displayCode']}<br />";
+                                                $options .= "<input onchange='javascript:saveLocations()' type='checkbox' $checked class='field22' value='{$studio['nodeID']}' />{$studio['displayCode']}<br />";
                                             }
                                             echo "
                                                 <tr> 
