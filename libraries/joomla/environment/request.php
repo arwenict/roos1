@@ -143,7 +143,7 @@ class JRequest
 			$var = (isset($input[$name]) && $input[$name] !== null) ? $input[$name] : $default;
 			$var = self::_cleanVar($var, $mask, $type);
                         if ($type=='ALNUM')
-                            echo "var is here 1";
+                            echo "var is here 1";exit;
 		}
 		elseif (!isset($GLOBALS['_JREQUEST'][$name][$sig]))
 		{
@@ -170,13 +170,13 @@ class JRequest
 				$var = $default;
 			}
                         if ($type=='ALNUM')
-                            echo "var is here 2";
+                            echo "var is here 2";exit;
 		}
 		else
 		{
 			$var = $GLOBALS['_JREQUEST'][$name][$sig];
                         if ($type=='ALNUM')
-                            echo "var is here 3";
+                            echo "var is here 3";exit;
 		}
 
 		return $var;
