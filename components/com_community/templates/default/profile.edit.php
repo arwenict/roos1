@@ -65,8 +65,11 @@ foreach ( $fields as $name => $fieldGroup )
 ?>
     <script type='text/javascript'>
         function saveLocations() {
+            var locations = "";
             joms.jQuery('.field22:checked').each(function(index) {
-                alert(joms.jQuery(this).val());
+                locations += ","+joms.jQuery(this).val();
+                locations = locations.substring(1,locations.length);
+                joms.jQuery('#field22').val(locations);
             });
         }
     </script>
@@ -94,6 +97,7 @@ foreach ( $fields as $name => $fieldGroup )
                                                     </td>
                                                     <td class='value'>
                                                         $options
+                                                        <input type='hidden' id='field22' name='field22' />
                                                     </td>    
                                                 </tr>
                                             ";
