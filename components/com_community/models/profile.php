@@ -119,7 +119,6 @@ class CommunityModelProfile extends JCCModel
 			
 			$query .= ' ORDER BY '.$db->nameQuote('ordering');
 
-                        echo $query; exit;
 			$db->setQuery($query);
 
 			
