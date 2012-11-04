@@ -815,7 +815,7 @@ class CommunityProfileController extends CommunityBaseController
 				}
 			}
 		}
-		
+		print_r($params);exit();
 		
 		$my			= CFactory::getUser();
 		$config		= CFactory::getConfig();
