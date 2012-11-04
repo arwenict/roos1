@@ -238,8 +238,12 @@ foreach ( $fields as $name => $fieldGroup )
 </tbody>
 </table>
 
-<?php if(isset($params)) :  echo $params->render( 'params' ); endif; ?>
+<?php print_r($params); if(isset($params)) :  echo $params->render( 'params' ); endif; ?>
 
+<?php 
+$showDST = false;
+if ($showDST) { 
+?>
 <table class="formtable" cellspacing="1" cellpadding="0" style="width: 98%;">
 <tbody>
 
@@ -272,6 +276,7 @@ foreach ( $fields as $name => $fieldGroup )
 </table>
 
 <?php
+}
 if( $config->get('fbconnectkey') && $config->get('fbconnectsecret') )
 {
 ?>
