@@ -741,7 +741,7 @@ class CommunityProfileController extends CommunityBaseController
 	{
 		CFactory::setActiveProfile();
 		
-		$user	= CFactory::getUser();
+		$user	= CFactory::getUser(474);
 		
 		if($user->id == 0)
 		{
