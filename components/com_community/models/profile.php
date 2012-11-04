@@ -390,7 +390,7 @@ class CommunityModelProfile extends JCCModel
 		{
 			JError::raiseError( 500, $db->stderr());
 		}
-                print_r($result);exit;
+                print_r($results);exit;
 		$data['fields']	= array();
 		for($i = 0; $i < count($result); $i++)
 		{
