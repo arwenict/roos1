@@ -51,7 +51,7 @@ $studios = $locations->getAllStudios();
 <div id="basicSet" class="section"> <!-- Profile Basic Setting -->
 <?php
 //print_r($studios);
-print_r($fields);
+//print_r($fields);
 foreach ( $fields as $name => $fieldGroup )
 {
 		if ($name != 'ungrouped')
@@ -92,7 +92,7 @@ foreach ( $fields as $name => $fieldGroup )
                                                 if (in_array($studio['nodeID'], $values))
                                                     $checked = "checked=checked";
                                                 
-                                                $options .= "<label class='lblradio-block'><input style='margin: 0 5px 5px 0;' onchange='javascript:saveLocations()' type='checkbox' $checked class='field22' value='{$studio['nodeID']}' />{$studio['displayCode']}</label>";
+                                                $options .= "<label class='lblradio-block'><input style='margin: 0 5px 5px 0;' onchange='javascript:saveLocations()' type='checkbox' $checked class='field22 checkbox  jomNameTips tipRight' value='{$studio['nodeID']}' />{$studio['displayCode']}</label>";
                                             }
                                             echo "
                                                 <tr> 
