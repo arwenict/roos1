@@ -32,24 +32,25 @@ $studios = $locations->getAllStudios();
 			<?php echo JText::_('COM_COMMUNITY_CURRENT_DEFAULT_PROFILE_TYPE');?>
 		<?php } ?>
 		[ <a href="<?php echo CRoute::_('index.php?option=com_community&view=multiprofile&task=changeprofile');?>"><?php echo JText::_('COM_COMMUNITY_CHANGE');?></a> ]
+                <a href="#" id='open-help' onclick="javascript:openPopUp();"class="help-link"> </a>
+                <div id="overlay" class="popup-wrapper" >
+                    <div class="popup resizable">
+                        <div id='cpt_lghtbx' class="mid fixedBox" style='overflow-y:scroll;'>
+                            <a href="#" id="close-captions" onclick="javascript:closePopUp()" class="close">&nbsp;</a>
+                            <h2>Help</h2>
+
+                            <div class="hightlight-box">
+                                <h3>Sub heading 1</h3>
+                                <p>HTML formatted text goes here</p>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
 </div>
 <?php } ?>
-<a href="#" id='open-help' onclick="javascript:openPopUp();"class="help-link"> </a>
-<div id="overlay" class="popup-wrapper" >
-    <div class="popup resizable">
-        <div id='cpt_lghtbx' class="mid fixedBox" style='overflow-y:scroll;'>
-            <a href="#" id="close-captions" onclick="javascript:closePopUp()" class="close">&nbsp;</a>
-            <h2>Help</h2>
 
-            <div class="hightlight-box">
-                <h3>Sub heading 1</h3>
-                <p>HTML formatted text goes here</p>
-            </div>
-
-
-        </div>
-    </div>
-</div>
 <div class="cEdit">
 <form name="jsform-profile-edit" id="frmSaveProfile" action="<?php echo CRoute::getURI(); ?>" method="POST" class="community-form-validate">
 
