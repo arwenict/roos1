@@ -779,6 +779,7 @@ class CommunityProfileController extends CommunityBaseController
 			if($user->authorize( COM_USER_NAME, 'edit' )) {
 				$params		= $user->getParameters(true);
                                 echo "1\n";
+                                unset($params->data->language);
                                 print_r($params);
 			
 				//In Joomla 1.6, $params will be a JRegistry class, whereas it was JParameter in 1.5 
