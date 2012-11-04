@@ -55,6 +55,8 @@
                     //padding: 51px 4px 0 4px;
                     //background: url('../grid/clientsDb.png') no-repeat 0 0;
                 }
+                
+                a.instr_edit:link, a.instr_edit:hover, a.instr_edit:active, a.instr_edit:visited {height:24px; width:24px; display:block;background:url(../images/editLink.png)}
             </style>
 	
 	<script>
