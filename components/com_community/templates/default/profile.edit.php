@@ -58,7 +58,7 @@ $studios = $locations->getAllStudios();
 		<li><a href="#basicSet"><?php echo JText::_('COM_COMMUNITY_PROFILE_SETTING_INFO');?></a></li>
 		<li><a href="#detailSet"><?php echo JText::_('COM_COMMUNITY_PROFILE_SETTING_INFO_DETAILS');?></a></li>
 	</ul>
-	<div class="saveButton" ><input style='color:white; padding-bottom:20px;' type="submit" name="frmSubmit" onclick="submitbutton(); return false;" class="button" value="<?php echo JText::_('COM_COMMUNITY_SAVE_BUTTON'); ?>" /></div>
+	<div class="saveButton" ><input styl='color:white; padding-bottom:20px;' type="submit" name="frmSubmit" onclick="submitbutton(); return false;" class="button" value="<?php echo JText::_('COM_COMMUNITY_SAVE_BUTTON'); ?>" /></div>
 </div>
 
 <div class="cProfile-ProfContainer">
