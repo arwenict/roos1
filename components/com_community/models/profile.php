@@ -412,6 +412,7 @@ class CommunityModelProfile extends JCCModel
 					$data['fields'][$group][]	= $result[$i];
 			}
 		}
+                print_r($data);exit;
 		return $data;
 	}
 	
