@@ -63,6 +63,15 @@ foreach ( $fields as $name => $fieldGroup )
 <?php
 		} 
 ?>
+    <script type='text/javascript'>
+        function saveLocations() {
+            joms.jQuery('.field22').each(function(index) {
+                alert(joms.jQuery(this).val());
+                if (joms.jQuery(this).checked == 1)
+                    alert(index);
+            });
+        }
+    </script>
 		<table class="formtable" cellspacing="1" cellpadding="0" style="width: 98%;">
 		<tbody>
 			<?php
@@ -78,7 +87,7 @@ foreach ( $fields as $name => $fieldGroup )
                                             
                                             $options = "";
                                             foreach($studios as $studio) {
-                                                $options .= "<input type='checkbox' name='field22' value='{$studio['nodeID']}' />{$studio['displayCode']}<br />";
+                                                $options .= "<input onchange='javascript:saveLocations()' type='checkbox' class='field22' value='{$studio['nodeID']}' />{$studio['displayCode']}<br />";
                                             }
                                             echo "
                                                 <tr> 
