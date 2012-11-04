@@ -51,7 +51,7 @@ $studios = $locations->getAllStudios();
 <div id="basicSet" class="section"> <!-- Profile Basic Setting -->
 <?php
 //print_r($studios);
-print_r($fields);
+//print_r($fields);
 foreach ( $fields as $name => $fieldGroup )
 {
 		if ($name != 'ungrouped')
