@@ -1018,7 +1018,8 @@ class CommunityProfileController extends CommunityBaseController
 		$jUser			=& JFactory::getUser();
 
 		$my->save('params');
-		print_r($my);exit;
+                print_r($post);exit;
+		//print_r($my);exit;
 		// Bind the form fields to the user table
 		if(!$jUser->bind($post))
 		{
