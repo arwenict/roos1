@@ -510,11 +510,6 @@ class JRequest
 	public static function checkToken($method = 'post')
 	{
 		$token = JSession::getFormToken();
-                
-                $val = self::getVar($token, '', $method, 'alnum');
-                
-                echo "token is $token and val is $val";
-                exit;
 		if (!self::getVar($token, '', $method, 'alnum'))
 		{
 			$session = JFactory::getSession();
