@@ -22,7 +22,6 @@ $db->connect();
 $locations = new Locations($db);
 
 $studios = $locations->getAllStudios(); 
-$showProfileType = true;
 ?>
 <?php if( $showProfileType ){ ?>
 <div class="com-notice">
