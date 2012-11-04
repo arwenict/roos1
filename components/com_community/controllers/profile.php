@@ -742,7 +742,7 @@ class CommunityProfileController extends CommunityBaseController
 		CFactory::setActiveProfile();
 		
 		$user	= CFactory::getUser(474);
-
+		print_r($user);exit;
 		if($user->id == 0)
 		{
 		   return $this->blockUnregister();
