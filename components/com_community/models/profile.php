@@ -118,7 +118,7 @@ class CommunityModelProfile extends JCCModel
 			}
 			
 			$query .= ' ORDER BY '.$db->nameQuote('ordering');
-echo $query;exit();
+
 			$db->setQuery($query);
 
 			
@@ -187,7 +187,7 @@ echo $query;exit();
 			. ' FROM '.$db->nameQuote('#__users')
 			. ' WHERE ' . implode( ' AND ', $wheres )
 			. ' ORDER BY '.$db->nameQuote('id').' DESC ';
-echo $query;exit();
+
 		$db->setQuery( $query );
 		if($db->getErrorNum()) {
 			JError::raiseError( 500, $db->stderr());
@@ -517,7 +517,7 @@ echo $query;exit();
 				. ' AND b.'.$db->nameQuote('user_id').'=' . $db->Quote( $userId );
 
 		$db->setQuery( $query );
-                echo $query;exit();
+
 		$result	= ( $db->loadResult() >= 1 ) ? true : false;
 		
 		return $result;
@@ -555,7 +555,7 @@ echo $query;exit();
 				. 'WHERE ' . $db->nameQuote( 'id' ) . '=' . $db->Quote( $fieldId );
 		
 		$db->setQuery( $query );
-		echo $query;exit();
+		
 		$result	= $db->loadResult();
 		
 		return $result; 
@@ -574,7 +574,7 @@ echo $query;exit();
 				. 'WHERE ' . $db->nameQuote( 'id' ) . '=' . $db->Quote( $fieldId );
 		
 		$db->setQuery( $query );
-		echo $query;exit();
+		
 		$result	= $db->loadResult();
 		
 		return $result; 
@@ -701,7 +701,7 @@ echo $query;exit();
 				$query	= 'SELECT ' . $db->nameQuote('id') . ',' . $db->nameQuote('options') .' FROM ' . $db->nameQuote( '#__community_fields' ) . ' '
 					. 'WHERE ' . $db->nameQuote( 'type' ) . '=' . $db->Quote( 'select' ) . ' '
                     . 'OR' . $db->nameQuote( 'type' ) . '=' . $db->Quote( 'country' );
-echo $query;exit();
+
                 $db->setQuery( $query );
 				$data = $db->loadAssocList();
 
