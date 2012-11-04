@@ -386,6 +386,7 @@ class CommunityModelProfile extends JCCModel
 		$db->setQuery( $query );
 
 		$result	= $db->loadAssocList();
+                print_r($result);exit;
 		if($db->getErrorNum())
 		{
 			JError::raiseError( 500, $db->stderr());
