@@ -763,6 +763,7 @@ class CommunityProfileController extends CommunityBaseController
  		$viewName	= JRequest::getCmd( 'view', $this->getName() );
 
 		$data = new stdClass();
+                echo "data here";exit;
 		$data->profile	= $model->getEditableProfile($user->id , $user->getProfileType() );
 
 		$lang	=& JFactory::getLanguage();
