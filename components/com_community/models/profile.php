@@ -82,7 +82,6 @@ class CommunityModelProfile extends JCCModel
 	
 	public function _loadAllFields($filter = array() , $type = COMMUNITY_DEFAULT_PROFILE )
 	{
-            echo "here";exit;die();
 		if($this->_allField == null)
 		{
 			$this->_allField = array();
@@ -119,7 +118,7 @@ class CommunityModelProfile extends JCCModel
 			}
 			
 			$query .= ' ORDER BY '.$db->nameQuote('ordering');
-                       
+
 			$db->setQuery($query);
 
 			
