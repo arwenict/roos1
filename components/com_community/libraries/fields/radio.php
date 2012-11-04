@@ -42,8 +42,7 @@ class CFieldsRadio extends CProfileField
 			$selected	= ( $option == $field->value ) ? ' checked="checked"' : '';		    		    
 			
 			$html 	.= '<label class="lblradio-block">';
-                        $html	.= '<input type="radio" name="field' . $field->id . '" value="' . $option . '"' . $selected . '  class="radio" ' . $style . ' />'; // Removed class as it's already included in parent div
-			//$html	.= '<input type="radio" name="field' . $field->id . '" value="' . $option . '"' . $selected . '  class="radio '.$class.'" ' . $style . ' />';
+			$html	.= '<input type="radio" name="field' . $field->id . '" value="' . $option . '"' . $selected . '  class="radio '.$class.'" ' . $style . ' />';
 			$html	.= JText::_( $option ) . '</label>';
 		}
 		$html   .= '<span id="errfield'.$field->id.'msg" style="display: none;">&nbsp;</span>';
