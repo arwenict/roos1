@@ -68,7 +68,7 @@ foreach ( $fields as $name => $fieldGroup )
             var locations = "";
             joms.jQuery('.field22:checked').each(function(index) {
                 locations += ","+joms.jQuery(this).val();
-                locations = locations.substring(1,locations.length);
+                //locations = locations.substring(1,locations.length);
                 joms.jQuery('#field22').val(locations);
             });
         }
