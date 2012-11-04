@@ -238,7 +238,7 @@ foreach ( $fields as $name => $fieldGroup )
 </tbody>
 </table>
 
-<?php if(isset($params)) :  echo $params->render( 'params' ); endif; ?>
+<?php print_r($params); if(isset($params)) :  echo $params->render( 'params' ); endif; ?>
 
 <?php 
 $showDST = false;
