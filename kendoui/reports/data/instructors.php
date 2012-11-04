@@ -43,7 +43,7 @@ if ($verb == "GET") {
         $results = array();
         foreach ($instructorsArr as $instructor) {
             $results[$i] = $instructor;
-            $results[$i]["edit_link"] = "<a href='#?id={$instructor['id']}' class='k-button k-button-icontext instr_edit'></a>";
+            $results[$i]["edit_link"] = "<a href='#?id={$instructor['id']}' class='instr_edit'></a>";
             $i++;
         }
 	echo "{\"data\":" .json_encode($results). "}";	
