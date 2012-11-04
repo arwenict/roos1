@@ -790,6 +790,8 @@ class CommunityProfileController extends CommunityBaseController
 								
 					//set data for the form				
 					foreach($vals as $k => $v){
+                                            if($k == "language") // removing frontend language option from edit screen
+                                                continue;
 						$params->setValue($k , 'params' , $v);
 					}
 				}
@@ -805,6 +807,8 @@ class CommunityProfileController extends CommunityBaseController
 								
 					//set data for the form				
 					foreach($vals as $k => $v){
+                                            if($k == "language")// removing frontend language option from edit screen
+                                                continue;
 						//@since 2.6, accept timezone and language only
 						if($k == 'timezone' || $k == 'language'){
 							$params->setValue($k , 'params' , $v);
