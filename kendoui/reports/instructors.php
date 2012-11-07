@@ -109,7 +109,7 @@
                             { field: "skills", title: "Skills", width: 140, filterable: false },     
                             { field: "permcov", title: "Perm / Cover", width: 70, filterable: true },
                             { field: "locations", title: "Locations", width: 100, values:location_array},
-                            { field: "edit_link", title: "Edit", width: 50, template:"<a href='#=edit_link#' class='instr_edit'></a>"}
+                            { field: "edit_link", title: "Edit", width: 50, template:"<a href='#=edit_link#' class='instr_edit'></a>", filterable: false}
                             ],
                             toolbar: [ 
 
@@ -128,44 +128,14 @@
 				name: "FilterMenu",
 				extra: false, // turns on/off the second filter option
 				messages: {
-					info: "Custom header text:", // sets the text on top of the filter menu
-					filter: "CustomFilter", // sets the text for the "Filter" button
-					clear: "CustomClear", // sets the text for the "Clear" button
-					
-					// when filtering boolean numbers
-					isTrue: "custom is true", // sets the text for "isTrue" radio button
-					isFalse: "custom is false", // sets the text for "isFalse" radio button
-					
-					//changes the text of the "And" and "Or" of the filter menu
-					and: "CustomAnd",
-					or: "CustomOr"
+					filter: "Go", // sets the text for the "Filter" button
+					clear: "Clear" // sets the text for the "Clear" button
 				},
 				operators: {
 					//filter menu for "string" type columns
 					string: {
-						eq: "Custom Equal to",
-						neq: "Custom Not equal to",
-						startswith: "Custom Starts with",
-						contains: "Custom Contains",
-						endswith: "Custom Ends with"
-					},
-					//filter menu for "number" type columns
-					number: {
-						eq: "Custom Equal to",
-						neq: "Custom Not equal to",
-						gte: "Custom Is greater than or equal to",
-						gt: "Custom Is greater than",
-						lte: "Custom Is less than or equal to",
-						lt: "Custom Is less than"
-					},
-					//filter menu for "date" type columns
-					date: {
-						eq: "Custom Equal to",
-						neq: "Custom Not equal to",
-						gte: "Custom Is after or equal to",
-						gt: "Custom Is after",
-						lte: "Custom Is before or equal to",
-						lt: "Custom Is before"
+                                                contains: "Contains",
+						eq: "Equal to",
 					}
 				}
                             }, 
