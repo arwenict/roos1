@@ -67,67 +67,111 @@
 
 		$(document).ready(function() {
 
-                        var location_array = <?php echo $jsStudiosArray ?>;
-                                                
-			$("#grid").kendoGrid({
-				dataSource: {
-					transport: {
-						read: "data/instructors.php" ,
-						update: {
-							url: "data/instructors.php",
-							type: "POST"
-						}		
-					},
-					error: function(e) {
-						alert(e.responseText);
-					},
-					schema: {
-						data: "data",
-						model: {
-							id: "id",
-							fields: {
-								name: { editable: true },
-                                                                mobile: { type: "text", editable: true },								
-                                                                email: { type: "text", editable: true },
-                                                                skills: { type: "text", editable: false },
-                                                                permcov: { type: "text", editable: false },
-                                                                locations: {editable: true },
-                                                                edit_link: {editable: false}
-							}
-						}
-					},
-	                             	//group: { field: "InstructorName", dir: "asc", aggregates: [
-                			//	{ field: "AttendeeNumber", aggregate: "sum" },
-                			//	{ field: "AttendeeTarget", aggregate: "sum"}]
-    					//},
-                      
-				},
-				columns: [
-                                { field: "name", title: "Name",  width: 110 },
-				{ field: "mobile", title: "Mobile", width: 80, filterable: false }, 
-				{ field: "email", title: "Email", width: 160, filterable: false },
-				{ field: "skills", title: "Skills", width: 140, filterable: false },     
-				{ field: "permcov", title: "Perm / Cover", width: 70, filterable: true },
-				{ field: "locations", title: "Locations", width: 100, values:location_array},
-                                { field: "edit_link", title: "Edit", width: 50, template:"<a href='#=edit_link#' class='instr_edit'></a>"}
-                                ],
-				toolbar: [ 
-				
-				        { name: "save", text: "Save changes" },
-         				{ name: "cancel", text: "Cancel changes" }
-     				],
-				
+                    var location_array = <?php echo $jsStudiosArray ?>;
 
-				//detailTemplate: kendo.template($("#template").html()),
-				//template: "<input type='checkbox' id='ApprovedByManager' checked='${ApprovedByManager}' />"
-                //detailInit: detailInit,
-                editable: true,
-                navigatable: true,
-                groupable: false,
-                filterable: true, 
-                scrollable : true,
-                selectable: "row"
-			});
+                    $("#grid").kendoGrid({
+                            dataSource: {
+                                    transport: {
+                                            read: "data/instructors.php" ,
+                                            update: {
+                                                    url: "data/instructors.php",
+                                                    type: "POST"
+                                            }		
+                                    },
+                                    error: function(e) {
+                                            alert(e.responseText);
+                                    },
+                                    schema: {
+                                            data: "data",
+                                            model: {
+                                                    id: "id",
+                                                    fields: {
+                                                            name: { editable: true },
+                                                            mobile: { type: "text", editable: true },								
+                                                            email: { type: "text", editable: true },
+                                                            skills: { type: "text", editable: false },
+                                                            permcov: { type: "text", editable: false },
+                                                            locations: {editable: true },
+                                                            edit_link: {editable: false}
+                                                    }
+                                            }
+                                    },
+                                    //group: { field: "InstructorName", dir: "asc", aggregates: [
+                                    //	{ field: "AttendeeNumber", aggregate: "sum" },
+                                    //	{ field: "AttendeeTarget", aggregate: "sum"}]
+                                    //},
+
+                            },
+                            columns: [
+                            { field: "name", title: "Name",  width: 110 },
+                            { field: "mobile", title: "Mobile", width: 80, filterable: false }, 
+                            { field: "email", title: "Email", width: 160, filterable: false },
+                            { field: "skills", title: "Skills", width: 140, filterable: false },     
+                            { field: "permcov", title: "Perm / Cover", width: 70, filterable: true },
+                            { field: "locations", title: "Locations", width: 100, values:location_array},
+                            { field: "edit_link", title: "Edit", width: 50, template:"<a href='#=edit_link#' class='instr_edit'></a>"}
+                            ],
+                            toolbar: [ 
+
+                                    { name: "save", text: "Save changes" },
+                                    { name: "cancel", text: "Cancel changes" }
+                            ],
+
+
+                            //detailTemplate: kendo.template($("#template").html()),
+                            //template: "<input type='checkbox' id='ApprovedByManager' checked='${ApprovedByManager}' />"
+                            //detailInit: detailInit,
+                            editable: true,
+                            navigatable: true,
+                            groupable: false,
+                            filterable: {
+				name: "FilterMenu",
+				extra: false, // turns on/off the second filter option
+				messages: {
+					info: "Custom header text:", // sets the text on top of the filter menu
+					filter: "CustomFilter", // sets the text for the "Filter" button
+					clear: "CustomClear", // sets the text for the "Clear" button
+					
+					// when filtering boolean numbers
+					isTrue: "custom is true", // sets the text for "isTrue" radio button
+					isFalse: "custom is false", // sets the text for "isFalse" radio button
+					
+					//changes the text of the "And" and "Or" of the filter menu
+					and: "CustomAnd",
+					or: "CustomOr"
+				},
+				operators: {
+					//filter menu for "string" type columns
+					string: {
+						eq: "Custom Equal to",
+						neq: "Custom Not equal to",
+						startswith: "Custom Starts with",
+						contains: "Custom Contains",
+						endswith: "Custom Ends with"
+					},
+					//filter menu for "number" type columns
+					number: {
+						eq: "Custom Equal to",
+						neq: "Custom Not equal to",
+						gte: "Custom Is greater than or equal to",
+						gt: "Custom Is greater than",
+						lte: "Custom Is less than or equal to",
+						lt: "Custom Is less than"
+					},
+					//filter menu for "date" type columns
+					date: {
+						eq: "Custom Equal to",
+						neq: "Custom Not equal to",
+						gte: "Custom Is after or equal to",
+						gt: "Custom Is after",
+						lte: "Custom Is before or equal to",
+						lt: "Custom Is before"
+					}
+				}
+                            }, 
+                            scrollable : true,
+                            selectable: "row"
+                        });
 		
 		});
 
