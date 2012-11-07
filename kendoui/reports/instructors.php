@@ -134,15 +134,15 @@
 				operators: {
 					//filter menu for "string" type columns
 					string: {
-                                                contains: "Contains",
+                                                contains: "Contains"
 					},
 					//filter menu for "number" type columns
 					number: {
-						contains: "Contains",
+						contains: "Contains"
 					},
 					//filter menu for "date" type columns
 					date: {
-						contains: "Contains",
+						contains: "Contains"
 					}
 				}
                             }, 
