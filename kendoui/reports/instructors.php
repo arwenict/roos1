@@ -135,7 +135,17 @@
 					//filter menu for "string" type columns
 					string: {
                                                 contains: "Contains",
-						eq: "Equal to",
+						eq: "Equal to"
+					},
+					//filter menu for "number" type columns
+					number: {
+						contains: "Contains",
+						eq: "Equal to"
+					},
+					//filter menu for "date" type columns
+					date: {
+						contains: "Contains",
+						eq: "Equal to"
 					}
 				}
                             }, 
