@@ -87,10 +87,10 @@
                                                     id: "id",
                                                     fields: {
                                                             name: { editable: true },
-                                                            mobile: { type: "text", editable: true },								
-                                                            email: { type: "text", editable: true },
-                                                            skills: { type: "text", editable: false },
-                                                            permcov: { type: "text", editable: false },
+                                                            mobile: { type: "string", editable: true },								
+                                                            email: { type: "string", editable: true },
+                                                            skills: { type: "string", editable: false },
+                                                            permcov: { type: "string", editable: false },
                                                             locations: {editable: true },
                                                             edit_link: {editable: false}
                                                     }
@@ -108,7 +108,7 @@
                             { field: "email", title: "Email", width: 160, filterable: false },
                             { field: "skills", title: "Skills", width: 140, filterable: false },     
                             { field: "permcov", title: "Perm / Cover", width: 70, filterable: true },
-                            { field: "locations", title: "Locations", width: 100, values:location_array},
+                            { field: "locations", title: "Locations", width: 100, values:location_array, filterable: true},
                             { field: "edit_link", title: "Edit", width: 50, template:"<a href='#=edit_link#' class='instr_edit'></a>", filterable: false}
                             ],
                             toolbar: [ 
