@@ -110,14 +110,35 @@
 
 				//detailTemplate: kendo.template($("#template").html()),
 				//template: "<input type='checkbox' id='ApprovedByManager' checked='${ApprovedByManager}' />"
-                //detailInit: detailInit,
-                editable: true,
-                navigatable: true,
-                groupable: false,
-                filterable: true, 
-                scrollable : true,
-                selectable: "row",
-			});
+                                //detailInit: detailInit,
+                                editable: true,
+                                navigatable: true,
+                                groupable: false,
+                                filterable: {
+                                    name: "FilterMenu",
+                                    extra: false, // turns on/off the second filter option
+                                    messages: {
+                                            filter: "Go", // sets the text for the "Filter" button
+                                            clear: "Clear" // sets the text for the "Clear" button
+                                    },
+                                    operators: {
+                                            //filter menu for "string" type columns
+                                            string: {
+                                                    contains: "Contains",
+                                            },
+                                            //filter menu for "number" type columns
+                                            number: {
+                                                    contains: "Contains",
+                                            },
+                                            //filter menu for "date" type columns
+                                            date: {
+                                                    contains: "Contains",
+                                            }
+                                    }
+                                },
+                                scrollable : true,
+                                selectable: "row"
+                        });
 		
 		});
 
