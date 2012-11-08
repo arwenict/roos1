@@ -24,7 +24,7 @@
 <!doCTYpe html>
 <html>
 <head>
-	<script src="../js/jquery.min.js"></script>
+	<script src="../../custom_lib/shared/jQueryMultiselect/jquery.js"></script>
         <script src="../../custom_lib/shared/jQueryMultiselect/jquery-ui.js"></script>
 	<script src="../trial/js/kendo.all.min.js"></script>
         <script src="../../custom_lib/shared/jQueryMultiselect/jquery.multiselect.js"></script>
