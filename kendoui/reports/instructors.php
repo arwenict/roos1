@@ -159,11 +159,12 @@
 
 
                 function locationsDropDownEditor(container, options) {
-                    $(' <select id="select-channel"><option>sample option</option></select>')
-                        .appendTo(container)
-                        .multiselect({
+                    $('<select id="select-channel"><option>sample option</option><option>second sample option</option></select>').appendTo(container);
+                    
+                    $("#select-channel").multiselect({
                         selectedText: "# of # selected"
                         });
+                        
                 } 
 	</script>   
 
