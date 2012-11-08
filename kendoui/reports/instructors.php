@@ -72,7 +72,7 @@
 		//kendo.culture("en-US");
   
 
-                $("#test-multi-select").multiselect();
+                $("#test-multi-select").multiselect({selectedText: 10});
 		$(document).ready(function() {
 
                     var location_array = <?php echo $jsStudiosArray ?>;
