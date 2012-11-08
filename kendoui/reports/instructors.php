@@ -89,6 +89,7 @@
                                     error: function(e) {
                                             alert(e.responseText);
                                     },
+                                    change: onChange,
                                     schema: {
                                             data: "data",
                                             model: {
@@ -171,6 +172,10 @@
                     });
                         
                 } 
+                
+                function onChange(arg) {
+                    alert('alarm');
+                }
 	</script>   
 
 </body>
