@@ -125,7 +125,7 @@
                                     { name: "save", text: "Save changes" },
                                     { name: "cancel", text: "Cancel changes" }
                             ],
-                            change: onChange,
+                            save: onChange,
 
                             //detailTemplate: kendo.template($("#template").html()),
                             //template: "<input type='checkbox' id='ApprovedByManager' checked='${ApprovedByManager}' />"
