@@ -26,8 +26,8 @@
 <head>
 	<script src="../js/jquery.min.js"></script>
 	<script src="../trial/js/kendo.all.min.js"></script>
-        <script src="var/www/roos1/custom_lib/shared/jQueryMultiselect/jquery.multiselect.min.js"></script>
-        <link href="var/www/roos1/custom_lib/shared/jQueryMultiselect/jquery.multiselect.css" rel="stylesheet">
+        <script src="../..//custom_lib/shared/jQueryMultiselect/jquery.multiselect.min.js"></script>
+        <link href="../../custom_lib/shared/jQueryMultiselect/jquery.multiselect.css" rel="stylesheet">
 	<link href="../styles/kendo.common.min.css" rel="stylesheet">
 	<link href="../styles/kendo.silver.min.css" rel="stylesheet">
 </head>
