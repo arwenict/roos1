@@ -125,7 +125,6 @@
                                     { name: "save", text: "Save changes" },
                                     { name: "cancel", text: "Cancel changes" }
                             ],
-                            save: onChange,
 
                             //detailTemplate: kendo.template($("#template").html()),
                             //template: "<input type='checkbox' id='ApprovedByManager' checked='${ApprovedByManager}' />"
@@ -165,15 +164,15 @@
                 function locationsDropDownEditor(container, options) {
                     $('<select id="select-channel"><option>sample option</option><option>second sample option</option></select>').appendTo(container).multiselect({
                         selectedText: "# of # selected",
-                        autoOpen: true
+                        autoOpen: true,
+                        position:above,
+                        beforeclose: function(event, ui){
+                            alert("closing");
+                        }
                     });;
                     
                         
                 } 
-                
-                function onChange(arg) {
-                    alert('alarm');
-                }
 	</script>   
 
 </body>
