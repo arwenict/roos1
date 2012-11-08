@@ -155,13 +155,14 @@
 		
 		});
 
+/*
                 function locationsDropDownEditor(container, options) {
                     $(' <select id="select-channel"><option>sample option</option></select>')
                         .appendTo(container)
                         .multiselect({
                         selectedText: "# of # selected"
                         });
-                }
+                } */
 	</script>   
 
 </body>
