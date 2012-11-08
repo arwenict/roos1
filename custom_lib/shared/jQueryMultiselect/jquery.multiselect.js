@@ -22,7 +22,7 @@
 
 var multiselectID = 0;
 
-ROOSObj.widget("ech.multiselect", {
+$.widget("ech.multiselect", {
 
 	// default options
 	options: {
