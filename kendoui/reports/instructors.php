@@ -28,6 +28,7 @@
         <script src="../../custom_lib/shared/jQueryMultiselect/jquery-ui.js"></script>
 	<script src="../trial/js/kendo.all.min.js"></script>
         <script src="../../custom_lib/shared/jQueryMultiselect/jquery.multiselect.js"></script>
+        <link href="../../custom_lib/shared/jQueryMultiselect/jquery-ui.css" rel="stylesheet">
         <link href="../../custom_lib/shared/jQueryMultiselect/jquery.multiselect.css" rel="stylesheet">
 	<link href="../styles/kendo.common.min.css" rel="stylesheet">
 	<link href="../styles/kendo.silver.min.css" rel="stylesheet">
