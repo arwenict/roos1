@@ -62,7 +62,7 @@
             </style>
 	
 	<script>
-                 var ROOSObj = new jQuery.noConflict();
+                 var $ = new jQuery.noConflict();
 		//kendo.culture("en-US");
   
 

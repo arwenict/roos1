@@ -18,7 +18,7 @@
  *   http://www.gnu.org/licenses/gpl.html
  *
 */
-(function(ROOSObj, undefined){
+(function($, undefined){
 
 var multiselectID = 0;
 
@@ -46,30 +46,30 @@ ROOSObj.widget("ech.multiselect", {
 		var el = this.element.hide(),
 			o = this.options;
 
-		this.speed = ROOSObj.fx.speeds._default; // default speed for effects
+		this.speed = $.fx.speeds._default; // default speed for effects
 		this._isOpen = false; // assume no
 
 		var
-			button = (this.button = ROOSObj('<button type="button"><span class="ui-icon ui-icon-triangle-2-n-s"></span></button>'))
+			button = (this.button = $('<button type="button"><span class="ui-icon ui-icon-triangle-2-n-s"></span></button>'))
 				.addClass('ui-multiselect ui-widget ui-state-default ui-corner-all')
 				.addClass( o.classes )
 				.attr({ 'title':el.attr('title'), 'aria-haspopup':true, 'tabIndex':el.attr('tabIndex') })
 				.insertAfter( el ),
 
-			buttonlabel = (this.buttonlabel = ROOSObj('<span />'))
+			buttonlabel = (this.buttonlabel = $('<span />'))
 				.html( o.noneSelectedText )
 				.appendTo( button ),
 
-			menu = (this.menu = ROOSObj('<div />'))
+			menu = (this.menu = $('<div />'))
 				.addClass('ui-multiselect-menu ui-widget ui-widget-content ui-corner-all')
 				.addClass( o.classes )
 				.appendTo( document.body ),
 
-			header = (this.header = ROOSObj('<div />'))
+			header = (this.header = $('<div />'))
 				.addClass('ui-widget-header ui-corner-all ui-multiselect-header ui-helper-clearfix')
 				.appendTo( menu ),
 
-			headerLinkContainer = (this.headerLinkContainer = ROOSObj('<ul />'))
+			headerLinkContainer = (this.headerLinkContainer = $('<ul />'))
 				.addClass('ui-helper-reset')
 				.html(function(){
 					if( o.header === true ){
@@ -83,7 +83,7 @@ ROOSObj.widget("ech.multiselect", {
 				.append('<li class="ui-multiselect-close"><a href="#" class="ui-multiselect-close"><span class="ui-icon ui-icon-circle-close"></span></a></li>')
 				.appendTo( header ),
 
-			checkboxContainer = (this.checkboxContainer = ROOSObj('<ul />'))
+			checkboxContainer = (this.checkboxContainer = $('<ul />'))
 				.addClass('ui-multiselect-checkboxes ui-helper-reset')
 				.appendTo( menu );
 
@@ -125,7 +125,7 @@ ROOSObj.widget("ech.multiselect", {
 
 		// build items
 		el.find('option').each(function( i ){
-			var ROOSObjthis = ROOSObj(this),
+			var $this = $(this),
 				parent = this.parentNode,
 				title = this.innerHTML,
 				description = this.title,
@@ -142,7 +142,7 @@ ROOSObj.widget("ech.multiselect", {
 				optLabel = parent.getAttribute( 'label' );
 
 				// has this optgroup been added already?
-				if( ROOSObj.inArray(optLabel, optgroups) === -1 ){
+				if( $.inArray(optLabel, optgroups) === -1 ){
 					html += '<li class="ui-multiselect-optgroup-label ' + parent.className + '"><a href="#">' + optLabel + '</a></li>';
 					optgroups.push( optLabel );
 				}
@@ -203,20 +203,20 @@ ROOSObj.widget("ech.multiselect", {
 	// updates the button text. call refresh() to rebuild
 	update: function(){
 		var o = this.options,
-			ROOSObjinputs = this.inputs,
-			ROOSObjchecked = ROOSObjinputs.filter(':checked'),
-			numChecked = ROOSObjchecked.length,
+			$inputs = this.inputs,
+			$checked = $inputs.filter(':checked'),
+			numChecked = $checked.length,
 			value;
 
 		if( numChecked === 0 ){
 			value = o.noneSelectedText;
 		} else {
-			if(ROOSObj.isFunction( o.selectedText )){
-				value = o.selectedText.call(this, numChecked, ROOSObjinputs.length, ROOSObjchecked.get());
+			if($.isFunction( o.selectedText )){
+				value = o.selectedText.call(this, numChecked, $inputs.length, $checked.get());
 			} else if( /\d/.test(o.selectedList) && o.selectedList > 0 && numChecked <= o.selectedList){
-				value = ROOSObjchecked.map(function(){ return ROOSObj(this).next().html(); }).get().join(', ');
+				value = $checked.map(function(){ return $(this).next().html(); }).get().join(', ');
 			} else {
-				value = o.selectedText.replace('#', numChecked).replace('#', ROOSObjinputs.length);
+				value = o.selectedText.replace('#', numChecked).replace('#', $inputs.length);
 			}
 		}
 
@@ -256,19 +256,19 @@ ROOSObj.widget("ech.multiselect", {
 			},
 			mouseenter: function(){
 				if( !button.hasClass('ui-state-disabled') ){
-					ROOSObj(this).addClass('ui-state-hover');
+					$(this).addClass('ui-state-hover');
 				}
 			},
 			mouseleave: function(){
-				ROOSObj(this).removeClass('ui-state-hover');
+				$(this).removeClass('ui-state-hover');
 			},
 			focus: function(){
 				if( !button.hasClass('ui-state-disabled') ){
-					ROOSObj(this).addClass('ui-state-focus');
+					$(this).addClass('ui-state-focus');
 				}
 			},
 			blur: function(){
-				ROOSObj(this).removeClass('ui-state-focus');
+				$(this).removeClass('ui-state-focus');
 			}
 		});
 
@@ -276,12 +276,12 @@ ROOSObj.widget("ech.multiselect", {
 		this.header
 			.delegate('a', 'click.multiselect', function( e ){
 				// close link
-				if( ROOSObj(this).hasClass('ui-multiselect-close') ){
+				if( $(this).hasClass('ui-multiselect-close') ){
 					self.close();
 
 				// check all / uncheck all
 				} else {
-					self[ ROOSObj(this).hasClass('ui-multiselect-all') ? 'checkAll' : 'uncheckAll' ]();
+					self[ $(this).hasClass('ui-multiselect-all') ? 'checkAll' : 'uncheckAll' ]();
 				}
 
 				e.preventDefault();
@@ -292,10 +292,10 @@ ROOSObj.widget("ech.multiselect", {
 			.delegate('li.ui-multiselect-optgroup-label a', 'click.multiselect', function( e ){
 				e.preventDefault();
 
-				var ROOSObjthis = ROOSObj(this),
-					ROOSObjinputs = ROOSObjthis.parent().nextUntil('li.ui-multiselect-optgroup-label').find('input:visible:not(:disabled)'),
-					nodes = ROOSObjinputs.get(),
-					label = ROOSObjthis.parent().text();
+				var $this = $(this),
+					$inputs = $this.parent().nextUntil('li.ui-multiselect-optgroup-label').find('input:visible:not(:disabled)'),
+					nodes = $inputs.get(),
+					label = $this.parent().text();
 
 				// trigger event and bail if the return is false
 				if( self._trigger('beforeoptgrouptoggle', e, { inputs:nodes, label:label }) === false ){
@@ -304,8 +304,8 @@ ROOSObj.widget("ech.multiselect", {
 
 				// toggle inputs
 				self._toggleChecked(
-					ROOSObjinputs.filter(':checked').length !== ROOSObjinputs.length,
-					ROOSObjinputs
+					$inputs.filter(':checked').length !== $inputs.length,
+					$inputs
 				);
 
 				self._trigger('optgrouptoggle', e, {
@@ -315,9 +315,9 @@ ROOSObj.widget("ech.multiselect", {
 				});
 			})
 			.delegate('label', 'mouseenter.multiselect', function(){
-				if( !ROOSObj(this).hasClass('ui-state-disabled') ){
+				if( !$(this).hasClass('ui-state-disabled') ){
 					self.labels.removeClass('ui-state-hover');
-					ROOSObj(this).addClass('ui-state-hover').find('input').focus();
+					$(this).addClass('ui-state-hover').find('input').focus();
 				}
 			})
 			.delegate('label', 'keydown.multiselect', function( e ){
@@ -335,12 +335,12 @@ ROOSObj.widget("ech.multiselect", {
 						self._traverse(e.which, this);
 						break;
 					case 13: // enter
-						ROOSObj(this).find('input')[0].click();
+						$(this).find('input')[0].click();
 						break;
 				}
 			})
 			.delegate('input[type="checkbox"], input[type="radio"]', 'click.multiselect', function( e ){
-				var ROOSObjthis = ROOSObj(this),
+				var $this = $(this),
 					val = this.value,
 					checked = this.checked,
 					tags = self.element.find('option');
@@ -353,10 +353,10 @@ ROOSObj.widget("ech.multiselect", {
 
 				// make sure the input has focus. otherwise, the esc key
 				// won't close the menu after clicking an item.
-				ROOSObjthis.focus();
+				$this.focus();
 
 				// toggle aria state
-				ROOSObjthis.attr('aria-selected', checked);
+				$this.attr('aria-selected', checked);
 
 				// change state on the original option tags
 				tags.each(function(){
@@ -370,7 +370,7 @@ ROOSObj.widget("ech.multiselect", {
 				// some additional single select-specific logic
 				if( !self.options.multiple ){
 					self.labels.removeClass('ui-state-active');
-					ROOSObjthis.closest('label').toggleClass('ui-state-active', checked );
+					$this.closest('label').toggleClass('ui-state-active', checked );
 
 					// close menu
 					self.close();
@@ -381,12 +381,12 @@ ROOSObj.widget("ech.multiselect", {
 
 				// setTimeout is to fix multiselect issue #14 and #47. caused by jQuery issue #3827
 				// http://bugs.jquery.com/ticket/3827
-				setTimeout(ROOSObj.proxy(self.update, self), 10);
+				setTimeout($.proxy(self.update, self), 10);
 			});
 
 		// close each widget when clicking on any other element/anywhere else on the page
-		ROOSObj(document).bind('mousedown.multiselect', function( e ){
-			if(self._isOpen && !ROOSObj.contains(self.menu[0], e.target) && !ROOSObj.contains(self.button[0], e.target) && e.target !== self.button[0]){
+		$(document).bind('mousedown.multiselect', function( e ){
+			if(self._isOpen && !$.contains(self.menu[0], e.target) && !$.contains(self.button[0], e.target) && e.target !== self.button[0]){
 				self.close();
 			}
 		});
@@ -395,8 +395,8 @@ ROOSObj.widget("ech.multiselect", {
 		// restored to their defaultValue prop on form reset, and the reset
 		// handler fires before the form is actually reset.  delaying it a bit
 		// gives the form inputs time to clear.
-		ROOSObj(this.element[0].form).bind('reset.multiselect', function(){
-			setTimeout(ROOSObj.proxy(self.refresh, self), 10);
+		$(this.element[0].form).bind('reset.multiselect', function(){
+			setTimeout($.proxy(self.refresh, self), 10);
 		});
 	},
 
@@ -427,24 +427,24 @@ ROOSObj.widget("ech.multiselect", {
 
 	// move up or down within the menu
 	_traverse: function( which, start ){
-		var ROOSObjstart = ROOSObj(start),
+		var $start = $(start),
 			moveToLast = which === 38 || which === 37,
 
 			// select the first li that isn't an optgroup label / disabled
-			ROOSObjnext = ROOSObjstart.parent()[moveToLast ? 'prevAll' : 'nextAll']('li:not(.ui-multiselect-disabled, .ui-multiselect-optgroup-label)')[ moveToLast ? 'last' : 'first']();
+			$next = $start.parent()[moveToLast ? 'prevAll' : 'nextAll']('li:not(.ui-multiselect-disabled, .ui-multiselect-optgroup-label)')[ moveToLast ? 'last' : 'first']();
 
 		// if at the first/last element
-		if( !ROOSObjnext.length ){
-			var ROOSObjcontainer = this.menu.find('ul').last();
+		if( !$next.length ){
+			var $container = this.menu.find('ul').last();
 
 			// move to the first/last
 			this.menu.find('label')[ moveToLast ? 'last' : 'first' ]().trigger('mouseover');
 
 			// set scroll position
-			ROOSObjcontainer.scrollTop( moveToLast ? ROOSObjcontainer.height() : 0 );
+			$container.scrollTop( moveToLast ? $container.height() : 0 );
 
 		} else {
-			ROOSObjnext.find('label').trigger('mouseover');
+			$next.find('label').trigger('mouseover');
 		}
 	},
 
@@ -467,20 +467,20 @@ ROOSObj.widget("ech.multiselect", {
 	},
 
 	_toggleChecked: function( flag, group ){
-		var ROOSObjinputs = (group && group.length) ?  group : this.inputs,
+		var $inputs = (group && group.length) ?  group : this.inputs,
 			self = this;
 
 		// toggle state on inputs
-		ROOSObjinputs.each(this._toggleState('checked', flag));
+		$inputs.each(this._toggleState('checked', flag));
 
 		// give the first input focus
-		ROOSObjinputs.eq(0).focus();
+		$inputs.eq(0).focus();
 
 		// update button text
 		this.update();
 
 		// gather an array of the values that actually changed
-		var values = ROOSObjinputs.map(function(){
+		var values = $inputs.map(function(){
 			return this.value;
 		}).get();
 
@@ -488,13 +488,13 @@ ROOSObj.widget("ech.multiselect", {
 		this.element
 			.find('option')
 			.each(function(){
-				if( !this.disabled && ROOSObj.inArray(this.value, values) > -1 ){
+				if( !this.disabled && $.inArray(this.value, values) > -1 ){
 					self._toggleState('selected', flag).call( this );
 				}
 			});
 
 		// trigger the change event on the select
-		if( ROOSObjinputs.length ) {
+		if( $inputs.length ) {
 			this.element.trigger("change");
 		}
 	},
@@ -513,7 +513,7 @@ ROOSObj.widget("ech.multiselect", {
 				.data(key, true)
 		} else {
 			inputs = inputs.filter(function() {
-				return ROOSObj.data(this, key) === true;
+				return $.data(this, key) === true;
 			}).removeData(key);
 		}
 
@@ -539,12 +539,12 @@ ROOSObj.widget("ech.multiselect", {
 			return;
 		}
 
-		var ROOSObjcontainer = menu.find('ul').last(),
+		var $container = menu.find('ul').last(),
 			effect = o.show,
 			pos = button.offset();
 
 		// figure out opening effects/speeds
-		if( ROOSObj.isArray(o.show) ){
+		if( $.isArray(o.show) ){
 			effect = o.show[0];
 			speed = o.show[1] || self.speed;
 		}
@@ -556,10 +556,10 @@ ROOSObj.widget("ech.multiselect", {
 		}
 
 		// set the scroll of the checkbox container
-		ROOSObjcontainer.scrollTop(0).height(o.height);
+		$container.scrollTop(0).height(o.height);
 
 		// position and show menu
-		if( ROOSObj.ui.position && !ROOSObj.isEmptyObject(o.position) ){
+		if( $.ui.position && !$.isEmptyObject(o.position) ){
 			o.position.of = o.position.of || button;
 
 			menu
@@ -576,7 +576,7 @@ ROOSObj.widget("ech.multiselect", {
 		}
 
 		// show the menu, maybe with a speed/effect combo
-		ROOSObj.fn.show.apply(menu, args);
+		$.fn.show.apply(menu, args);
 
 		// select the first option
 		// triggering both mouseover and mouseover because 1.4.2+ has a bug where triggering mouseover
@@ -600,7 +600,7 @@ ROOSObj.widget("ech.multiselect", {
 		    args = [];
 
 		// figure out opening effects/speeds
-		if( ROOSObj.isArray(o.hide) ){
+		if( $.isArray(o.hide) ){
 			effect = o.hide[0];
 			speed = o.hide[1] || this.speed;
 		}
@@ -609,7 +609,7 @@ ROOSObj.widget("ech.multiselect", {
       args = [ effect, speed ];
     }
 
-    ROOSObj.fn.hide.apply(this.menu, args);
+    $.fn.hide.apply(this.menu, args);
 		this.button.removeClass('ui-state-active').trigger('blur').trigger('mouseleave');
 		this._isOpen = false;
 		this._trigger('close');
@@ -639,7 +639,7 @@ ROOSObj.widget("ech.multiselect", {
 
 	destroy: function(){
 		// remove classes + data
-		ROOSObj.Widget.prototype.destroy.call( this );
+		$.Widget.prototype.destroy.call( this );
 
 		this.button.remove();
 		this.menu.remove();
@@ -698,7 +698,7 @@ ROOSObj.widget("ech.multiselect", {
 				this.refresh();
 		}
 
-		ROOSObj.Widget.prototype._setOption.apply( this, arguments );
+		$.Widget.prototype._setOption.apply( this, arguments );
 	}
 });
 
