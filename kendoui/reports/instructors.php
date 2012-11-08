@@ -111,8 +111,8 @@
                             { field: "skills", title: "Skills", width: 140, filterable: false },     
                             { field: "permcov", title: "Perm / Cover", width: 70, filterable: true },
                             { field: "locations", title: "Locations", width: 100, editor: locationsDropDownEditor, filterable: true},
-                            //{ field: "locations", title: "Locations", width: 100, values:location_array, filterable: true},
-                            { field: "edit_link", title: "Edit", width: 50, template:"<a href='#=edit_link#' class='instr_edit'></a>", filterable: false}
+                            { field: "locations", title: "Locations", width: 100, values:location_array, filterable: true},
+                            //{ field: "edit_link", title: "Edit", width: 50, template:"<a href='#=edit_link#' class='instr_edit'></a>", filterable: false}
                             ],
                             toolbar: [ 
 
