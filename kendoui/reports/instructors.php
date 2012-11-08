@@ -36,6 +36,10 @@
 <body>
 
         <div id="example" class="k-content">
+            <select id="test-multi-select">
+                <option>first</option>
+                <option>second</option>
+            </select>
         <form id="target" action="classes.php" method="get">
             
             <div id="classesDB">
@@ -68,7 +72,7 @@
 		//kendo.culture("en-US");
   
 
-
+                $("#test-multi-select").multiselect();
 		$(document).ready(function() {
 
                     var location_array = <?php echo $jsStudiosArray ?>;
@@ -164,7 +168,7 @@
                     $("#select-channel").multiselect({
                         selectedText: "# of # selected",
                         autoOpen: true
-                        });
+                    });
                         
                 } 
 	</script>   
