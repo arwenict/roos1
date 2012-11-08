@@ -162,7 +162,8 @@
                     $('<select id="select-channel"><option>sample option</option><option>second sample option</option></select>').appendTo(container);
                     
                     $("#select-channel").multiselect({
-                        selectedText: "# of # selected"
+                        selectedText: "# of # selected",
+                        autoOpen: true
                         });
                         
                 } 
