@@ -10,7 +10,8 @@
     $locations = new Locations($db);
     
     $studios = $locations->getAllStudios();
-    
+    print_r($studios);
+
     $jsStudiosArray = "[";
     
     foreach ($studios as $studio) {
