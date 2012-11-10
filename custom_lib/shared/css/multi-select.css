@@ -1,5 +1,5 @@
 .ms-container{
-  background: transparent url('../img/switch.png') no-repeat 170px 80px;
+  background: transparent url('../img/switch.png') no-repeat 195px 80px;
 }
 
 .ms-container:after{
@@ -83,4 +83,8 @@
   color: #ffffff;
   text-decoration: none;
   background-color: #0088cc;
+}
+
+#ms-skills .ms-selection {
+    margin-left:43px;
 }

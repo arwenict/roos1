@@ -143,7 +143,16 @@ foreach ( $fields as $name => $fieldGroup )
                                                 <input type='hidden' id='field19' name='field19' value='{$f->value}' />    
                                             ";
                                             
-                                            echo $skillString;
+                                            echo "
+                                                <tr>
+                                                    <td class='key'>
+                                                        <label id=\"lblfield{$f->id}\" for=\"field{$f->id}\" class='label'>$fieldRequired {$f->name}</label>
+                                                    </td>
+                                                    <td class='value'>
+                                                        $skillString
+                                                    </td>
+                                                </tr>
+                                            ";
                                         }
                                         else{
                                             $value = CProfileLibrary::getFieldHTML( $f , '' );
