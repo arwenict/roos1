@@ -186,7 +186,7 @@ class CProfile implements CCommentInterface
 		if( class_exists( $class ) )
 		{
 			$object	= new $class();
-			
+
 			if( method_exists( $object, 'formatData' ) )
 			{
 				return $object->formatData( $value );

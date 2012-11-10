@@ -9,19 +9,23 @@ defined('_JEXEC') or die();
 $validPassword = JText::sprintf( JText::_( 'VALID_AZ09', true ), JText::_( 'Password', true ), 4 );
 
 ini_set("display_errors", 1); //displaying errors. Should be removed on production
-ini_set('include_path', '/var/www/roos1/custom_lib/'); // Set default path to custom library.
+ini_set('include_path', '/var/www/max/custom_lib/'); // Set default path to custom library.
 
 /* Including neccessary libraries */
 include_once("core/dbTools.php");
 include_once("classes/locations.class.php");
+include_once("classes/skills.class.php");
 
 /* Inititalising objects */
 $db = new DBHandler();
 $db->connect();
 
 $locations = new Locations($db);
+$skills = new Skills($db);
 
-$studios = $locations->getAllStudios(); 
+$studios = $locations->getAllStudios();
+$skillsList = $skills->getSkillsList();
+
 ?>
 <?php if( $showProfileType ){ ?>
 <div class="com-notice">
@@ -93,7 +97,6 @@ foreach ( $fields as $name => $fieldGroup )
 				foreach ( $fieldGroup as $f )
 				{
 					$f = JArrayHelper::toObject ( $f );
-					
                                         $fieldRequired = "";
                                         if ($f->required)
                                             $fieldRequired = "*";
@@ -104,7 +107,7 @@ foreach ( $fields as $name => $fieldGroup )
                                             foreach($studios as $studio) {
                                                 $checked = "";
                                                 if (in_array($studio['nodeID'], $values))
-                                                    $checked = "checked=checked";
+                                                    $checked = "checked='checked'";
                                                 
                                                 $options .= "<label class='lblradio-block'><input style='margin: 0 5px 5px 0;' onchange='javascript:saveLocations()' type='checkbox' $checked class='field22' value='{$studio['nodeID']}' />{$studio['displayCode']}</label>";
                                             }
@@ -122,12 +125,26 @@ foreach ( $fields as $name => $fieldGroup )
                                                 </tr>
                                             ";
                                         }
-                                        /*
-                                        elseif ($f->name == "") {
+                                        elseif ($f->name == "Skillset") {
+                                            $skillString = "<select multiple='multiple' id='skills'>";
                                             
+                                            $values = explode(",", $f->value);
+                                            
+                                            foreach($skillsList as $skill) {
+                                                $selected = "";
+                                                if (in_array($skill['skillID'], $values))
+                                                    $selected = "selected='selected'";
+                                                
+                                                $skillString .= "<option $selected value='{$skill['skillID']}'>{$skill['name']}</option>";
+                                            }
+                                            
+                                            $skillString .= "
+                                                </select>
+                                                <input type='hidden' id='field19' name='field19' value='{$f->value}' />    
+                                            ";
+                                            
+                                            echo $skillString;
                                         }
-                                         * 
-                                         */
                                         else{
                                             $value = CProfileLibrary::getFieldHTML( $f , '' );
                                             // DO not escape 'SELECT' values. Otherwise, comparison for
@@ -152,6 +169,37 @@ foreach ( $fields as $name => $fieldGroup )
 			?>
 		</tbody>
 		</table>
+    <script type='text/javascript'>
+            joms.jQuery('#skills').multiSelect({
+                afterSelect: function(value, text) { 
+                    saveSkill(value, text, "select");
+                },
+                afterDeselect: function(value, text) {
+                    saveSkill(value, text, "deselect");
+                }
+            });
+            
+            function saveSkill(value, text, action) {
+                var skills = joms.jQuery("#field19").val();
+                
+                if (action == "select") {
+                    if (skills == "")
+                        skills = value;
+                    else 
+                        skills += "," + value;
+                }
+                else {
+                    
+                    if (value != skills.charAt(0))
+                        skills=skills.replace(","+value,"");
+                    else if (value.toString() == skills)
+                        skills = "";
+                    else if (value == skills.charAt(0))
+                        skills = skills.replace(value+",","");
+                }
+                joms.jQuery('#field19').val(skills);
+            }
+    </script>
 <?php
 }
 ?>

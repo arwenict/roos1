@@ -71,9 +71,9 @@
 						model: {
 							id: "id",
 							fields: {
-								ClassName: { editable: false },
+								ClassName: { type: "string", editable: false },
 								StartDate: { type: "date", editable: false },
-                                                                StartTime: { type: "text", editable: false },
+                                                                StartTime: { type: "date", editable: false },
 								Location: { editable: false },
 								InstructorName: { editable: false },
 								Minutes: { editable: false},
@@ -118,31 +118,76 @@
                                     name: "FilterMenu",
                                     extra: false, // turns on/off the second filter option
                                     messages: {
-                                            filter: "Go", // sets the text for the "Filter" button
-                                            clear: "Clear" // sets the text for the "Clear" button
+                                        info: "Select items with value that:", // sets the text on top of the filter menu
+                                        filter: "Go", // sets the text for the "Filter" button
+                                        clear: "Clear" // sets the text for the "Clear" button
                                     },
                                     operators: {
-                                            //filter menu for "string" type columns
-                                            string: {
-                                                    contains: "Contains"
-                                            },
-                                            //filter menu for "number" type columns
-                                            number: {
-                                                    contains: "Contains"
-                                            },
-                                            //filter menu for "date" type columns
-                                            date: {
-                                                    contains: "Contains"
-                                            }
+                                        //filter menu for "string" type columns
+                                        string: {
+                                                contains: "Contains"
+                                        }
                                     }
                                 },
                                 scrollable : true,
-                                selectable: "row"
+                                selectable: "row",
+                                dataBound: function(e) {
+                                   changeDefaults();
+                                }
                         });
 		
 		});
 
-
+                function changeDefaults() {
+                    setTimeout(function() {
+                        var header;
+                        $('.k-header').each(function(i) {
+                        if($(this).data('kendoColumnMenu')) {
+                            header = $(this).data('kendoColumnMenu');
+                            if(header.filterMenu) {
+                            header.menu.bind('open', function(e) {
+                                if($(e.item).is('.k-filter-item')) {
+                                header = $('.k-header:eq(' + i +')').data('kendoColumnMenu');
+                                var popup = header.filterMenu.popup;
+                                if(!$(popup.element).data('alreadyOpened')) {
+                                    var select = this.element.find('select:first');
+                                    var option = select.children('option:contains("Contains")');
+                                    if(option.length > 0) {
+                                    select.data('kendoDropDownList').select(option.index());
+                                    header.filterMenu.filterModel.set("filters[0].operator", "contains");
+                                    }
+                                    $(popup.element).data('alreadyOpened', true);
+                                }
+                                }
+                            });
+                            header.filterMenu.form.bind('reset', function() {     
+                                alert('here');
+                                $('.k-header').each(function(i) {
+                                    $(this).data('kendoFilterMenu').popup.element.data('alreadyOpened', false);
+                                });
+                            });
+                            }
+                        } else if($(this).data('kendoFilterMenu')) {
+                        header = $(this).data('kendoFilterMenu');
+                        header.popup.bind('open', function() {
+                            if(!$(this.element).data('alreadyOpened')) {
+                            header = $('.k-header:eq(' + i + ')').data('kendoFilterMenu');
+                            var select = this.element.find('select:first');
+                            var option = select.children('option:contains("Contains")');
+                            if(option.length > 0) {
+                                select.data('kendoDropDownList').select(option.index());    
+                                header.filterModel.set("filters[0].operator", "contains");
+                            }
+                            $(this.element).data('alreadyOpened', true);
+                            }
+                        });
+                        header.form.bind('reset', function() {
+                            $(this).data('kendoFilterMenu').popup.element.data('alreadyOpened', false);
+                        });
+                        }
+                    });
+                    }, 1);
+                }
 
 	</script>
 

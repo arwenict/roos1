@@ -927,6 +927,7 @@ class CommunityProfileController extends CommunityBaseController
 	
 	public function save()
 	{
+           
 		// Check for request forgeries
 		$mainframe	=& JFactory::getApplication();
 		JRequest::checkToken() or jexit( JText::_( 'COM_COMMUNITY_INVALID_TOKEN' ) );
@@ -942,7 +943,6 @@ class CommunityProfileController extends CommunityBaseController
 			echo $this->blockUnregister();
 			return;
 		}
-
 		$username	= $user->get('username');
 	
 		//clean request
@@ -1094,7 +1094,7 @@ class CommunityProfileController extends CommunityBaseController
 		CFactory::load( 'libraries' , 'apps' );
 		$appsLib		=& CAppPlugins::getInstance();
 		$saveSuccess	= $appsLib->triggerEvent( 'onFormSave' , array('jsform-profile-edit' ));
-		
+                
 		if( empty($saveSuccess) || !in_array( false , $saveSuccess ) )
 		{
 			$values		= array();
@@ -1117,7 +1117,7 @@ class CommunityProfileController extends CommunityBaseController
 					$fieldValue->value	= CProfileLibrary::formatData( $data['type']  , $postData );
 					
 					$values[ $data['id'] ]	= $fieldValue;
-					
+                                            
 					// @rule: Validate custom profile if necessary
 					if( !CProfileLibrary::validateField( $data['id'], $data['type'] , $values[ $data['id'] ]->value , $data['required'], $data['visible']) )
 					{
@@ -1131,7 +1131,7 @@ class CommunityProfileController extends CommunityBaseController
 
 			// Rebuild new $values with field code
 			$valuesCode = array();
-			
+
 			foreach( $values as $key => $val )
 			{
 				$fieldCode = $model->getFieldCode($key);
@@ -1174,7 +1174,6 @@ class CommunityProfileController extends CommunityBaseController
 				    }
 			    }
 			}
-                        
 			// make sure none of the $result is false
 			if(!$result || ( !in_array(false, $result) ) )
 			{
