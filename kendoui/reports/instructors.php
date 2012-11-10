@@ -10,7 +10,6 @@
     $locations = new Locations($db);
     
     $studios = $locations->getAllStudios();
-    print_r($studios);
 
     $jsStudiosArray = "[";
     
@@ -160,7 +159,7 @@
                                     var select = this.element.find('select:first');
                                     var option = select.children('option:contains("Contains")');
                                     if(option.length > 0) {
-                                    select.data('kendoDropDownList').select(option.index());
+                                    select.data('kendoDropDownList').select(option.index()); 
                                     header.filterMenu.filterModel.set("filters[0].operator", "contains");
                                     }
                                     $(popup.element).data('alreadyOpened', true);
