@@ -38,8 +38,8 @@
             <div id="classesDB">
             <div style="margin-top: -6px; ">
 
-                   Pick Date From <input id="datefrom" name="datefrom" value="<?php echo ($_GET['datefrom']=='') ? date('Y-m-d', mktime(0,0,0,date('m'),1)) : $_GET['datefrom']; ?>" style="width:150px;" /> &nbsp;&nbsp;
-                   Pick Date To <input id="dateto" name="dateto" value="<?php echo ($_GET['dateto']=='') ? date('Y-m-d', mktime(0,0,0,date('m')+1,1)-1) : $_GET['dateto']; ?>" style="width:150px;" /> &nbsp;&nbsp;
+                   Pick Date From <input id="datefrom" name="datefrom" value="<?php if (!empty($_GET['datefrom'])) echo $_GET['datefrom']; else echo date('Y-m-d', mktime(0,0,0,date('m')-1,1)-1); ?>" style="width:150px;" /> &nbsp;&nbsp;
+                   Pick Date To <input id="dateto" name="dateto" value="<?php if (!empty($_GET['dateto'])) echo $_GET['dateto']; else echo date('Y-m-d', mktime(0,0,0,date('m')+1,1)-1); ?>" style="width:150px;" /> &nbsp;&nbsp;
                     <button id="submit" name="submit" type="submit" value="show">Show</button>
             </div>
                 </br></br>
