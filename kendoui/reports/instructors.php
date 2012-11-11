@@ -1,25 +1,6 @@
 <?php
     ini_set("display_errors", 1);
     ini_set('include_path', '/var/www/roos1/custom_lib/');
-    include_once("core/dbTools.php");
-    include_once("classes/locations.class.php");
-
-    $db = new DBHandler();
-    $db->connect();
-    
-    $locations = new Locations($db);
-    
-    $studios = $locations->getAllStudios();
-
-    $jsStudiosArray = "[";
-    
-    foreach ($studios as $studio) {
-        $jsStudiosArray .= "{ text: '{$studio['displayCode']}', value: {$studio['nodeID']} },";
-    }
-    //$jsStudiosArray = rtrim($jsStudiosArray, ",");
-    $jsStudiosArray .= "{text: 'No club selected', value:-1}]";
-    
-    $db->close();
 ?>
 <!doCTYpe html>
 <html>
@@ -65,8 +46,6 @@
 
 		$(document).ready(function() {
 
-                    var location_array = <?php echo $jsStudiosArray ?>;
-
                     $("#grid").kendoGrid({
                             dataSource: {
                                     transport: {
@@ -84,13 +63,13 @@
                                             model: {
                                                     id: "id",
                                                     fields: {
-                                                            name: { type: "string", editable: true },
-                                                            mobile: { type: "string", editable: true },								
-                                                            email: { type: "string", editable: true },
-                                                            skills: { type: "string", editable: false },
-                                                            permcov: { type: "string", editable: false },
-                                                            locations: {type: "string", editable: true },
-                                                            edit_link: {editable: false}
+                                                            name: { type: "string"},
+                                                            mobile: { type: "string"},								
+                                                            email: { type: "string"},
+                                                            skills: { type: "string"},
+                                                            permcov: { type: "string"},
+                                                            locations: {type: "string"},
+                                                            edit_link: {}
                                                     }
                                             }
                                     },
@@ -106,7 +85,7 @@
                             { field: "email", title: "Email", width: 160, filterable: false },
                             { field: "skills", title: "Skills", width: 140, filterable: false },     
                             { field: "permcov", title: "Perm / Cover", width: 70, filterable: true },
-                            { field: "locations", title: "Locations", width: 100, values:location_array, filterable: true},
+                            { field: "locations", title: "Locations", width: 100, filterable: true},
                             { field: "edit_link", title: "Edit", width: 50, template:"<a href='#=edit_link#' class='instr_edit'></a>", filterable: false}
                             ],
                             toolbar: [ 
@@ -118,7 +97,7 @@
                             //detailTemplate: kendo.template($("#template").html()),
                             //template: "<input type='checkbox' id='ApprovedByManager' checked='${ApprovedByManager}' />"
                             //detailInit: detailInit,
-                            editable: true,
+                            editable: false,
                             navigatable: true,
                             groupable: false,
                             filterable: {

@@ -37,6 +37,17 @@ class Skills {
         return $skills;
         
     }
+    
+    public function getSkillNameByID($id) {
+        $sql = " 
+            SELECT name FROM rooster.skills WHERE `skillID` = $id
+        ";
+        
+        $skill = $this->db->getSingleValue($sql);
+
+        return $skill;
+        
+    }
      
 
 }

@@ -82,5 +82,18 @@ class Locations {
         return $code;
 
     }
+    
+    public function getLocationNameByID($locationID) {
+        $tree = $this->walkUpTreeFromNode($locationID);
+            
+        $code = "";
+        foreach ($tree as $node) {
+            if ($node['parentID'] != 0)
+                $code = "{$node['code']}-".$code;  
+        }
+        $code = trim($code, "-");
+        
+        return $code;
+    }
 }
 ?>

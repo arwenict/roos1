@@ -14,12 +14,16 @@ ini_set('include_path', "/var/www/$instance/custom_lib/"); // Set default path t
 /* Including neccessary libraries */
 include_once("core/dbTools.php");
 include_once("classes/instructors.class.php");
+include_once("classes/skills.class.php");
+include_once("classes/locations.class.php");
 
 /* Inititalising objects */
 $db = new DBHandler();
 $db->connect();
 
 $instructors = new Instructors($db);
+$skills = new Skills($db);
+$locations = new Locations($db);
 
 /* Create the Application */
 $mainframe =& JFactory::getApplication('site');
@@ -44,6 +48,35 @@ if ($verb == "GET") {
         $results = array();
         foreach ($instructorsArr as $instructor) {
             $results[$i] = $instructor;
+            
+            
+            /* Formatting SKILLSET string */
+            if (!empty($instructor['skills']) && $instructor['skills'] != "null") {
+                $skillset = explode(",", $instructor['skills']);
+                $skillsStr = "";
+                foreach ($skillset as $skill) {
+                    $skillsStr .= $skills->getSkillNameByID($skill).",";
+                }
+                $skillsStr = rtrim($skillsStr, ",");
+            }
+            else
+                $skillsStr = "No skills set";
+            
+            /* Formatting LOCATIONS string */
+            if (!empty($instructor['locations']) && $instructor['locations'] != "-1") {
+                $locationsArr = explode(",", $instructor['locations']);
+                $locationsStr = "";
+                foreach ($locationsArr as $loc) {
+                    $locationsStr .= $locations->getLocationNameByID($loc).", ";
+                }
+                $locationsStr = rtrim($locationsStr, ", ");
+            }
+            else
+                $locationsStr = "No locations set";
+            
+            $results[$i]["skills"] = $skillsStr;
+            $results[$i]["locations"] = $locationsStr;
+            
             $results[$i]["edit_link"] = "#?id={$instructor['id']}";
             $i++;
         }
