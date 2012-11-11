@@ -1,3 +1,27 @@
+<?php
+    ini_set("display_errors", 1);
+    ini_set('include_path', '/var/www/roos1/custom_lib/');
+    include_once("core/dbTools.php");
+    include_once("classes/instructors.class.php");
+
+    $db = new DBHandler();
+    $db->connect();
+    
+    $instructors = new Instructors($db);
+    
+    $instructorsList = $instructors->getListOfInstructors();
+    
+    $jsArray = "[";
+    foreach ($instructorsList as $instructor) {
+        $jsArray .= "{ 'text': '{$instructor['name']}', 'value': '{$instructor['id']}' },";
+    }
+    
+    $jsArray = rtrim($jsArray, ",");
+    $jsArray .= "]";
+    
+    $db->close();
+?>
+
 <!doCTYpe html>
 <html>
 <head>
@@ -38,7 +62,7 @@
             </style>
 	
 	<script>
-
+            var instructors = <?php echo $jsArray ?> 
 
 		//kendo.culture("en-US");
 			var now = new Date()
@@ -52,8 +76,8 @@
 
 		$(document).ready(function() {
 
-
-                                                
+                   
+                                              
 			$("#grid").kendoGrid({
 				dataSource: {
 					transport: {
@@ -75,7 +99,7 @@
 								StartDate: { type: "date", editable: false },
                                                                 StartTime: { type: "date", editable: false },
 								Location: { editable: false },
-								InstructorName: { editable: false },
+								InstructorName: { editable: true },
 								Minutes: { editable: false},
 								HourlyRate: { type: "number", validation: { required: true, min: 0} },
 								AttendeeNumber: { type: "number", validation: { required: true, min: 0} },
@@ -94,7 +118,7 @@
 				{ field: "StartDate", title: "Start Date", format: "{0:ddd dd-MMM-yyyy}",  width: 100 },
 				{ field: "StartTime", title: "Start Time", width: 60, filterable: false },
 				{ field: "Location" }, 
-				{ field: "InstructorName", title: "Instructor Name", width: 100 }, 
+				{ field: "InstructorID", title: "Instructor", width: 100, values: instructors,editor: instructorsDropDownEditor  }, 
 				{ field: "Minutes", width: 60 },
 				{ field: "HourlyRate" , title: "Hourly Rate", format:"{0:c2}", filterable: false},
 				{ field: "AttendeeNumber" , title: "Attendees" },
@@ -137,6 +161,26 @@
                         });
 		
 		});
+
+                function instructorsDropDownEditor(container, options) {
+                
+                    var data = <?php echo $jsArray ?>
+
+                    $('<input name="' + options.field + '" />')
+                        .appendTo(container)
+                        .kendoComboBox({
+                            dataTextField: "text",
+                            dataValueField: "value",
+                            dataSource: data,
+                            filter: "contains",
+                            suggest: true
+                        });
+                        
+                    $("input[type=text]").focus(function(){
+                        this.select();
+                    }); 
+               } 
+
 
                 function changeDefaults() {
                     setTimeout(function() {

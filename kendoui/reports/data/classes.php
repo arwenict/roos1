@@ -6,6 +6,24 @@ define('JPATH_BASE', '../../../');
 define( 'DS', DIRECTORY_SEPARATOR );
 require_once ( JPATH_BASE .DS.'includes'.DS.'defines.php' );
 require_once ( JPATH_BASE .DS.'includes'.DS.'framework.php' );
+
+
+$instance = strstr($_SERVER['PHP_SELF'], 'max') ? "max" : "roos1";
+
+ini_set("display_errors", 1); //displaying errors. Should be removed on production
+ini_set('include_path', "/var/www/$instance/custom_lib/"); // Set default path to custom library.
+
+/* Including neccessary libraries */
+include_once("core/dbTools.php");
+include_once("classes/classes.class.php");
+
+/* Inititalising objects */
+$db = new DBHandler();
+$db->connect();
+
+$classes = new Classes($db);
+
+
 /* Create the Application */
 $mainframe =& JFactory::getApplication('site');
 $mainframe->initialise();
@@ -15,8 +33,45 @@ $mainframe->triggerEvent('onAfterInitialise');
 if (JFactory::getUser()->id == 0)
    die("You have to be logged in.");
 
+// add the header line to specify that the content type is JSON
+header("Content-type: application/json");
 
+// determine the request type
+$verb = $_SERVER["REQUEST_METHOD"];
 
+// handle a GET
+if ($verb == "GET") {
+        $datefrom= $db->escape($_GET["datefrom"]);
+        $dateto = $db->escape($_GET["dateto"]);
+        
+        $classesArr = $classes->getClassesList($datefrom, $dateto);
+        
+        $results = array();
+        foreach ($classesArr as $class) {
+            $results[] = $class;
+        }
+	echo "{\"data\":" .json_encode($results). "}";	
+}
+
+// handle a POST
+if ($verb == "POST") {
+        $id = $db->escape($_POST["id"]);
+        $updateFields['InstructorID'] = $db->escape($_POST["InstructorID"]);
+        $updateFields['HourlyRate'] = $db->escape($_POST["HourlyRate"]);
+        $updateFields['AttendeeNumber'] = $db->escape($_POST["AttendeeNumber"]);
+        $updateFields['AttendeeTarget'] = $db->escape($_POST["AttendeeTarget"]);
+        if($_POST["ApprovedByManager"]=="true")
+            $updateFields['ApprovedByManager'] = 1;
+        else
+            $updateFields['ApprovedByManager'] = 0;
+
+        $result = $classes->updateClassesFields($id, $updateFields);
+        
+        echo json_encode("success");
+
+}
+
+/*
 $link = mysql_pconnect($mainframe->getCfg('host'), $mainframe->getCfg('user'), $mainframe->getCfg('password')) or die("Unable To Connect To Database Server");
 
 mysql_select_db($mainframe->getCfg('db')) or die("Unable To Connect To DB");
@@ -77,5 +132,5 @@ if ($verb == "POST") {
 		echo "Update failed for EmployeeID: " .$id;
 	}
 }
-
+*/
 ?>
