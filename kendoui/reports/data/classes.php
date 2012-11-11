@@ -16,13 +16,14 @@ ini_set('include_path', "/var/www/$instance/custom_lib/"); // Set default path t
 /* Including neccessary libraries */
 include_once("core/dbTools.php");
 include_once("classes/classes.class.php");
+include_once("classes/instructors.class.php");
 
 /* Inititalising objects */
 $db = new DBHandler();
 $db->connect();
 
 $classes = new Classes($db);
-
+$instructors = new Instructors($db);
 
 /* Create the Application */
 $mainframe =& JFactory::getApplication('site');
@@ -55,19 +56,26 @@ if ($verb == "GET") {
 
 // handle a POST
 if ($verb == "POST") {
-        $id = $db->escape($_POST["id"]);
-        $updateFields['InstructorID'] = $db->escape($_POST["InstructorID"]);
-        $updateFields['HourlyRate'] = $db->escape($_POST["HourlyRate"]);
-        $updateFields['AttendeeNumber'] = $db->escape($_POST["AttendeeNumber"]);
-        $updateFields['AttendeeTarget'] = $db->escape($_POST["AttendeeTarget"]);
-        if($_POST["ApprovedByManager"]=="true")
-            $updateFields['ApprovedByManager'] = 1;
-        else
-            $updateFields['ApprovedByManager'] = 0;
+        $instructorID = $instructors->getIDbyName($db->escape($_POST['InstructorName']));
+    
+        if ($instructorID) {
+            $id = $db->escape($_POST["id"]);
+            $updateFields['InstructorID'] = $instructorID;
+            $updateFields['HourlyRate'] = $db->escape($_POST["HourlyRate"]);
+            $updateFields['AttendeeNumber'] = $db->escape($_POST["AttendeeNumber"]);
+            $updateFields['AttendeeTarget'] = $db->escape($_POST["AttendeeTarget"]);
+            if($_POST["ApprovedByManager"]=="true")
+                $updateFields['ApprovedByManager'] = 1;
+            else
+                $updateFields['ApprovedByManager'] = 0;
 
-        $result = $classes->updateClassesFields($id, $updateFields);
-        
-        echo json_encode("success");
+            $result = $classes->updateClassesFields($id, $updateFields);
+
+            echo json_encode("success");
+        }
+        else {
+            echo "Invalid instructor. Save failed.";
+        }
 
 }
 

@@ -62,7 +62,6 @@
             </style>
 	
 	<script>
-            var instructors = <?php echo $jsArray ?> 
 
 		//kendo.culture("en-US");
 			var now = new Date()
@@ -99,8 +98,8 @@
 								StartDate: { type: "date", editable: false },
                                                                 StartTime: { type: "date", editable: false },
 								Location: { editable: false },
-								InstructorName: { editable: true },
-								Minutes: { editable: false},
+								InstructorName: { type:"string", editable: true },
+								Minutes: { type: "number", editable: false},
 								HourlyRate: { type: "number", validation: { required: true, min: 0} },
 								AttendeeNumber: { type: "number", validation: { required: true, min: 0} },
 								AttendeeTarget: { type: "number", validation: { required: true, min: 0} }, 
@@ -118,7 +117,7 @@
 				{ field: "StartDate", title: "Start Date", format: "{0:ddd dd-MMM-yyyy}",  width: 100 },
 				{ field: "StartTime", title: "Start Time", width: 60, filterable: false },
 				{ field: "Location" }, 
-				{ field: "InstructorID", title: "Instructor", width: 100, values: instructors,editor: instructorsDropDownEditor  }, 
+				{ field: "InstructorName", title: "Instructor", width: 100, editor: instructorsDropDownEditor, filterable: true }, 
 				{ field: "Minutes", width: 60 },
 				{ field: "HourlyRate" , title: "Hourly Rate", format:"{0:c2}", filterable: false},
 				{ field: "AttendeeNumber" , title: "Attendees" },
@@ -149,7 +148,8 @@
                                     operators: {
                                         //filter menu for "string" type columns
                                         string: {
-                                                contains: "Contains"
+                                                contains: "Contains",
+                                                startswith: "Starts with"
                                         }
                                     }
                                 },
@@ -170,7 +170,7 @@
                         .appendTo(container)
                         .kendoComboBox({
                             dataTextField: "text",
-                            dataValueField: "value",
+                            dataValueField: "text",
                             dataSource: data,
                             filter: "contains",
                             suggest: true
@@ -205,7 +205,6 @@
                                 }
                             });
                             header.filterMenu.form.bind('reset', function() {     
-                                alert('here');
                                 $('.k-header').each(function(i) {
                                     $(this).data('kendoFilterMenu').popup.element.data('alreadyOpened', false);
                                 });
@@ -226,7 +225,9 @@
                             }
                         });
                         header.form.bind('reset', function() {
-                            $(this).data('kendoFilterMenu').popup.element.data('alreadyOpened', false);
+                            $('.k-header').each(function(i) {
+                                $(this).data('kendoFilterMenu').popup.element.data('alreadyOpened', false);
+                            });
                         });
                         }
                     });

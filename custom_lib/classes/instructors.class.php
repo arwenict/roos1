@@ -94,5 +94,15 @@ class Instructors {
         
     }
 
+    public function getIDbyName($name) {
+        $sql = "SELECT id FROM b5.pr_users WHERE `name` = \"$name\" ";
+        
+        try {
+            return $this->db->getSingleValue($sql);
+        }
+        catch (Exception $e) {
+            return false;
+        }
+    }
 }
 ?>

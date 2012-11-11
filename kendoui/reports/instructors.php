@@ -132,7 +132,8 @@
 				operators: {
                                     //filter menu for "string" type columns
                                     string: {
-                                            contains: "Contains"
+                                            contains: "Contains",
+                                            startswith: "Starts with"
                                     }
 				}
                             },
