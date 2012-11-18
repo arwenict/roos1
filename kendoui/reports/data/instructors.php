@@ -8,7 +8,7 @@ require_once ( JPATH_BASE .DS.'includes'.DS.'defines.php' );
 require_once ( JPATH_BASE .DS.'includes'.DS.'framework.php' );
 
 /* Including neccessary libraries */
-include_once("../../boot.php");
+include_once("../../../boot.php");
 include_once("classes/instructors.class.php");
 include_once("classes/skills.class.php");
 include_once("classes/locations.class.php");
