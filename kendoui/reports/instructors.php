@@ -1,7 +1,3 @@
-<?php
-    ini_set("display_errors", 1);
-    ini_set('include_path', '/var/www/roos1/custom_lib/');
-?>
 <!doCTYpe html>
 <html>
 <head>

@@ -61,7 +61,7 @@ class DBHandler
         if($account=="root") {
             $user = "arw49555_b5";
             $pass = "f1shb0ard";
-            $schema = 'rooster';
+            $schema = 'b5';
         }
             
         if(strlen($this->host)>0) {

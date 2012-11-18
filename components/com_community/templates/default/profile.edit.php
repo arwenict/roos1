@@ -8,24 +8,19 @@
 defined('_JEXEC') or die();
 $validPassword = JText::sprintf( JText::_( 'VALID_AZ09', true ), JText::_( 'Password', true ), 4 );
 
-ini_set("display_errors", 1); //displaying errors. Should be removed on production
-ini_set('include_path', '/var/www/max/custom_lib/'); // Set default path to custom library.
-
 /* Including neccessary libraries */
-include_once("core/dbTools.php");
+include_once("boot.php");
 include_once("classes/locations.class.php");
 include_once("classes/skills.class.php");
 
 /* Inititalising objects */
-$db = new DBHandler();
-$db->connect();
-
 $locations = new Locations($db);
 $skills = new Skills($db);
 
 $studios = $locations->getAllStudios();
 $skillsList = $skills->getSkillsList();
 
+$db->close();
 ?>
 <?php if( $showProfileType ){ ?>
 <div class="com-notice">

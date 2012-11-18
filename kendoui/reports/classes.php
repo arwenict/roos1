@@ -1,14 +1,8 @@
 <?php
-    ini_set("display_errors", 1);
-    ini_set('include_path', '/var/www/roos1/custom_lib/');
-    include_once("core/dbTools.php");
+    include_once("../../boot.php"); 
     include_once("classes/instructors.class.php");
-
-    $db = new DBHandler();
-    $db->connect();
     
     $instructors = new Instructors($db);
-    
     $instructorsList = $instructors->getListOfInstructors();
     
     $jsArray = "[";

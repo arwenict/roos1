@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 define( '_JEXEC', 1 );
 define( '_VALID_MOS', 1 );
@@ -7,20 +7,10 @@ define( 'DS', DIRECTORY_SEPARATOR );
 require_once ( JPATH_BASE .DS.'includes'.DS.'defines.php' );
 require_once ( JPATH_BASE .DS.'includes'.DS.'framework.php' );
 
-
-$instance = strstr($_SERVER['PHP_SELF'], 'max') ? "max" : "roos1";
-
-ini_set("display_errors", 1); //displaying errors. Should be removed on production
-ini_set('include_path', "/var/www/$instance/custom_lib/"); // Set default path to custom library.
-
 /* Including neccessary libraries */
-include_once("core/dbTools.php");
+include_once("../../../boot.php");
 include_once("classes/classes.class.php");
 include_once("classes/instructors.class.php");
-
-/* Inititalising objects */
-$db = new DBHandler();
-$db->connect();
 
 $classes = new Classes($db);
 $instructors = new Instructors($db);
@@ -79,6 +69,7 @@ if ($verb == "POST") {
 
 }
 
+$db->close();
 /*
 $link = mysql_pconnect($mainframe->getCfg('host'), $mainframe->getCfg('user'), $mainframe->getCfg('password')) or die("Unable To Connect To Database Server");
 

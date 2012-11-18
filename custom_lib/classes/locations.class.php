@@ -39,7 +39,7 @@ class Locations {
     }
     
     public function getNodeInfoAsArray($nodeID) {
-        $result = $this->db->getResults("SELECT * FROM rooster.locations WHERE nodeID='$nodeID'");
+        $result = $this->db->getResults("SELECT * FROM b5.locations WHERE nodeID='$nodeID'");
         if($result->num_rows == 1) {
             $ret = $result->fetch_assoc();
             $result->free();
@@ -66,7 +66,7 @@ class Locations {
     }
     
     function getStudioCode($nodeID) {
-        $sql = "SELECT * FROM rooster.locations WHERE `type`='studio' AND `nodeID`=$nodeID";
+        $sql = "SELECT * FROM b5.locations WHERE `type`='studio' AND `nodeID`=$nodeID";
         
         $studio = $this->db->getSingleRowAssoc($sql);
         

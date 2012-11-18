@@ -1,13 +1,9 @@
 <?php
-    ini_set("display_errors", 1);
-    include_once("../custom_lib/core/dbTools.php");
-    include_once("../custom_lib/classes/locations.class.php");
-    
-    $db = new DBHandler();
-    $db->connect();
+   
+    include_once("../boot.php");
+    include_once("classes/locations.class.php");
     
     $locations = new Locations($db);
-    
     $studios = $locations->getAllStudios();
     
     $jsStudiosArray = "";
