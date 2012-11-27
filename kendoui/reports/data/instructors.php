@@ -70,7 +70,7 @@ if ($verb == "GET") {
             $results[$i]["skills"] = $skillsStr;
             $results[$i]["locations"] = $locationsStr;
             
-            $results[$i]["edit_link"] = "#?id={$instructor['id']}";
+            $results[$i]["edit_link"] = "{$instructor['id']}";
             $i++;
         }
 	echo "{\"data\":" .json_encode($results). "}";	

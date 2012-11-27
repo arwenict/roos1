@@ -82,14 +82,15 @@
                             { field: "skills", title: "Skills", width: 140, filterable: false },     
                             { field: "permcov", title: "Perm / Cover", width: 70, filterable: true },
                             { field: "locations", title: "Locations", width: 100, filterable: true},
-                            { field: "edit_link", title: "Edit", width: 50, template:"<a href='#=edit_link#' class='instr_edit'></a>", filterable: false}
+                            { field: "edit_link", title: "Edit", width: 50, template:"<a href='' onclick=\"editFunction('#=edit_link#'); return false;\" class='instr_edit'></a>", filterable: false}
                             ],
+                            /*
                             toolbar: [ 
 
                                     { name: "save", text: "Save changes" },
                                     { name: "cancel", text: "Cancel changes" }
                             ],
-
+                            */
                             //detailTemplate: kendo.template($("#template").html()),
                             //template: "<input type='checkbox' id='ApprovedByManager' checked='${ApprovedByManager}' />"
                             //detailInit: detailInit,
@@ -118,8 +119,13 @@
                                changeDefaults();
                             }
                         });
-		
+                        
 		});
+                
+                function editFunction(id) {
+                    alert("id is" + id);
+                }
+                
                 function changeDefaults() {
                     setTimeout(function() {
                         var header;
@@ -170,6 +176,37 @@
                     }, 1);
                 }
 	</script>    
+        
+        <?php
+        # Implement a popup to be used as the edit popup
+        /*
+        
+         <a href="#" id='open-help' onclick="javascript:openPopUp();"class="help-link"> </a>
+        <div id="overlay" class="popup-wrapper" >
+            <div class="popup resizable">
+                <div id='cpt_lghtbx' class="mid fixedBox" style='overflow-y:scroll;'>
+                    <a href="#" id="close-captions" onclick="javascript:closePopUp()" class="close">&nbsp;</a>
+                    <h2>Help</h2>
+
+                    <div class="hightlight-box">
+                        <h3>Sub heading 1</h3>
+                        <p>HTML formatted text goes here</p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+         
+        function openPopUp() {
+            document.getElementById("overlay").style.display = "block";
+        }
+
+        function closePopUp() {
+            document.getElementById("overlay").style.display = "none";
+        }
+        */
+        ?>
 
 </body>
 </html>
