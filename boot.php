@@ -9,6 +9,7 @@ $custom_libraries = "/var/www/$instance/custom_lib";
 ini_set('include_path', $custom_libraries); // Set default path to custom library.
 
 include_once("core/dbTools.php");
+include_once("core/utils.php");
 
 $db = new DBHandler();
 $db->connect();

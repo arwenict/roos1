@@ -38,6 +38,31 @@ class Locations {
         return $studios;
     }
     
+    public function getAllLocations($inclCompany=false) {
+        $studios = array();
+        $sql = "SELECT * FROM rooster.locations WHERE `type`='location'";
+        
+        $studiosArr = $this->db->getMultiDimensionalArray($sql);
+        
+        foreach ($studiosArr as $studio) {
+            $resultArray = $studio;
+            $tree = $this->walkUpTreeFromNode($studio['nodeID']);
+            
+            $code = "";
+            foreach ($tree as $node) {
+                if ($node['parentID'] != 0 || $inclCompany)
+                    $code = "{$node['code']}-".$code;  
+            }
+            $code = trim($code, "-");
+           
+            $resultArray['displayCode'] = $code;
+            
+            $studios[$resultArray['nodeID']] = $resultArray;
+        }
+        
+        return $studios;
+    }
+    
     public function getNodeInfoAsArray($nodeID) {
         $result = $this->db->getResults("SELECT * FROM b5.locations WHERE nodeID='$nodeID'");
         if($result->num_rows == 1) {

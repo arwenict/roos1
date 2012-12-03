@@ -1,40 +1,53 @@
 <!doCTYpe html>
 <html>
 <head>
-	<script src="../js/jquery.min.js"></script>
-	<script src="../trial/js/kendo.all.min.js"></script>
-	<link href="../styles/kendo.common.min.css" rel="stylesheet">
-	<link href="../styles/kendo.silver.min.css" rel="stylesheet">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../trial/js/kendo.all.min.js"></script>
+    <script type="text/javascript" src="../../custom_lib/shared/js/jquery.multi-select.js"></script> 
+    <link href="../styles/kendo.common.min.css" rel="stylesheet">
+    <link href="../styles/kendo.silver.min.css" rel="stylesheet">
+    <link href="../styles/kendo.silver.min.css" rel="stylesheet">
+    <link href="../../templates/ifreedom-fjt/css/styles.css" rel="stylesheet">
+    <link href='../../custom_lib/shared/css/multi-select.css' rel='stylesheet' type='text/css' />
+
 </head>
 <body>
-
-        <div id="example" class="k-content">
+    <div id="example" class="k-content">
         <form id="target" action="classes.php" method="get">
             
             <div id="classesDB">
-            <div style="margin-top: -6px; ">
-
-            </div>
+                <div style="margin-top: -6px; "></div>
                 </br></br>
-
                 <div id="dropDown"></div>
-            <div id="grid" style="height: 580px"></div>
-
+                <div id="grid" style="height: 580px"></div>
             </div>
         </form>
+    </div>
+    <style scoped>
+        #classesDB{
+            width: 900px;
+            height: 650px;
+            font-family: Tahoma, Verdana, sans-serif; font-size:12px;
+            //margin: 30px auto;
+            //padding: 51px 4px 0 4px;
+            //background: url('../grid/clientsDb.png') no-repeat 0 0;
+        }
+
+        a.instr_edit:link, a.instr_edit:hover, a.instr_edit:active, a.instr_edit:visited {height:24px; width:24px; display:block;background:url(../../templates/ifreedom-fjt/images/editLink.png)}
+        
+        div.instructorField {float:left; clear:both; margin-bottom:10px;}
+        .editKey{width: 150px; float:left;}
+        .editValue{width: 500px; float:left}
+        label.editInstructor {font-size: 13px; font-weight:700; margin-right:10px;}
+        label.location {float:left; clear:both; font-size:12px;}
+        
+    </style>
+    
+    <div id="edit-overlay" class="popup-wrapper" >
+        <div class="popup resizable">
+            
         </div>
-            <style scoped>
-                #classesDB{
-                    width: 900px;
-                    height: 650px;
-                    font-family: Tahoma, Verdana, sans-serif; font-size:12px;
-                    //margin: 30px auto;
-                    //padding: 51px 4px 0 4px;
-                    //background: url('../grid/clientsDb.png') no-repeat 0 0;
-                }
-                
-                a.instr_edit:link, a.instr_edit:hover, a.instr_edit:active, a.instr_edit:visited {height:24px; width:24px; display:block;background:url(../../templates/ifreedom-fjt/images/editLink.png)}
-            </style>
+    </div>
 	
 	<script>
 		//kendo.culture("en-US");
@@ -82,7 +95,7 @@
                             { field: "skills", title: "Skills", width: 140, filterable: false },     
                             { field: "permcov", title: "Perm / Cover", width: 70, filterable: true },
                             { field: "locations", title: "Locations", width: 100, filterable: true},
-                            { field: "edit_link", title: "Edit", width: 50, template:"<a href='' onclick=\"editFunction('#=edit_link#'); return false;\" class='instr_edit'></a>", filterable: false}
+                            { field: "edit_link", title: "Edit", width: 50, template:"<a href='' onclick=\"openEditPopUp('#=edit_link#'); return false;\" class='instr_edit'></a>", filterable: false}
                             ],
                             /*
                             toolbar: [ 
@@ -122,8 +135,13 @@
                         
 		});
                 
-                function editFunction(id) {
-                    alert("id is" + id);
+                function openEditPopUp(id) {
+                    document.getElementById("edit-overlay").style.display = "block";
+                    $(".popup").load("data/ajaxHandler.php", "action=edit_instructor&instructorID="+id);
+                }
+                
+                function closeEditPopUp() {
+                    document.getElementById("edit-overlay").style.display = "none";
                 }
                 
                 function changeDefaults() {

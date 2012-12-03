@@ -48,6 +48,15 @@ class Instructors {
         
     }
      
+    /**
+     * Updates values for an instructor. 
+     *
+     * @param integer    $instructorID      id of instructor
+     * @param array      $fields            Fields to be updated as [key] => [value] array
+     * 
+     * @return bool     true on success
+     *
+     */
     public function updateInstructorFields($instructorID, $fields) {
         $userTableConditionSQL = "";
         
@@ -94,6 +103,14 @@ class Instructors {
         
     }
 
+    /**
+     * Searches for instructorID value by full name. 
+     *
+     * @param string    $name      Full name of instructor
+     * 
+     * @return  int     instructorID or false on failure
+     *
+     */
     public function getIDbyName($name) {
         $sql = "SELECT id FROM b5.pr_users WHERE `name` = \"$name\" ";
         
@@ -103,6 +120,79 @@ class Instructors {
         catch (Exception $e) {
             return false;
         }
+    }
+    
+    /**
+     * Searches for instructors name by instructorID. 
+     *
+     * @param string    $instructorID       ID of the instructor in the database.     
+     * 
+     * @return  string  $name   instructors full name
+     *
+     */
+    public function getNameByID($id) {
+        $sql = "SELECT name FROM b5.pr_users WHERE `id` = $id ";
+        
+        try {
+            return $this->db->getSingleValue($sql);
+        }
+        catch (Exception $e) {
+            return false;
+        }
+    }
+    
+    /**
+     * Returns instructor's details by instructorID.
+     *
+     * @param   int     $id      InstructorID
+     * 
+     * @return  array   $result[0]  Array with instructor's details
+     *
+     */
+    public function getDetailsByInstructorID($id) {
+        #mapping of community_fields table 
+        $fields = array (
+            "Mobile number" => 6,
+            "Address" => 8,
+            "Suburb" => 10,
+            "State" => 9,
+            "Hourly rate" => 20,
+            "ABN" => 17,
+            "GST" => 18,
+            "permOrCover" => 21,
+            "Locations" => 22,
+            "Skillset" => 19
+        );
+        
+        $sql = "
+            SELECT `field_id`, `value` 
+            FROM `pr_community_fields_values`
+            WHERE `user_id` = $id 
+        ";
+        
+        try {
+            $resultArr = $this->db->getMultiDimensionalArray($sql);
+            
+            $detailsArr = array();
+            foreach ($resultArr as $value) {
+                $detailsArr[$value['field_id']] = $value['value'];
+            }
+
+            $userDetails = array();
+            $userDetails['Full name'] = $this->getNameByID($id);
+            foreach ($fields as $key => $fieldID) {
+                if(isset($detailsArr[$fieldID]))
+                    $userDetails[$key] = $detailsArr[$fieldID];
+                else
+                    $userDetails[$key] = "";
+            }
+            
+            return $userDetails;
+        }
+        catch (Exception $e) {
+            return false;
+        }
+        
     }
 }
 ?>
