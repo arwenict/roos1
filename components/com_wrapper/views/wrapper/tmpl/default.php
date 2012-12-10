@@ -1,5 +1,5 @@
 <?php
-/**
+/** 
  * @package		Joomla.Site
  * @subpackage	com_wrapper
  * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
@@ -46,6 +46,26 @@ function iFrameHeight() {
         </div>
     </div>
 </div>
+
+<?php if ($this->params->get('page_title') == "Instructors") { ?>
+<script type="text/javascript" src="/roos1/custom_lib/shared/js/jquery.multi-select.js"></script>
+<link href='/roos1/custom_lib/shared/css/multi-select.css' rel='stylesheet' type='text/css' />
+
+<style type="text/css">
+    div.instructorField {float:left; clear:both; margin-bottom:10px;}
+    .editKey{width: 150px; float:left;}
+    .editValue{width: 500px; float:left}
+    label.editInstructor {font-size: 13px; font-weight:700; margin-right:10px;}
+    label.location {float:left; clear:both; font-size:12px;}
+</style>
+
+<div id="edit-overlay" class="popup-wrapper" >
+    <div id='editPopup' class="popup resizable">
+
+    </div>
+</div>
+<?php }?>
+
 <div class="contentpane<?php echo $this->pageclass_sfx; ?>">
 <?php if ($this->params->get('show_page_heading', 1)) : ?>
 	<h1>

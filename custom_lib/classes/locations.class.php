@@ -1,5 +1,5 @@
 <?php
-
+ 
 /**
  * @author mpak
  */
@@ -15,7 +15,7 @@ class Locations {
     
     public function getAllStudios($inclCompany=false) {
         $studios = array();
-        $sql = "SELECT * FROM rooster.locations WHERE `type`='studio'";
+        $sql = "SELECT * FROM b5.locations WHERE `type`='studio'";
         
         $studiosArr = $this->db->getMultiDimensionalArray($sql);
         
@@ -39,11 +39,12 @@ class Locations {
     }
     
     public function getAllLocations($inclCompany=false) {
+        ini_set("display_errors", 1);
         $studios = array();
-        $sql = "SELECT * FROM rooster.locations WHERE `type`='location'";
+        $sql = "SELECT * FROM b5.locations WHERE `type`='location'";
         
         $studiosArr = $this->db->getMultiDimensionalArray($sql);
-        
+
         foreach ($studiosArr as $studio) {
             $resultArray = $studio;
             $tree = $this->walkUpTreeFromNode($studio['nodeID']);

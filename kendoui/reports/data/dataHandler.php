@@ -1,4 +1,4 @@
-<?php
+<?php 
     include_once("../../boot.php");
     include_once("classes/locations.class.php");
 
@@ -7,7 +7,7 @@
     if ($type == "locations") {
         $locations = new Locations($db);
 
-        $studios = $locations->getAllStudios();
+        $studios = $locations->getAllLocations();
 
         foreach ($studios as $studio) {
             $studiosJS[]["text"] = $studio['displayCode'];

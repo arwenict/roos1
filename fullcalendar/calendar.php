@@ -1,10 +1,10 @@
-<?php
+<?php 
    
     include_once("../boot.php");
     include_once("classes/locations.class.php");
     
     $locations = new Locations($db);
-    $studios = $locations->getAllStudios();
+    $studios = $locations->getAllLocations();
     
     $jsStudiosArray = "";
     
@@ -254,7 +254,7 @@ content : event.description+'<br><a href="../index.php/jomsocial/events/vieweven
             
             <div id="classesDB">
             <div style="margin-top: -6px; ">
-            Select studio:
+            Select location:
             <select id="locationID" name="locationID" >
               
             </select>

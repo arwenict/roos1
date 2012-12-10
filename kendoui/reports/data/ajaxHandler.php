@@ -1,5 +1,5 @@
 <?php
-# Including neccessary libraries
+# Including neccessary libraries 
 include_once("../../../boot.php");
 include_once("classes/instructors.class.php");
 include_once("classes/locations.class.php");
@@ -14,7 +14,7 @@ $skills = new Skills($db);
 
 # EDIT_INSTRUCTOR START
 if ($action == "edit_instructor") {
-    $studios = $locations->getAllStudios();
+    $studios = $locations->getAllLocations();
     $skillsList = $skills->getSkillsList();
     
     $instructorID = getParameterNumber("instructorID");
@@ -24,11 +24,11 @@ if ($action == "edit_instructor") {
     
     $header = "Edit instructor details";
     
-    $body = "";
+    $body = "<input type='hidden' id='instructorID' value='$instructorID' />";
     foreach ($details as $key => $value) {
         if ($key == "permOrCover") {
             $pemanentSelected = ($value == "permanent") ? "selected='selected'" : "";
-            $coverSelected = ($value == "permanent") ? "selected='selected'" : "";
+            $coverSelected = ($value == "cover") ? "selected='selected'" : "";
             $body .= "
                 <div class='instructorField'> 
                     <div class='editKey'><label class='editInstructor'>Permanent or Cover: </label></div> 
@@ -87,15 +87,18 @@ if ($action == "edit_instructor") {
             ";
         }
         else {
+            $id = str_replace(" ", "_", $key);
             $body .= "
                 <div class='instructorField'> 
                     <div class='editKey'><label class='editInstructor'>$key: </label></div> 
-                    <div class='editValue'><input type='text' id='$key' value='$value'  /></div>
+                    <div class='editValue'><input type='text' id='$id' value='$value'  /></div>
                 </div>
             ";
         }
         
         $body .= "<script type='text/javascript'>
+            var $ = new jQuery.noConflict();            
+
             $('#skills').multiSelect({
                 afterSelect: function(value, text) { 
                     saveSkill(value, text, 'select');
@@ -138,6 +141,11 @@ if ($action == "edit_instructor") {
     }   
     outLightBox($header, $body);
 }
+elseif ($action == "submitInstructor") {
+    //print_r($_GET);
+    $instructorID = getParameterNumber("instructorID");
+    $instructors->updateInstructorFields($instructorID, $_GET);
+}
 # EDIT_INSTRUCTOR END
 
 $db->close();
@@ -151,14 +159,44 @@ function outLightBox($header, $body) {
             <div class='hightlight-box'>
                 $body
             </div>
-            
-            <button onclick='javascript:submitInstructorEdit()'>Submit</button>
-            <button onclick='javascript:closeEditPopUp()'>Cancel</button>
+            <button onclick='javascript:submitInstructorEdit(); return false;'>Submit</button>
+            <button onclick='javascript:closeEditPopUp(); return false;'>Cancel</button>
         </div>
         
         <script type='text/javascript'>
             function submitInstructorEdit() {
-                alert('submitted');
+                //alert('submitted');
+                var instructorID = $('#instructorID').val();
+                var fullname = $('#Full_name').val();
+                var email = $('#Email').val();
+                var mobile = $('#Mobile_number').val();
+                var address = $('#Address').val();
+                var suburb = $('#Suburb').val();
+                var state = $('#State').val();
+                var hourly = $('#Hourly_rate').val();
+                var abn = $('#ABN').val();
+                var gst = $('#GST').val();
+                var permOrCover = $('#permOrCover').val();
+                var locations = $('#locationsList').val();
+                var skills = $('#skillsList').val();
+
+                if (permOrCover != 'permanent' && permOrCover != 'cover'){
+                    alert('Please select between permanent and cover');
+                    return false;
+                }
+
+                var values = 'instructorID='+instructorID+'&name='+fullname+'&email='+email+'&mobile='+mobile+'&address='+address+'&suburb='+suburb+'&state='+state+'&hourly='+hourly+'&abn='+abn+'&gst='+gst+'&permOrCover='+permOrCover+'&locations='+locations+'&skills='+skills;
+
+                $.ajax({
+                    url: '/max/kendoui/reports/data/ajaxHandler.php',
+                    data: 'action=submitInstructor&'+values,
+                    dataType: 'text',
+                    success: function(data, textStatus, jqXHR){
+                        location.reload();
+                    }
+                });
+                //alert(values);  
+
             }
         </script>
     ";

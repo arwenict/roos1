@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 /**
  * @author mpak
@@ -7,8 +7,15 @@ class Instructors {
     private $db;
     private $mappingID = array(
         "mobile" => 6,
-        "locations" => 22,
-        "skills" => 19
+        "address" => 8,
+        "state" => 9,
+        "suburb" => 10,
+        "abn" => 17,
+        "gst" => 18,
+        "skills" => 19,
+        "hourly" => 20,
+        "permOrCover" => 21,
+        "locations" => 22
     );
     
     public function __construct($db=null) {
@@ -72,12 +79,20 @@ class Instructors {
                 break;
                 
             case "mobile":
-            case "locations":
+            case "address":
+            case "suburb":
+            case "abn":
+            case "gst":
             case "skills":
-                
+            case "hourly":
+            case "permOrCover":
+            case "locations":
+            
                 try {
                     $idSQL = "SELECT `id` FROM b5.pr_community_fields_values WHERE `user_id`=$instructorID AND `field_id`={$this->mappingID[$field]}";
                     $id = $this->db->getSingleValue($idSQL);
+                    $value = str_replace("null", "", $value);
+                    $value = trim($value, ",");
                     $this->db->update("UPDATE b5.pr_community_fields_values SET `value` = \"$value\" WHERE `id` = $id");
                 }
                 catch (Exception $e) {
@@ -142,6 +157,25 @@ class Instructors {
     }
     
     /**
+     * Searches for instructors email by instructorID. 
+     *
+     * @param string    $instructorID       ID of the instructor in the database.     
+     * 
+     * @return  string  $email   instructors full name
+     *
+     */
+    public function getEmailByID($id) {
+        $sql = "SELECT email FROM b5.pr_users WHERE `id` = $id ";
+        
+        try {
+            return $this->db->getSingleValue($sql);
+        }
+        catch (Exception $e) {
+            return false;
+        }
+    }
+    
+    /**
      * Returns instructor's details by instructorID.
      *
      * @param   int     $id      InstructorID
@@ -180,6 +214,7 @@ class Instructors {
 
             $userDetails = array();
             $userDetails['Full name'] = $this->getNameByID($id);
+            $userDetails['Email'] = $this->getEmailByID($id);
             foreach ($fields as $key => $fieldID) {
                 if(isset($detailsArr[$fieldID]))
                     $userDetails[$key] = $detailsArr[$fieldID];

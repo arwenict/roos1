@@ -1,14 +1,13 @@
-<!doCTYpe html>
+<!doCTYpe html> 
 <html>
 <head>
     <script src="../js/jquery.min.js"></script>
     <script src="../trial/js/kendo.all.min.js"></script>
-    <script type="text/javascript" src="../../custom_lib/shared/js/jquery.multi-select.js"></script> 
+ 
     <link href="../styles/kendo.common.min.css" rel="stylesheet">
     <link href="../styles/kendo.silver.min.css" rel="stylesheet">
     <link href="../styles/kendo.silver.min.css" rel="stylesheet">
     <link href="../../templates/ifreedom-fjt/css/styles.css" rel="stylesheet">
-    <link href='../../custom_lib/shared/css/multi-select.css' rel='stylesheet' type='text/css' />
 
 </head>
 <body>
@@ -42,14 +41,7 @@
         label.location {float:left; clear:both; font-size:12px;}
         
     </style>
-    
-    <div id="edit-overlay" class="popup-wrapper" >
-        <div class="popup resizable">
-            
-        </div>
-    </div>
-	
-	<script>
+    <script>
 		//kendo.culture("en-US");
   
 
@@ -95,7 +87,7 @@
                             { field: "skills", title: "Skills", width: 140, filterable: false },     
                             { field: "permcov", title: "Perm / Cover", width: 70, filterable: true },
                             { field: "locations", title: "Locations", width: 100, filterable: true},
-                            { field: "edit_link", title: "Edit", width: 50, template:"<a href='' onclick=\"openEditPopUp('#=edit_link#'); return false;\" class='instr_edit'></a>", filterable: false}
+                            { field: "edit_link", title: "Edit", width: 50, template:"<a href='' onclick=\"parent.openEditPopUp('#=edit_link#'); return false;\" class='instr_edit'></a>", filterable: false}
                             ],
                             /*
                             toolbar: [ 
@@ -134,15 +126,6 @@
                         });
                         
 		});
-                
-                function openEditPopUp(id) {
-                    document.getElementById("edit-overlay").style.display = "block";
-                    $(".popup").load("data/ajaxHandler.php", "action=edit_instructor&instructorID="+id);
-                }
-                
-                function closeEditPopUp() {
-                    document.getElementById("edit-overlay").style.display = "none";
-                }
                 
                 function changeDefaults() {
                     setTimeout(function() {
@@ -194,37 +177,6 @@
                     }, 1);
                 }
 	</script>    
-        
-        <?php
-        # Implement a popup to be used as the edit popup
-        /*
-        
-         <a href="#" id='open-help' onclick="javascript:openPopUp();"class="help-link"> </a>
-        <div id="overlay" class="popup-wrapper" >
-            <div class="popup resizable">
-                <div id='cpt_lghtbx' class="mid fixedBox" style='overflow-y:scroll;'>
-                    <a href="#" id="close-captions" onclick="javascript:closePopUp()" class="close">&nbsp;</a>
-                    <h2>Help</h2>
-
-                    <div class="hightlight-box">
-                        <h3>Sub heading 1</h3>
-                        <p>HTML formatted text goes here</p>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
-         
-        function openPopUp() {
-            document.getElementById("overlay").style.display = "block";
-        }
-
-        function closePopUp() {
-            document.getElementById("overlay").style.display = "none";
-        }
-        */
-        ?>
 
 </body>
 </html>

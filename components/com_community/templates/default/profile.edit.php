@@ -1,5 +1,5 @@
 <?php
-/**
+/** 
  * @package	JomSocial
  * @subpackage Core 
  * @copyright (C) 2008 by Slashes & Dots Sdn Bhd - All rights reserved!
@@ -17,7 +17,7 @@ include_once("classes/skills.class.php");
 $locations = new Locations($db);
 $skills = new Skills($db);
 
-$studios = $locations->getAllStudios();
+$studios = $locations->getAllLocations();
 $skillsList = $skills->getSkillsList();
 
 $db->close();

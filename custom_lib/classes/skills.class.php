@@ -1,5 +1,5 @@
 <?php
-
+ 
 /**
  * @author mpak
  */
@@ -25,7 +25,7 @@ class Skills {
      */
     public function getSkillsList($order="", $direction = "DESC") {
         $sql = " 
-            SELECT * FROM rooster.skills 
+            SELECT * FROM b5.skills 
         ";
         
         if (!empty($order)) {
@@ -40,7 +40,7 @@ class Skills {
     
     public function getSkillNameByID($id) {
         $sql = " 
-            SELECT name FROM rooster.skills WHERE `skillID` = $id
+            SELECT name FROM b5.skills WHERE `skillID` = $id
         ";
         
         $skill = $this->db->getSingleValue($sql);
