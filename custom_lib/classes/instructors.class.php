@@ -19,8 +19,10 @@ class Instructors {
     );
     
     public function __construct($db=null) {
-        if ($db != null)
+        if ($db != null) {
             $this->db = $db;
+            $this->schema = $this->db->schema;
+        }
         else
             throw new Exception("DB connection required.");
     }
@@ -38,11 +40,11 @@ class Instructors {
     public function getListOfInstructors($order="", $direction = "DESC") {
         $sql = " 
             SELECT u.id, u.name, cfvm.value as mobile, email, cfvs.value as skills,cfvp.value as permcov, COALESCE(cfvl.value, -1) as locations 
-            FROM b5.pr_users u
-            LEFT JOIN b5.pr_community_fields_values cfvm on u.id=cfvm.user_id AND cfvm.field_id=6 
-            LEFT JOIN b5.pr_community_fields_values cfvs on u.id=cfvs.user_id AND cfvs.field_id=19 
-            LEFT JOIN b5.pr_community_fields_values cfvp on u.id=cfvp.user_id AND cfvp.field_id=21 
-            LEFT JOIN b5.pr_community_fields_values cfvl on u.id=cfvl.user_id AND cfvl.field_id=22 
+            FROM {$this->schema}.pr_users u
+            LEFT JOIN {$this->schema}.pr_community_fields_values cfvm on u.id=cfvm.user_id AND cfvm.field_id=6 
+            LEFT JOIN {$this->schema}.pr_community_fields_values cfvs on u.id=cfvs.user_id AND cfvs.field_id=19 
+            LEFT JOIN {$this->schema}.pr_community_fields_values cfvp on u.id=cfvp.user_id AND cfvp.field_id=21 
+            LEFT JOIN {$this->schema}.pr_community_fields_values cfvl on u.id=cfvl.user_id AND cfvl.field_id=22 
         ";
         
         if (!empty($order)) {
@@ -89,15 +91,15 @@ class Instructors {
             case "locations":
             
                 try {
-                    $idSQL = "SELECT `id` FROM b5.pr_community_fields_values WHERE `user_id`=$instructorID AND `field_id`={$this->mappingID[$field]}";
+                    $idSQL = "SELECT `id` FROM {$this->schema}.pr_community_fields_values WHERE `user_id`=$instructorID AND `field_id`={$this->mappingID[$field]}";
                     $id = $this->db->getSingleValue($idSQL);
                     $value = str_replace("null", "", $value);
                     $value = trim($value, ",");
-                    $this->db->update("UPDATE b5.pr_community_fields_values SET `value` = \"$value\" WHERE `id` = $id");
+                    $this->db->update("UPDATE {$this->schema}.pr_community_fields_values SET `value` = \"$value\" WHERE `id` = $id");
                 }
                 catch (Exception $e) {
                     //echo $e->getMessage();
-                    $valuesTableSQL = "INSERT INTO b5.pr_community_fields_values (`user_id`, `field_id`, `value`) VALUES ($instructorID, {$this->mappingID[$field]}, \"$value\")";
+                    $valuesTableSQL = "INSERT INTO {$this->schema}.pr_community_fields_values (`user_id`, `field_id`, `value`) VALUES ($instructorID, {$this->mappingID[$field]}, \"$value\")";
                     $this->db->insert($valuesTableSQL);
                 }
                 //echo $valuesTableSQL."\n";
@@ -110,7 +112,7 @@ class Instructors {
         
         if (!empty($userTableConditionSQL)) {
             $userTableConditionSQL = rtrim($userTableConditionSQL, ",");
-            $sql = "UPDATE b5.pr_users SET $userTableConditionSQL WHERE `id`=$instructorID";
+            $sql = "UPDATE {$this->schema}.pr_users SET $userTableConditionSQL WHERE `id`=$instructorID";
             $this->db->update($sql);
         }
         
@@ -127,7 +129,7 @@ class Instructors {
      *
      */
     public function getIDbyName($name) {
-        $sql = "SELECT id FROM b5.pr_users WHERE `name` = \"$name\" ";
+        $sql = "SELECT id FROM {$this->schema}.pr_users WHERE `name` = \"$name\" ";
         
         try {
             return $this->db->getSingleValue($sql);
@@ -146,7 +148,7 @@ class Instructors {
      *
      */
     public function getNameByID($id) {
-        $sql = "SELECT name FROM b5.pr_users WHERE `id` = $id ";
+        $sql = "SELECT name FROM {$this->schema}.pr_users WHERE `id` = $id ";
         
         try {
             return $this->db->getSingleValue($sql);
@@ -165,7 +167,7 @@ class Instructors {
      *
      */
     public function getEmailByID($id) {
-        $sql = "SELECT email FROM b5.pr_users WHERE `id` = $id ";
+        $sql = "SELECT email FROM {$this->schema}.pr_users WHERE `id` = $id ";
         
         try {
             return $this->db->getSingleValue($sql);

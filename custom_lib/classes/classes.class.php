@@ -7,8 +7,10 @@ class Classes {
     private $db;
     
     public function __construct($db=null) {
-        if ($db != null)
+        if ($db != null) {
             $this->db = $db;
+            $this->schema = $this->db->schema;
+        }
         else
             throw new Exception("DB connection required.");
     }
@@ -40,9 +42,9 @@ class Classes {
                 (hour(TIMEDIFF(  `enddate` ,  `startdate` ))*60)  + (Minute(TIMEDIFF(  `enddate` ,  `startdate` )))   AS Minutes, 
                 ((hour(TIMEDIFF(  `enddate` ,  `startdate` )))   + (Minute(TIMEDIFF(  `enddate` ,  `startdate` ))/60 ) )* HourlyRate  as TotalPayable, 
                 CASE ApprovedByManager WHEN 0 THEN 'false' ELSE 'true' END AS ApprovedByManager, AttendeeNumber, Paid, BankTransactionID, AttendeeTarget 
-            FROM b5.pr_community_events ce
-            INNER JOIN b5.pr_users u on ce.InstructorID=u.Id 
-            INNER JOIN b5.pr_locations loc on ce.location=loc.locid
+            FROM {$this->schema}.pr_community_events ce
+            INNER JOIN {$this->schema}.pr_users u on ce.InstructorID=u.Id 
+            INNER JOIN {$this->schema}.pr_locations loc on ce.location=loc.locid
             WHERE published=1 AND parent<>0 AND CatId=5 AND StartDate >='" .  $datefrom   .  "'  AND  StartDate <='" .  $dateto   .  "' 
             ORDER BY $order $direction 
             $limitStr
@@ -55,7 +57,7 @@ class Classes {
     }
      
     public function updateClassesFields($classID, $fields) {
-        $updateSQL = "UPDATE b5.pr_community_events SET ";
+        $updateSQL = "UPDATE {$this->schema}.pr_community_events SET ";
         
         foreach ($fields as $field => $value) {
             $updateSQL .= "`$field`='$value',";

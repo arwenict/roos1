@@ -7,8 +7,10 @@ class Skills {
     private $db;
     
     public function __construct($db=null) {
-        if ($db != null)
+        if ($db != null){
             $this->db = $db;
+            $this->schema = $this->db->schema;
+        }
         else
             throw new Exception("DB connection required.");
     }
@@ -25,7 +27,7 @@ class Skills {
      */
     public function getSkillsList($order="", $direction = "DESC") {
         $sql = " 
-            SELECT * FROM b5.skills 
+            SELECT * FROM {$this->schema}.skills 
         ";
         
         if (!empty($order)) {
@@ -40,7 +42,7 @@ class Skills {
     
     public function getSkillNameByID($id) {
         $sql = " 
-            SELECT name FROM b5.skills WHERE `skillID` = $id
+            SELECT name FROM {$this->schema}.skills WHERE `skillID` = $id
         ";
         
         $skill = $this->db->getSingleValue($sql);

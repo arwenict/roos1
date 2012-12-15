@@ -37,6 +37,8 @@ class DBHandler
     
     public $total_rows=0;
     
+    public $schema;
+    
     private $_mysqli_last = null; // pointer to the last mysql object used to run a query - holds error message.
     
     /**
@@ -44,9 +46,10 @@ class DBHandler
      * 
      * @param boolean $singleServerMode  Select whether a writable DB connection should also connect to a different Read Only server
      */
-    public function __construct()
+    public function __construct($schema)
     {
-            //Constructor
+            //Constructor      
+            $this->schema = $schema;
     }
     
     /**
@@ -61,7 +64,7 @@ class DBHandler
         if($account=="root") {
             $user = "arw49555_b5";
             $pass = "f1shb0ard";
-            $schema = 'b5';
+            $schema = $this->schema;
         }
             
         if(strlen($this->host)>0) {
