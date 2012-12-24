@@ -151,6 +151,8 @@ elseif ($action == "submitInstructor") {
 $db->close();
 
 function outLightBox($header, $body) {
+    global $instance;
+    
     echo "
         <div id='edit_lghtbx' class='mid fixedBox' style='overflow-y:scroll;'>
         <a href='#' id='close-captions' onclick='javascript:closeEditPopUp()' class='close'>&nbsp;</a>
