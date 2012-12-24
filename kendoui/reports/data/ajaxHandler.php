@@ -188,7 +188,7 @@ function outLightBox($header, $body) {
                 var values = 'instructorID='+instructorID+'&name='+fullname+'&email='+email+'&mobile='+mobile+'&address='+address+'&suburb='+suburb+'&state='+state+'&hourly='+hourly+'&abn='+abn+'&gst='+gst+'&permOrCover='+permOrCover+'&locations='+locations+'&skills='+skills;
 
                 $.ajax({
-                    url: '/max/kendoui/reports/data/ajaxHandler.php',
+                    url: '/main/kendoui/reports/data/ajaxHandler.php',
                     data: 'action=submitInstructor&'+values,
                     dataType: 'text',
                     success: function(data, textStatus, jqXHR){
