@@ -197,7 +197,7 @@ function outLightBox($header, $body) {
                     data: 'action=submitInstructor&'+values,
                     dataType: 'text',
                     success: function(data, textStatus, jqXHR){
-                        //location.reload();
+                        location.reload();
                     }
                 });
                 //alert(values);  

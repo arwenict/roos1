@@ -9,7 +9,7 @@ function closePopUp() {
 function openEditPopUp(id) {
     var $ = new jQuery.noConflict();
     document.getElementById("edit-overlay").style.display = "block";
-    $("#editPopup").load("/max/kendoui/reports/data/ajaxHandler.php", "action=edit_instructor&instructorID="+id);
+    $("#editPopup").load("/main/kendoui/reports/data/ajaxHandler.php", "action=edit_instructor&instructorID="+id);
 }
 
 function closeEditPopUp() {
