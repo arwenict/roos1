@@ -5,6 +5,8 @@
  */
 class Instructors {
     private $db;
+    private $companyID;
+    private $roles;
     private $mappingID = array(
         "mobile" => 6,
         "address" => 8,
@@ -15,12 +17,14 @@ class Instructors {
         "skills" => 19,
         "hourly" => 20,
         "permOrCover" => 21,
-        "locations" => 22
+        "locations" => 22,
+        "companies" => 23
     );
     
-    public function __construct($db=null) {
+    public function __construct($db=null, $user=null) {
         if ($db != null) {
             $this->db = $db;
+            $this->user = $user;
             $this->schema = $this->db->schema;
         }
         else
@@ -38,23 +42,53 @@ class Instructors {
      *
      */
     public function getListOfInstructors($order="", $direction = "DESC") {
-        $sql = " 
-            SELECT u.id, u.name, cfvm.value as mobile, email, cfvs.value as skills,cfvp.value as permcov, COALESCE(cfvl.value, -1) as locations 
-            FROM {$this->schema}.pr_users u
-            LEFT JOIN {$this->schema}.pr_community_fields_values cfvm on u.id=cfvm.user_id AND cfvm.field_id=6 
-            LEFT JOIN {$this->schema}.pr_community_fields_values cfvs on u.id=cfvs.user_id AND cfvs.field_id=19 
-            LEFT JOIN {$this->schema}.pr_community_fields_values cfvp on u.id=cfvp.user_id AND cfvp.field_id=21 
-            LEFT JOIN {$this->schema}.pr_community_fields_values cfvl on u.id=cfvl.user_id AND cfvl.field_id=22 
-        ";
-        
-        if (!empty($order)) {
-            $sql .= " ORDER BY u.$order $direction";
-        }
-        
-        $instructors = $this->db->getMultiDimensionalArray($sql);
+        if ($this->user != null) {
+            $whereSQL = "WHERE ";
+            
+            # Returning list of instructors allowed to accounts payable and company system admin
+            if ( in_array("Accounts Payable", $this->user->userGroups) || 
+                 in_array("Administrator", $this->user->userGroups) 
+               ) {
+                foreach ($this->user->locations['companies'] as $id => $info) {
+                    $whereSQL .= '(cfvc.value LIKE "%'.$id.',%" OR cfvc.value LIKE "%,'.$id.'%" OR cfvc.value LIKE "'.$id.'") AND ';
+                }
+                
+            }
+            
+            # Returning list of instructors allowed to Group Ex Coordinators and Managers
+            if ( in_array("Group Ex Coordinators", $this->user->userGroups) || 
+                 in_array("Group Ex Managers", $this->user->userGroups)
+               ) { 
+                
+                foreach ($this->user->locations['clubs'] as $id => $info) {
+                    $whereSQL .= '(cfvl.value LIKE "%'.$id.',%" OR cfvl.value LIKE "%,'.$id.'%" OR cfvl.value LIKE "'.$id.'") AND ';
+                }
+            }
 
-        return $instructors;
-        
+            $whereSQL .= "1 ";
+            
+            $sql = " 
+                SELECT u.id, u.name, cfvm.value as mobile, email, cfvs.value as skills,cfvp.value as permcov, COALESCE(cfvl.value, -1) as locations 
+                FROM {$this->schema}.pr_users u
+                LEFT JOIN {$this->schema}.pr_community_fields_values cfvm on u.id=cfvm.user_id AND cfvm.field_id=6 
+                LEFT JOIN {$this->schema}.pr_community_fields_values cfvs on u.id=cfvs.user_id AND cfvs.field_id=19 
+                LEFT JOIN {$this->schema}.pr_community_fields_values cfvp on u.id=cfvp.user_id AND cfvp.field_id=21 
+                LEFT JOIN {$this->schema}.pr_community_fields_values cfvl on u.id=cfvl.user_id AND cfvl.field_id=22 
+                LEFT JOIN {$this->schema}.pr_community_fields_values cfvc on u.id=cfvl.user_id AND cfvc.field_id=24
+                $whereSQL
+            ";
+
+            if (!empty($order)) {
+                $sql .= " ORDER BY u.$order $direction";
+            }
+            //echo $sql;
+            $instructors = $this->db->getMultiDimensionalArray($sql);
+
+            return $instructors;
+        }
+        else {
+            throw new Exception("Missing user roles");
+        }
     }
      
     /**
@@ -89,6 +123,7 @@ class Instructors {
             case "hourly":
             case "permOrCover":
             case "locations":
+            case "companies":
             
                 try {
                     $idSQL = "SELECT `id` FROM {$this->schema}.pr_community_fields_values WHERE `user_id`=$instructorID AND `field_id`={$this->mappingID[$field]}";

@@ -12,9 +12,9 @@ include_once("../../../boot.php");
 include_once("classes/instructors.class.php");
 include_once("classes/skills.class.php");
 include_once("classes/locations.class.php");
+include_once("classes/user.class.php");
 
 /* Inititalising objects */
-$instructors = new Instructors($db);
 $skills = new Skills($db);
 $locations = new Locations($db);
 
@@ -33,16 +33,37 @@ header("Content-type: application/json");
 // determine the request type
 $verb = $_SERVER["REQUEST_METHOD"];
 
-// handle a GET
-if ($verb == "GET") {
+if (!empty($_COOKIE["activeProfile"])) {
+    $userID = $_COOKIE["activeProfile"];
+    try {
+        $user = new User($userID, $db);
+        $user->setUser($locations);
+        //print_r($user);
+    }
+    catch (Exception $e) {
+        echo $e->getMessage();
+        //echo "no companies";
+    }
+    //$userRole = $use
+}
+else {
+    echo "User should be logged in."; 
+    die();
+}
+
+if (count($user->locations['companies'] == 1)) { // If a normal user (i.e. only 1 company assigned)
+    $instructors = new Instructors($db, $user);
+
+    // handle a GET
+    if ($verb == "GET") {
         $instructorsArr = $instructors->getListOfInstructors("name", "ASC");
-        
+
         $i=0;
         $results = array();
         foreach ($instructorsArr as $instructor) {
             $results[$i] = $instructor;
-            
-            
+
+
             /* Formatting SKILLSET string */
             if (!empty($instructor['skills']) && $instructor['skills'] != "null") {
                 $skillset = explode(",", $instructor['skills']);
@@ -54,7 +75,7 @@ if ($verb == "GET") {
             }
             else
                 $skillsStr = "No skills set";
-            
+
             /* Formatting LOCATIONS string */
             if (!empty($instructor['locations']) && $instructor['locations'] != "-1") {
                 $locationsArr = explode(",", $instructor['locations']);
@@ -66,16 +87,16 @@ if ($verb == "GET") {
             }
             else
                 $locationsStr = "No locations set";
-            
+
             $results[$i]["skills"] = $skillsStr;
             $results[$i]["locations"] = $locationsStr;
-            
+
             $results[$i]["edit_link"] = "{$instructor['id']}";
             $i++;
         }
-	echo "{\"data\":" .json_encode($results). "}";	
+        echo "{\"data\":" .json_encode($results). "}";	
+    }
 }
-
 // handle a POST
 if ($verb == "POST") {
         $id = $db->escape($_POST["id"]);
@@ -84,7 +105,7 @@ if ($verb == "POST") {
         $updateFields['mobile'] = $db->escape($_POST["mobile"]);
         $updateFields['locations'] = $db->escape($_POST["locations"]);
         $updateFields['skills'] = $db->escape($_POST["skills"]);
-   
+        $updateFields['companies']  = $locations->getCompaniesFromLocations($_POST["locations"], "str");
         
         $result = $instructors->updateInstructorFields($id, $updateFields);
         

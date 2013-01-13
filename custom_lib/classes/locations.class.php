@@ -78,7 +78,7 @@ class Locations {
         return false;
     }
     
-    function walkUpTreeFromNode($nodeID) {
+    public function walkUpTreeFromNode($nodeID) {
         $outputArray = array();
         $currentNode = $this->getNodeInfoAsArray($nodeID);
         $outputArray[$currentNode['nodeID']] = $currentNode;
@@ -91,6 +91,20 @@ class Locations {
             $outputArray[$currentNode['nodeID']] = $currentNode;
         }
         return $outputArray;
+    }
+    
+    public function walkUpCompanyFromNode($nodeID) {
+        $outputArray = array();
+        $currentNode = $this->getNodeInfoAsArray($nodeID);
+        $outputArray[$currentNode['nodeID']] = $currentNode;
+        $count=0;
+        while($currentNode['parentID'] != 0 ) {
+            $count++;
+            if($count>=16)
+                throw new Exception("Walk up the tree too far, walked up $count levels, max 16");
+            $currentNode = $this->getNodeInfoAsArray($currentNode['parentID']);
+        }
+        return $currentNode;
     }
     
     function getStudioCode($nodeID) {
@@ -122,6 +136,27 @@ class Locations {
         $code = trim($code, "-");
         
         return $code;
+    }
+    
+    public function getCompaniesFromLocations($locations, $return = "array") {
+        $locationsArr = explode(",", $locations);
+        
+        foreach ($locationsArr as $location) {
+            $companyInfo = $this->walkUpCompanyFromNode($location);
+            $companies[$companyInfo['nodeID']] = $companyInfo;
+        }
+        
+        if ($return == "str") {
+            $companiesStr = "";
+            foreach ($companies as $companyID => $info) {
+                $companiesStr .= "$companyID,";
+            }
+            $companiesStr = rtrim($companiesStr, ",");
+            
+            return $companiesStr;
+        }
+        else
+            return $companies;
     }
 }
 ?>

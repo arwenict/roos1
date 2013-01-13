@@ -144,7 +144,9 @@ if ($action == "edit_instructor") {
 elseif ($action == "submitInstructor") {
     //print_r($_GET);
     $instructorID = getParameterNumber("instructorID");
-    $instructors->updateInstructorFields($instructorID, $_GET);
+    $updateFields = $_GET;
+    $updateFields['companies']  = $locations->getCompaniesFromLocations($_GET["locations"], "str");
+    $instructors->updateInstructorFields($instructorID, $updateFields);
 }
 # EDIT_INSTRUCTOR END
 
@@ -158,6 +160,7 @@ function outLightBox($header, $body) {
         <a href='#' id='close-captions' onclick='javascript:closeEditPopUp()' class='close'>&nbsp;</a>
             <h2>$header</h2>
             <hr /><br />
+            <button onclick='javascript:submitInstructorEdit(); return false;'>Submit</button>
             <div class='hightlight-box'>
                 $body
             </div>
@@ -194,7 +197,7 @@ function outLightBox($header, $body) {
                     data: 'action=submitInstructor&'+values,
                     dataType: 'text',
                     success: function(data, textStatus, jqXHR){
-                        location.reload();
+                        //location.reload();
                     }
                 });
                 //alert(values);  
