@@ -329,6 +329,8 @@ if ($showDST) {
 
 <?php
 }
+/* Commented out by mpak as this code was causing a fatal error. Have a suspicisous that the object is either being re-initialised and should not 
+ * be of a JConfig class or the fbconnectkey and fbconnectsecret values should be included into the current config
 if( $config->get('fbconnectkey') && $config->get('fbconnectsecret') )
 {
 ?>
@@ -365,6 +367,8 @@ if( $config->get('fbconnectkey') && $config->get('fbconnectsecret') )
 		}
 	}
 }
+ * 
+ */
 ?>
 
 </div>
