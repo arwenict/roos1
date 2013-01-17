@@ -45,6 +45,10 @@ class Instructors {
         if ($this->user != null) {
             $whereSQL = "WHERE ";
             
+            # Fixes exception thrown 
+            if ($this->user->userGroups == null)
+                $this->user->userGroups = array();
+            
             # Returning list of instructors allowed to accounts payable and company system admin
             if ( in_array("Accounts Payable", $this->user->userGroups) || 
                  in_array("Administrator", $this->user->userGroups) 

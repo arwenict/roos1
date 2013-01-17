@@ -41,7 +41,7 @@ if (!empty($_COOKIE["activeProfile"])) {
         //print_r($user);
     }
     catch (Exception $e) {
-        echo $e->getMessage();
+        //echo $e->getMessage();
         //echo "no companies";
     }
     //$userRole = $use

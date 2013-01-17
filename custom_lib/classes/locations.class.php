@@ -73,7 +73,7 @@ class Locations {
             $result->free();
             return $ret;
         } else {
-            throw new Exception("Get Node Info: node does not exist");
+            throw new Exception("Get Node Info: node [$nodeID] does not exist");
         }
         return false;
     }
