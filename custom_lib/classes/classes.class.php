@@ -6,9 +6,10 @@
 class Classes {
     private $db;
     
-    public function __construct($db=null) {
+    public function __construct($db=null, $user=null) {
         if ($db != null) {
             $this->db = $db;
+            $this->user = $user;
             $this->schema = $this->db->schema;
         }
         else
@@ -54,6 +55,36 @@ class Classes {
 
         return $classes;
         
+    }
+    
+    public function getClassesForLocation($start, $end, $locationID) {
+        $sql = "
+            SELECT id, title, HourlyRate, AttendeeNumber, startdate, enddate, InstructorID FROM `{$this->schema}`.`pr_community_events` 
+            WHERE `catid`<>0 AND `parent`<>0 AND `published`=1 AND `location`=$locationID AND `startdate`>='$start' AND `enddate` <= '$end'";
+
+        $classes = $this->db->getMultiDimensionalArray($sql);
+
+        $results = array();
+        foreach ($classes as $class) {
+            try {
+                $instructorName = $this->db->getSingleValue("SELECT `name` FROM {$this->schema}.pr_users WHERE `id`={$class['InstructorID']}"); 
+                $instructorName = substr($instructorName, 0, strpos($instructorName, " ")); 
+            }
+            catch (Exception $e) {
+                $instructorName = "";
+            }
+
+            $results[] = array(
+                "id" => $class['id'],
+                "title" => $class["title"],
+                "description" => "{$class['title']}<br />Instructor:$instructorName<br />Rate:$"."{$class['HourlyRate']}<br />Attendees:{$class["AttendeeNumber"]}",
+                "start" => $class['startdate'],
+                "end" => $class['enddate'],
+                "allDay" => ""    
+            );
+        }
+        //print_r($results);
+        return $results;
     }
      
     public function updateClassesFields($classID, $fields) {

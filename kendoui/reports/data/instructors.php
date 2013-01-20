@@ -23,9 +23,6 @@ $mainframe =& JFactory::getApplication('site');
 $mainframe->initialise();
 JPluginHelper::importPlugin('system');
 $mainframe->triggerEvent('onAfterInitialise');
-/* Make sure we are logged in at all. */
-if (JFactory::getUser()->id == 0)
-   die("You have to be logged in.");
 
 // add the header line to specify that the content type is JSON
 header("Content-type: application/json");
@@ -33,8 +30,12 @@ header("Content-type: application/json");
 // determine the request type
 $verb = $_SERVER["REQUEST_METHOD"];
 
-if (!empty($_COOKIE["activeProfile"])) {
-    $userID = $_COOKIE["activeProfile"];
+/* Make sure we are logged in at all. */
+$userID = JFactory::getUser()->id;
+
+if ($userID == 0)
+   die("You have to be logged in.");
+else {
     try {
         $user = new User($userID, $db);
         $user->setUser($locations);
@@ -46,10 +47,6 @@ if (!empty($_COOKIE["activeProfile"])) {
     }
     //$userRole = $use
 }
-else {
-    echo "User should be logged in."; 
-    die();
-}
 
 if (count($user->locations['companies'] == 1)) { // If a normal user (i.e. only 1 company assigned)
     $instructors = new Instructors($db, $user);
@@ -60,39 +57,42 @@ if (count($user->locations['companies'] == 1)) { // If a normal user (i.e. only 
 
         $i=0;
         $results = array();
-        foreach ($instructorsArr as $instructor) {
-            $results[$i] = $instructor;
+        
+        if (!empty($instructorsArr)) {
+            foreach ($instructorsArr as $instructor) {
+                $results[$i] = $instructor;
 
 
-            /* Formatting SKILLSET string */
-            if (!empty($instructor['skills']) && $instructor['skills'] != "null") {
-                $skillset = explode(",", $instructor['skills']);
-                $skillsStr = "";
-                foreach ($skillset as $skill) {
-                    $skillsStr .= $skills->getSkillNameByID($skill).",";
+                /* Formatting SKILLSET string */
+                if (!empty($instructor['skills']) && $instructor['skills'] != "null") {
+                    $skillset = explode(",", $instructor['skills']);
+                    $skillsStr = "";
+                    foreach ($skillset as $skill) {
+                        $skillsStr .= $skills->getSkillNameByID($skill).",";
+                    }
+                    $skillsStr = rtrim($skillsStr, ",");
                 }
-                $skillsStr = rtrim($skillsStr, ",");
-            }
-            else
-                $skillsStr = "No skills set";
+                else
+                    $skillsStr = "No skills set";
 
-            /* Formatting LOCATIONS string */
-            if (!empty($instructor['locations']) && $instructor['locations'] != "-1") {
-                $locationsArr = explode(",", $instructor['locations']);
-                $locationsStr = "";
-                foreach ($locationsArr as $loc) {
-                    $locationsStr .= $locations->getLocationNameByID($loc).", ";
+                /* Formatting LOCATIONS string */
+                if (!empty($instructor['locations']) && $instructor['locations'] != "-1") {
+                    $locationsArr = explode(",", $instructor['locations']);
+                    $locationsStr = "";
+                    foreach ($locationsArr as $loc) {
+                        $locationsStr .= $locations->getLocationNameByID($loc).", ";
+                    }
+                    $locationsStr = rtrim($locationsStr, ", ");
                 }
-                $locationsStr = rtrim($locationsStr, ", ");
+                else
+                    $locationsStr = "No locations set";
+
+                $results[$i]["skills"] = $skillsStr;
+                $results[$i]["locations"] = $locationsStr;
+
+                $results[$i]["edit_link"] = "{$instructor['id']}";
+                $i++;
             }
-            else
-                $locationsStr = "No locations set";
-
-            $results[$i]["skills"] = $skillsStr;
-            $results[$i]["locations"] = $locationsStr;
-
-            $results[$i]["edit_link"] = "{$instructor['id']}";
-            $i++;
         }
         echo "{\"data\":" .json_encode($results). "}";	
     }

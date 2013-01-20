@@ -158,5 +158,23 @@ class Locations {
         else
             return $companies;
     }
+    
+    public function getAllChildNodeID($nodeID) {
+        $sql = "SELECT nodeID FROM {$this->schema}.locations WHERE parentID='$nodeID'";
+
+        $ids="";
+        $ids_array = $this->db->getSingleValueArray($sql);
+        
+        if (!empty($ids_array)) {
+            foreach ($ids_array as $id) {
+                $ids .= "$id, ";
+                $x = $this->getAllChildNodeID((int)$id);
+                $ids .= $x;
+            }
+        }
+
+        return $ids;
+        //print_r($ids_array);
+    }
 }
 ?>

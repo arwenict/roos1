@@ -29,7 +29,25 @@ header("Content-type: application/json");
 
 // determine the request type
 $verb = $_SERVER["REQUEST_METHOD"];
-
+/*
+if (!empty($_COOKIE["activeProfile"])) {
+    $userID = $_COOKIE["activeProfile"];
+    try {
+        $user = new User($userID, $db);
+        $user->setUser($locations);
+        //print_r($user);
+    }
+    catch (Exception $e) {
+        //echo $e->getMessage();
+        //echo "no companies";
+    }
+    //$userRole = $use
+}
+else {
+    echo "User should be logged in."; 
+    die();
+}
+*/
 // handle a GET
 if ($verb == "GET") {
         $datefrom= $db->escape($_GET["datefrom"]);

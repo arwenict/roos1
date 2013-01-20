@@ -300,5 +300,37 @@ class DBHandler
             //error_log("wtf: $row[0]");
             return $row[0];
     }
+    
+    /**
+     * Runs a query and return an array of results, single column query returned as an array
+     *
+     * @param string $sql the SQL query to be run. Please make sure this query has been sanitised!
+     * @return array enumerated array containing the single column results
+     *
+     */
+	function getSingleValueArray($sql)
+	{
+		
+		if($result = $this->doQuery($sql, true))
+		{
+			if($result->num_rows >= 0)
+			{
+				$vals = Array(); 
+				for($i=0;$i< $result->num_rows;$i++)
+				{
+					$row=$result->fetch_array();
+					$vals[] = $row[0];	
+				}
+				$result->close();
+				
+			}
+			else
+				return null;
+		}
+		else 
+			return Array();
+			
+		return $vals;	
+	}
 }
 ?>

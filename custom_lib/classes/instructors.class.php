@@ -55,12 +55,10 @@ class Instructors {
                ) {
                 foreach ($this->user->locations['companies'] as $id => $info) {
                     $whereSQL .= '(cfvc.value LIKE "%'.$id.',%" OR cfvc.value LIKE "%,'.$id.'%" OR cfvc.value LIKE "'.$id.'") AND ';
-                }
-                
+                }   
             }
-            
             # Returning list of instructors allowed to Group Ex Coordinators and Managers
-            if ( in_array("Group Ex Coordinators", $this->user->userGroups) || 
+            elseif ( in_array("Group Ex Coordinators", $this->user->userGroups) || 
                  in_array("Group Ex Managers", $this->user->userGroups)
                ) { 
                 
@@ -68,8 +66,10 @@ class Instructors {
                     $whereSQL .= '(cfvl.value LIKE "%'.$id.',%" OR cfvl.value LIKE "%,'.$id.'%" OR cfvl.value LIKE "'.$id.'") AND ';
                 }
             }
-
-            $whereSQL .= "1 ";
+            elseif (in_array("Super Users", $this->user->userGroups))
+                $whereSQL .= "1 ";
+            else
+                return;
             
             $sql = " 
                 SELECT u.id, u.name, cfvm.value as mobile, email, cfvs.value as skills,cfvp.value as permcov, COALESCE(cfvl.value, -1) as locations 

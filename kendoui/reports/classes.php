@@ -1,8 +1,29 @@
 <?php
     include_once("../../boot.php"); 
     include_once("classes/instructors.class.php");
+    include_once("classes/locations.class.php");
+    include_once("classes/user.class.php");
     
-    $instructors = new Instructors($db);
+    $locations = new Locations($db);
+    
+    if (!empty($_COOKIE["activeProfile"])) {
+        $userID = $_COOKIE["activeProfile"];
+        try {
+            $user = new User($userID, $db);
+            $user->setUser($locations);
+            //print_r($user);
+        }
+        catch (Exception $e) {
+            //echo $e->getMessage();
+            //echo "no companies";
+        }
+    }
+    else {
+        echo "User should be logged in."; 
+        die();
+    }
+    
+    $instructors = new Instructors($db, $user);
     $instructorsList = $instructors->getListOfInstructors();
     
     $jsArray = "[";

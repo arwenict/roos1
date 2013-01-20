@@ -2,6 +2,7 @@
    
     include_once("../boot.php");
     include_once("classes/locations.class.php");
+    include_once("classes/user.class.php");
     
     $locations = new Locations($db);
     $studios = $locations->getAllLocations();
