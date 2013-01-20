@@ -5,6 +5,8 @@
     $first_studio = array_shift(array_values($studios));
     $defaultStudioID = $first_studio['nodeID'];
 
+    $location = getParameterString("location", $defaultStudioID);
+    
     $jsStudiosArray = "";
     
     foreach ($studios as $studio) {
@@ -65,10 +67,7 @@ function setMyView() {
 	          
 	          //$("#submit").button();
 	          
-	          var locationPicked= $("#location").val();
-                    
-	          if (locationPicked=="")
-	              {locationPicked= $.cookie('location') || "<?php echo $defaultStudioID ?>";}
+	          var locationPicked = <?php echo $location ?>;
 
 	           var data = [
                            // { text: "CBD - Hero", value: "1" },
@@ -95,7 +94,7 @@ Liverpool	9
                   
 
                     // create DropDownList from input HTML element
-                    $("#locationID").kendoDropDownList({
+                    $("#location").kendoDropDownList({
                         dataTextField: "text",
                         dataValueField: "value",
                         dataSource: data, 
@@ -254,12 +253,11 @@ content : event.description+'<br><a href="../index.php/jomsocial/events/vieweven
             <div id="classesDB">
             <div style="margin-top: -6px; ">
             Select location:
-            <select id="locationID" name="locationID" >
+            <select id="location" name="location" >
               
             </select>
              &nbsp;&nbsp;
-                    <button id="submit" name="submit" type="submit" value="show">Show</button>
-             <input type="hidden" id="location"  name="location" value="" />       
+                    <button id="submit" name="submit" type="submit" value="show">Show</button>       
         </form>
 </br>
 </br>
