@@ -1,12 +1,10 @@
-<?php 
-   
+<?php     
     include_once("../boot.php");
-    include_once("classes/locations.class.php");
-    include_once("classes/user.class.php");
     
-    $locations = new Locations($db);
-    $studios = $locations->getAllLocations();
-    
+    $studios = $locations->getAllLocations(false, $user);
+    $first_studio = array_shift(array_values($studios));
+    $defaultStudioID = $first_studio['nodeID'];
+
     $jsStudiosArray = "";
     
     foreach ($studios as $studio) {
@@ -68,9 +66,9 @@ function setMyView() {
 	          //$("#submit").button();
 	          
 	          var locationPicked= $("#location").val();
-	          
+                    
 	          if (locationPicked=="")
-	              {locationPicked= $.cookie('location') || "9";}
+	              {locationPicked= $.cookie('location') || "<?php echo $defaultStudioID ?>";}
 
 	           var data = [
                            // { text: "CBD - Hero", value: "1" },
@@ -104,7 +102,7 @@ Liverpool	9
                         value: locationPicked
                         ///change: onChange
                     });
-                    $.cookie("location",locationPicked);
+                     $.cookie("location",locationPicked);
                     
 
                
@@ -261,7 +259,7 @@ content : event.description+'<br><a href="../index.php/jomsocial/events/vieweven
             </select>
              &nbsp;&nbsp;
                     <button id="submit" name="submit" type="submit" value="show">Show</button>
-             <input type="hidden" id="location"  name="location" value="<?php echo $_GET['locationID']; ?>" />       
+             <input type="hidden" id="location"  name="location" value="" />       
         </form>
 </br>
 </br>

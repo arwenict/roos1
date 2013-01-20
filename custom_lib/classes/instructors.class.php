@@ -67,9 +67,11 @@ class Instructors {
                 }
             }
             elseif (in_array("Super Users", $this->user->userGroups))
-                $whereSQL .= "1 ";
+                $whereSQL .= "";
             else
                 return;
+            
+            $whereSQL .= " 1 ";
             
             $sql = " 
                 SELECT u.id, u.name, cfvm.value as mobile, email, cfvs.value as skills,cfvp.value as permcov, COALESCE(cfvl.value, -1) as locations 

@@ -40,7 +40,7 @@ class Locations {
         return $studios;
     }
     
-    public function getAllLocations($inclCompany=false) {
+    public function getAllLocations($inclCompany=false, $user=null) {
         ini_set("display_errors", 1);
         $studios = array();
         $sql = "SELECT * FROM {$this->schema}.locations WHERE `type`='location'";
@@ -48,6 +48,13 @@ class Locations {
         $studiosArr = $this->db->getMultiDimensionalArray($sql);
 
         foreach ($studiosArr as $studio) {
+            if ($user != null) {
+                
+                $companyArr = $this->walkUpCompanyFromNode($studio['nodeID']);
+                $companyID = current($companyArr);
+                if (empty($user->locations['companies'][$companyID])) 
+                    continue;
+            }
             $resultArray = $studio;
             $tree = $this->walkUpTreeFromNode($studio['nodeID']);
             

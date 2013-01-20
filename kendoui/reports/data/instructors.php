@@ -1,12 +1,4 @@
 <?php
-
-define( '_JEXEC', 1 );
-define( '_VALID_MOS', 1 );
-define('JPATH_BASE', '../../../');
-define( 'DS', DIRECTORY_SEPARATOR );
-require_once ( JPATH_BASE .DS.'includes'.DS.'defines.php' );
-require_once ( JPATH_BASE .DS.'includes'.DS.'framework.php' );
-
 /* Including neccessary libraries */
 include_once("../../../boot.php");
 include_once("classes/instructors.class.php");
@@ -29,24 +21,6 @@ header("Content-type: application/json");
 
 // determine the request type
 $verb = $_SERVER["REQUEST_METHOD"];
-
-/* Make sure we are logged in at all. */
-$userID = JFactory::getUser()->id;
-
-if ($userID == 0)
-   die("You have to be logged in.");
-else {
-    try {
-        $user = new User($userID, $db);
-        $user->setUser($locations);
-        //print_r($user);
-    }
-    catch (Exception $e) {
-        //echo $e->getMessage();
-        //echo "no companies";
-    }
-    //$userRole = $use
-}
 
 if (count($user->locations['companies'] == 1)) { // If a normal user (i.e. only 1 company assigned)
     $instructors = new Instructors($db, $user);
@@ -80,7 +54,12 @@ if (count($user->locations['companies'] == 1)) { // If a normal user (i.e. only 
                     $locationsArr = explode(",", $instructor['locations']);
                     $locationsStr = "";
                     foreach ($locationsArr as $loc) {
-                        $locationsStr .= $locations->getLocationNameByID($loc).", ";
+                        try {
+                            $locationsStr .= $locations->getLocationNameByID($loc).", ";
+                        }
+                        catch (Exception $e) {
+                            
+                        }
                     }
                     $locationsStr = rtrim($locationsStr, ", ");
                 }

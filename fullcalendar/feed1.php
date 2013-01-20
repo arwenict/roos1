@@ -1,41 +1,9 @@
 <?php
-
-define( '_JEXEC', 1 );
-define( '_VALID_MOS', 1 );
-define('JPATH_BASE', '../');
-define( 'DS', DIRECTORY_SEPARATOR );
-require_once ( JPATH_BASE .DS.'includes'.DS.'defines.php' );
-require_once ( JPATH_BASE .DS.'includes'.DS.'framework.php' );
-/* Create the Application */
-$mainframe =& JFactory::getApplication('site');
-$mainframe->initialise();
-JPluginHelper::importPlugin('system');
-$mainframe->triggerEvent('onAfterInitialise');
-
 /* Including neccessary libraries */
 include_once("../boot.php");
 include_once("classes/classes.class.php");
 include_once("classes/locations.class.php");
 include_once("classes/user.class.php");
-
-/* Make sure we are logged in at all. */
-$userID = JFactory::getUser()->id;
-$locations = new Locations($db);
-
-if ($userID == 0)
-   die("You have to be logged in.");
-else {
-    try {
-        $user = new User($userID, $db);
-        $user->setUser($locations);
-        //print_r($user);
-    }
-    catch (Exception $e) {
-        //echo $e->getMessage();
-        //echo "no companies";
-    }
-    //$userRole = $use
-}
 
 $locationID = getParameterNumber("location");
 $startTime = getParameterString("start");
