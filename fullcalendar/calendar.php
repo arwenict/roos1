@@ -1,7 +1,7 @@
 <?php     
     include_once("../boot.php");
     
-    $studios = $locations->getAllLocations(false, $user);
+    $studios = $locations->getAllStudios(false, $user);
     $first_studio = array_shift(array_values($studios));
     $defaultStudioID = $first_studio['nodeID'];
 
@@ -24,8 +24,8 @@
 <link rel='stylesheet' type='text/css' href='fullcalendar/fullcalendar.print.css' media='print' />
 
  <style>
-#simplemodal-overlay {background-color:#000;}
-#simplemodal-container {background-color:#333; border:8px solid #444; padding:12px;}
+    #simplemodal-overlay {background-color:#000;}
+    #simplemodal-container {background-color:#333; border:8px solid #444; padding:12px;}
 </style>
 
 <script type='text/javascript' src='jquery/jquery-1.7.1.min.js'></script>

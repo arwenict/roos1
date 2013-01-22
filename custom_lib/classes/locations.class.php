@@ -15,13 +15,20 @@ class Locations {
             throw new Exception("DB connection required.");
     }
     
-    public function getAllStudios($inclCompany=false) {
+    public function getAllStudios($inclCompany=false, $user=null) {
         $studios = array();
         $sql = "SELECT * FROM {$this->schema}.locations WHERE `type`='studio'";
         
         $studiosArr = $this->db->getMultiDimensionalArray($sql);
         
         foreach ($studiosArr as $studio) {
+            if ($user != null) {
+                $companyArr = $this->walkUpCompanyFromNode($studio['nodeID']);
+                $companyID = current($companyArr);
+                if (empty($user->locations['companies'][$companyID])) 
+                    continue;
+            }
+            
             $resultArray = $studio;
             $tree = $this->walkUpTreeFromNode($studio['nodeID']);
             
@@ -41,7 +48,7 @@ class Locations {
     }
     
     public function getAllLocations($inclCompany=false, $user=null) {
-        ini_set("display_errors", 1);
+        # ini_set("display_errors", 1);
         $studios = array();
         $sql = "SELECT * FROM {$this->schema}.locations WHERE `type`='location'";
         
@@ -49,7 +56,6 @@ class Locations {
 
         foreach ($studiosArr as $studio) {
             if ($user != null) {
-                
                 $companyArr = $this->walkUpCompanyFromNode($studio['nodeID']);
                 $companyID = current($companyArr);
                 if (empty($user->locations['companies'][$companyID])) 
