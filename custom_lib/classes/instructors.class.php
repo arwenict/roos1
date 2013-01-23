@@ -54,8 +54,10 @@ class Instructors {
                  in_array("Administrator", $this->user->userGroups) 
                ) {
                 foreach ($this->user->locations['companies'] as $id => $info) {
-                    $whereSQL .= '(cfvc.value LIKE "%'.$id.',%" OR cfvc.value LIKE "%,'.$id.'%" OR cfvc.value LIKE "'.$id.'") AND ';
-                }   
+                    $whereSQL .= '(cfvc.value LIKE "%'.$id.',%" OR cfvc.value LIKE "%,'.$id.'%" OR cfvc.value LIKE "'.$id.'") OR ';
+                }
+                
+                $whereSQL = substr($whereSQL, 0, strrpos($whereSQL, "OR "));
             }
             # Returning list of instructors allowed to Group Ex Coordinators and Managers
             elseif ( in_array("Group Ex Coordinators", $this->user->userGroups) || 
@@ -63,15 +65,16 @@ class Instructors {
                ) { 
                 
                 foreach ($this->user->locations['clubs'] as $id => $info) {
-                    $whereSQL .= '(cfvl.value LIKE "%'.$id.',%" OR cfvl.value LIKE "%,'.$id.'%" OR cfvl.value LIKE "'.$id.'") AND ';
+                    $whereSQL .= '(cfvl.value LIKE "%'.$id.',%" OR cfvl.value LIKE "%,'.$id.'%" OR cfvl.value LIKE "'.$id.'") OR ';
                 }
+                $whereSQL = substr($whereSQL, 0, strrpos($whereSQL, "OR "));
             }
             elseif (in_array("Super Users", $this->user->userGroups))
                 $whereSQL .= "";
             else
                 return;
             
-            $whereSQL .= " 1 ";
+            //$whereSQL .= " 1 ";
             
             $sql = " 
                 SELECT u.id, u.name, cfvm.value as mobile, email, cfvs.value as skills,cfvp.value as permcov, COALESCE(cfvl.value, -1) as locations 
