@@ -12,15 +12,15 @@ $endTime = getParameterString("end");
 $start = date("Y-m-d", $startTime);
 $end = date("Y-m-d", $endTime);
 
-if (count($user->locations['companies']) == 1) {
-    foreach ($user->locations['companies'] as $id => $company) {
+if (count($user->locations['company']) == 1) {
+    foreach ($user->locations['company'] as $id => $company) {
         $companyID = $id;
     }
 }
 
 $allowedLocations = array();
 if (in_array("Instructors", $user->userGroups)) {
-    foreach ($user->locations['clubs'] as $clubID => $club) {
+    foreach ($user->locations['studio'] as $clubID => $club) {
         $allowedLocations[] = "$clubID";
     }
 }
@@ -28,7 +28,7 @@ else {
     if(!in_array("Super User", $user->userGroups))
         $locationsStr = rtrim($locations->getAllChildNodeID($companyID), ", ");
     
-    $allowedLocations = explode(", ", $locationsStr);
+    $allowedLocations = explode(",", $locationsStr);
 }
 $classes = new Classes($db);
 

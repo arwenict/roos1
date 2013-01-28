@@ -55,6 +55,7 @@ if (!defined('_JEXEC')) {
         try {
             $user = new User($userID, $db);
             $user->setUser($locations);
+            //error_log(print_r($user,true));
             //print_r($user);
         }
         catch (Exception $e) {

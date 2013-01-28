@@ -92,6 +92,7 @@ class Instructors {
             if (!empty($order)) {
                 $sql .= " ORDER BY u.$order $direction";
             }
+            error_log($sql."\n");
             //echo $sql;
             $instructors = $this->db->getMultiDimensionalArray($sql);
 
