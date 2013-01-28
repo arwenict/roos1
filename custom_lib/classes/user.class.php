@@ -62,6 +62,8 @@ class User {
      *
      */
     private function getUserLocations($locationsClass) {
+        
+        # Retrieving user's locations ids
         $sql = "
             SELECT value 
             FROM  `{$this->dbSchema}`.`pr_community_fields_values` 
@@ -69,22 +71,23 @@ class User {
             AND field_id = 22
         ";
 
-        $locations = $this->db->getSingleValue($sql);
+        $userLocations = $this->db->getSingleValue($sql);
+        $locationsArr = explode(",", $userLocations);
 
-        $locationsArr = explode(",", $locations);
-
+        # Parsing locations ids and building a tree of permitted locaitons
         $locations = array();
         foreach ($locationsArr as $location) {
-            $info = $locationsClass->getNodeInfoAsArray($location);
-            if ($info['type'] == "location")
-                $locations['clubs'][$location] = $info;
-
-            $company = $locationsClass->walkUpCompanyFromNode($location);
-
-            if (empty($locations['companies'][$company['nodeID']]))
-                $locations['companies'][$company['nodeID']] = $company;
+            $tree = $locationsClass->buildTreeFromNodeID($location);
+            
+            # Extracting list of different location types and merging arrays 
+            $types = array_keys($tree);
+            foreach ($types as $type) {
+                foreach ($tree[$type] as $node) {
+                    $locations[$type][$node['nodeID']] = $node;
+                }
+            }
         }
-
+        //error_log("Locations are ".print_r($locations,true)."\n");
         return $locations;
     }
     

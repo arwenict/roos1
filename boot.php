@@ -50,8 +50,8 @@ if (!defined('_JEXEC')) {
     if ($userID == 0)
         if ($_COOKIE['activeProfile'] > 0)
             $userID = $_COOKIE['activeProfile'];
-        
     if ($userID > 0) {
+        error_log("userID is $userID\n");
         try {
             $user = new User($userID, $db);
             $user->setUser($locations);

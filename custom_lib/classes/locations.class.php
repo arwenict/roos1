@@ -25,7 +25,7 @@ class Locations {
             if ($user != null) {
                 $companyArr = $this->walkUpCompanyFromNode($studio['nodeID']);
                 $companyID = current($companyArr);
-                if (empty($user->locations['companies'][$companyID])) 
+                if (empty($user->locations['company'][$companyID])) 
                     continue;
             }
             
@@ -58,7 +58,7 @@ class Locations {
             if ($user != null) {
                 $companyArr = $this->walkUpCompanyFromNode($studio['nodeID']);
                 $companyID = current($companyArr);
-                if (empty($user->locations['companies'][$companyID])) 
+                if (empty($user->locations['company'][$companyID])) 
                     continue;
             }
             $resultArray = $studio;
@@ -103,6 +103,28 @@ class Locations {
             $currentNode = $this->getNodeInfoAsArray($currentNode['parentID']);
             $outputArray[$currentNode['nodeID']] = $currentNode;
         }
+        return $outputArray;
+    }
+    
+    public function walkDownTreeFromNode($nodeID) {
+        $outputArray = array();
+        $childrenNodes = $this->getAllChildNodeID($nodeID);
+        $childrenArray = explode(",", $childrenNodes);
+        $count = 0;
+        while (!empty($childrenNodes)) {
+            foreach ($childrenArray as $child) {
+                if (!empty($child)) {
+                    $count++;
+                    if($count>=20){
+                        //error_log (print_r($outputArray,true));
+                        throw new Exception("Walk up the tree too far, walked up $count levels, max 20");
+                    }
+                    $childrenNodes = $this->getAllChildNodeID($child);
+                    $outputArray[$child] = $this->getNodeInfoAsArray($child);
+                }
+            }
+        }
+        
         return $outputArray;
     }
     
@@ -180,7 +202,7 @@ class Locations {
         
         if (!empty($ids_array)) {
             foreach ($ids_array as $id) {
-                $ids .= "$id, ";
+                $ids .= "$id,";
                 $x = $this->getAllChildNodeID((int)$id);
                 $ids .= $x;
             }
@@ -188,6 +210,22 @@ class Locations {
 
         return $ids;
         //print_r($ids_array);
+    }
+    
+    public function buildTreeFromNodeID($nodeID) {
+        $treeArray = array();
+        $upperNodes = $this->walkUpTreeFromNode($nodeID);
+        $lowerNodes = $this->walkDownTreeFromNode($nodeID);
+        
+        foreach ($upperNodes as $node) {
+            $treeArray[$node['type']][$node['nodeID']] = $node;
+        }
+        
+        foreach ($lowerNodes as $node) {
+            $treeArray[$node['type']][$node['nodeID']] = $node;
+        }
+        
+        return $treeArray;
     }
 }
 ?>

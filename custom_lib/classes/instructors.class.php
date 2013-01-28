@@ -53,7 +53,8 @@ class Instructors {
             if ( in_array("Accounts Payable", $this->user->userGroups) || 
                  in_array("Administrator", $this->user->userGroups) 
                ) {
-                foreach ($this->user->locations['companies'] as $id => $info) {
+                 # Parsing parent companies to create sql WHERE statement
+                foreach ($this->user->locations['company'] as $id => $info) {
                     $whereSQL .= '(cfvc.value LIKE "%'.$id.',%" OR cfvc.value LIKE "%,'.$id.'%" OR cfvc.value LIKE "'.$id.'") OR ';
                 }
                 
@@ -64,13 +65,14 @@ class Instructors {
                  in_array("Group Ex Managers", $this->user->userGroups)
                ) { 
                 
-                foreach ($this->user->locations['clubs'] as $id => $info) {
+                # Parsing physical clubs (a.k.a. locations) to create sql WHERE statement
+                foreach ($this->user->locations['location'] as $id => $info) {
                     $whereSQL .= '(cfvl.value LIKE "%'.$id.',%" OR cfvl.value LIKE "%,'.$id.'%" OR cfvl.value LIKE "'.$id.'") OR ';
                 }
                 $whereSQL = substr($whereSQL, 0, strrpos($whereSQL, "OR "));
             }
             elseif (in_array("Super Users", $this->user->userGroups))
-                $whereSQL .= "";
+                $whereSQL .= "1";
             else
                 return;
             

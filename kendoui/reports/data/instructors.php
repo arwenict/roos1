@@ -22,7 +22,7 @@ header("Content-type: application/json");
 // determine the request type
 $verb = $_SERVER["REQUEST_METHOD"];
 
-if (count($user->locations['companies'] == 1)) { // If a normal user (i.e. only 1 company assigned)
+if (count($user->locations['company'] == 1)) { // If a normal user (i.e. only 1 company assigned)
     $instructors = new Instructors($db, $user);
 
     // handle a GET
