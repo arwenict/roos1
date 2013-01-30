@@ -1,5 +1,10 @@
+Production platform URL:
+http://www.ruustar.com.au/main
+
 Development platform URL: 
-http://dev.arwen.com.au
+http://www.ruustar.com.au/max
+http://www.ruustar.com.au/roos1
+
 
 Update web: git pull just click/refresh URL:
-http://54.251.49.168/roos1/gitpull.php
+http://www.ruustar.com.au/main/gitpull.php
