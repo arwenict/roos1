@@ -84,7 +84,7 @@
                             { field: "name", title: "Name",  width: 110 },
                             { field: "mobile", title: "Mobile", width: 80, filterable: false }, 
                             { field: "email", title: "Email", width: 160, filterable: false },
-                            { field: "skills", title: "Skills", width: 140, filterable: false },     
+                            { field: "skills", title: "Skills", width: 140, filterable: true },     
                             { field: "permcov", title: "Perm / Cover", width: 70, filterable: true },
                             { field: "locations", title: "Locations", width: 100, filterable: true},
                             { field: "edit_link", title: "Edit", width: 50, template:"<a href='' onclick=\"parent.openEditPopUp('#=edit_link#'); return false;\" class='instr_edit'></a>", filterable: false}
