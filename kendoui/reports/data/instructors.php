@@ -4,7 +4,6 @@ include_once("../../../boot.php");
 include_once("classes/instructors.class.php");
 include_once("classes/skills.class.php");
 include_once("classes/locations.class.php");
-include_once("classes/user.class.php");
 
 /* Inititalising objects */
 $skills = new Skills($db);

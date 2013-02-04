@@ -1,12 +1,4 @@
 <?php 
-
-define( '_JEXEC', 1 );
-define( '_VALID_MOS', 1 );
-define('JPATH_BASE', '../../../');
-define( 'DS', DIRECTORY_SEPARATOR );
-require_once ( JPATH_BASE .DS.'includes'.DS.'defines.php' );
-require_once ( JPATH_BASE .DS.'includes'.DS.'framework.php' );
-
 /* Including neccessary libraries */
 include_once("../../../boot.php");
 include_once("classes/classes.class.php");
@@ -14,15 +6,6 @@ include_once("classes/instructors.class.php");
 
 $classes = new Classes($db);
 $instructors = new Instructors($db);
-
-/* Create the Application */
-$mainframe =& JFactory::getApplication('site');
-$mainframe->initialise();
-JPluginHelper::importPlugin('system');
-$mainframe->triggerEvent('onAfterInitialise');
-/* Make sure we are logged in at all. */
-if (JFactory::getUser()->id == 0)
-   die("You have to be logged in.");
 
 // add the header line to specify that the content type is JSON
 header("Content-type: application/json");
@@ -34,8 +17,7 @@ $verb = $_SERVER["REQUEST_METHOD"];
 if ($verb == "GET") {
         $datefrom= $db->escape($_GET["datefrom"]);
         $dateto = $db->escape($_GET["dateto"]);
-        
-        $classesArr = $classes->getClassesList($datefrom, $dateto);
+        $classesArr = $classes->getClassesList($datefrom, $dateto, $user);
         
         $results = array();
         foreach ($classesArr as $class) {
