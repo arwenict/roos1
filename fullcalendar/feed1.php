@@ -36,6 +36,12 @@ if (in_array($locationID, $allowedLocations))
     $events = $classes->getClassesForLocation($start, $end, $locationID);
 else
     throw new Exception ("You are trying to access classes you do not have rights to");
+
+$encodedArray = array();
+foreach ($events as $event) {
+    $encodedArray[] = array_map("utf8_encode", $event);
+}
+//print_r($events);
 /*
 $link = mysql_pconnect($mainframe->getCfg('host'), $mainframe->getCfg('user'), $mainframe->getCfg('password')) or die("Unable To Connect To Database Server");
 
@@ -83,6 +89,6 @@ switch ($row['location']) {
 } ;
 */
 
-echo json_encode($events);
+echo json_encode($encodedArray);
 
 ?>
