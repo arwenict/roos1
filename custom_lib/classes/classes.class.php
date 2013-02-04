@@ -29,7 +29,7 @@ class Classes {
      * @return array associative array containing the results
      *
      */
-    public function getClassesList($datefrom="", $dateto="", $user=null, $approvedOnly=false, $order="StartDate, loc.name, u.Name, AttendeeNumber,ApprovedByManager", $direction = "ASC", $limit=500) {
+    public function getClassesList($datefrom="", $dateto="", $user=null, $type="classes", $order="StartDate, loc.name, u.Name, AttendeeNumber,ApprovedByManager", $direction = "ASC", $limit=500) {
         $limitStr = "LIMIT 0, $limit";
         
         if(empty($datefrom))
@@ -50,39 +50,43 @@ class Classes {
         }
         else
             $allowedLocationsSQL = "";
+     
+        $selectAppendSQL = "";
+        $tablesAppendSQL = "";
+        $whereAppendSQL = "";
         
-        if (!$approvedOnly) {
-            $sql = " 
-                SELECT ce.id, title as ClassName, loc.name as Location, StartDate, MID(TIME(`startdate`),1,5) AS StartTime, EndDate, InstructorID, u.Name as InstructorName, HourlyRate,
-                    (hour(TIMEDIFF(  `enddate` ,  `startdate` ))*60)  + (Minute(TIMEDIFF(  `enddate` ,  `startdate` )))   AS Minutes, 
-                    ((hour(TIMEDIFF(  `enddate` ,  `startdate` )))   + (Minute(TIMEDIFF(  `enddate` ,  `startdate` ))/60 ) )* HourlyRate  as TotalPayable, 
-                    CASE ApprovedByManager WHEN 0 THEN 'false' ELSE 'true' END AS ApprovedByManager, AttendeeNumber, Paid, BankTransactionID, AttendeeTarget 
-                FROM {$this->schema}.pr_community_events ce
-                INNER JOIN {$this->schema}.pr_users u on ce.InstructorID=u.Id 
-                INNER JOIN {$this->schema}.locations loc on ce.location=loc.nodeID
-                WHERE published=1 AND parent<>0 AND CatId=5 AND StartDate >='" .  $datefrom   .  "'  AND  StartDate <='" .  $dateto   .  "'
-                    $allowedLocationsSQL
-                ORDER BY $order $direction 
-                $limitStr
-            ";
-        }  
-        else {
-            $sql = " 
-                SELECT ce.id, title as ClassName, loc.name as Location, StartDate, MID(TIME(`startdate`),1,5) AS StartTime, EndDate, InstructorID, u.Name as InstructorName, HourlyRate,
-                    (hour(TIMEDIFF(  `enddate` ,  `startdate` ))*60)  + (Minute(TIMEDIFF(  `enddate` ,  `startdate` )))   AS Minutes, 
-                    ((hour(TIMEDIFF(  `enddate` ,  `startdate` )))   + (Minute(TIMEDIFF(  `enddate` ,  `startdate` ))/60 ) )* HourlyRate  as TotalPayable, 
-                    CASE ApprovedByManager WHEN 0 THEN 'false' ELSE 'true' END AS ApprovedByManager, AttendeeNumber, CASE Paid WHEN 0 THEN 'false' ELSE 'true' END AS Paid, BankTransactionID 
-                FROM {$this->schema}.pr_community_events ce 
-                INNER JOIN {$this->schema}.pr_users u ON ce.InstructorID=u.id 
-                INNER JOIN {$this->schema}.locations loc on ce.location=loc.nodeID
-                WHERE published=1 AND parent<>0 AND CatID=5 AND StartDate >='" .  $datefrom   .  "'  AND  StartDate <='" .  $dateto   .  "'  
-                    AND (((hour(TIMEDIFF(  `enddate` ,  `startdate` )))   + (Minute(TIMEDIFF(  `enddate` ,  `startdate` ))/60 ) )* HourlyRate) > 0
-                    AND ApprovedByManager = 1
-                    $allowedLocationsSQL
-                ORDER BY $order $direction
-                $limitStr
-            ";
+        switch ($type) {
+            case "classes":
+                $selectAppendSQL = ", AttendeeTarget";
+                break;
+            case "billing":
+                $whereAppendSQL = " AND (((hour(TIMEDIFF(  `enddate` ,  `startdate` )))   + (Minute(TIMEDIFF(  `enddate` ,  `startdate` ))/60 ) )* HourlyRate) > 0 AND ApprovedByManager = 1";
+                break;
+            case "stats":
+                $selectAppendSQL = ", AttendeeTarget, AttendeeNumber/AttendeeTarget AS Participation, 
+                    ((hour(TIMEDIFF(  `enddate` ,  `startdate` )))   + (Minute(TIMEDIFF(  `enddate` ,  `startdate` ))/60 ) )* HourlyRate/AttendeeNumber AS CostPerAttendee ";
+                break;
+            default:
+                break;
         }
+        
+        $sql = " 
+            SELECT ce.id, title as ClassName, loc.name as Location, StartDate, MID(TIME(`startdate`),1,5) AS StartTime, EndDate, InstructorID, u.Name as InstructorName, HourlyRate,
+                (hour(TIMEDIFF(  `enddate` ,  `startdate` ))*60)  + (Minute(TIMEDIFF(  `enddate` ,  `startdate` )))   AS Minutes, 
+                ((hour(TIMEDIFF(  `enddate` ,  `startdate` )))   + (Minute(TIMEDIFF(  `enddate` ,  `startdate` ))/60 ) )* HourlyRate  as TotalPayable, 
+                CASE ApprovedByManager WHEN 0 THEN 'false' ELSE 'true' END AS ApprovedByManager, AttendeeNumber, CASE Paid WHEN 0 THEN 'false' ELSE 'true' END AS Paid, BankTransactionID 
+                $selectAppendSQL
+            FROM {$this->schema}.pr_community_events ce
+            INNER JOIN {$this->schema}.pr_users u on ce.InstructorID=u.Id 
+            INNER JOIN {$this->schema}.locations loc on ce.location=loc.nodeID
+            $tablesAppendSQL
+            WHERE published=1 AND parent<>0 AND CatId=5 AND StartDate >='" .  $datefrom   .  "'  AND  StartDate <='" .  $dateto   .  "'
+            $whereAppendSQL $allowedLocationsSQL
+            ORDER BY $order $direction 
+            $limitStr
+            ";
+                
+     
         $classes = $this->db->getMultiDimensionalArray($sql);
 
         //echo "$sql";

@@ -15,7 +15,7 @@ $verb = $_SERVER["REQUEST_METHOD"];
 if ($verb == "GET") {
         $datefrom= $db->escape($_GET["datefrom"]);
         $dateto = $db->escape($_GET["dateto"]);
-        $classesArr = $classes->getClassesList($datefrom, $dateto, $user, true);
+        $classesArr = $classes->getClassesList($datefrom, $dateto, $user, "billing");
         
         $results = array();
         foreach ($classesArr as $class) {
