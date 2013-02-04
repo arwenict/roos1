@@ -1,22 +1,50 @@
 <?php
+/* Including neccessary libraries */
+include_once("../../../boot.php");
+include_once("classes/classes.class.php");
 
-define( '_JEXEC', 1 );
-define( '_VALID_MOS', 1 );
-define('JPATH_BASE', '../../../');
-define( 'DS', DIRECTORY_SEPARATOR );
-require_once ( JPATH_BASE .DS.'includes'.DS.'defines.php' );
-require_once ( JPATH_BASE .DS.'includes'.DS.'framework.php' );
-/* Create the Application */
-$mainframe =& JFactory::getApplication('site');
-$mainframe->initialise();
-JPluginHelper::importPlugin('system');
-$mainframe->triggerEvent('onAfterInitialise');
-/* Make sure we are logged in at all. */
-if (JFactory::getUser()->id == 0)
-   die("You have to be logged in.");
+$classes = new Classes($db);
+
+// add the header line to specify that the content type is JSON
+header("Content-type: application/json");
+
+// determine the request type
+$verb = $_SERVER["REQUEST_METHOD"];
+
+// handle a GET
+if ($verb == "GET") {
+        $datefrom= $db->escape($_GET["datefrom"]);
+        $dateto = $db->escape($_GET["dateto"]);
+        $classesArr = $classes->getClassesList($datefrom, $dateto, $user, true);
+        
+        $results = array();
+        foreach ($classesArr as $class) {
+            $results[] = $class;
+        }
+	echo "{\"data\":" .json_encode($results). "}";		
+}
 
 
+// handle a POST
+if ($verb == "POST") {
+    $classID = getParameterNumber("id", 0);
+    
+    if ($classID > 0 ) {
+        $paid = getParameterString("Paid") == "true" ? 1 : 0;
+        $bankID = getParameterString("BankTransactionID");
 
+        $updateFields['Paid'] = $paid;
+        $updateFields['BankTransactionID'] = $bankID;
+        $updateFields['PaidDate'] = "NOW()";
+
+        $result = $classes->updateClassesFields($classID, $updateFields);
+
+        echo json_encode("success");
+        
+    }
+}
+
+/*
 $link = mysql_pconnect($mainframe->getCfg('host'), $mainframe->getCfg('user'), $mainframe->getCfg('password')) or die("Unable To Connect To Database Server");
 
 mysql_select_db($mainframe->getCfg('db')) or die("Unable To Connect To DB");
@@ -76,5 +104,5 @@ if ($verb == "POST") {
 		echo "Update failed for Event id: " .$id;
 	}
 }
-
+*/
 ?>
