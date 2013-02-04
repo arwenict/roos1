@@ -6,23 +6,6 @@
     
     $locations = new Locations($db);
     
-    if (!empty($_COOKIE["activeProfile"])) {
-        $userID = $_COOKIE["activeProfile"];
-        try {
-            $user = new User($userID, $db);
-            $user->setUser($locations);
-            //print_r($user);
-        }
-        catch (Exception $e) {
-            //echo $e->getMessage();
-            //echo "no companies";
-        }
-    }
-    else {
-        echo "User should be logged in."; 
-        die();
-    }
-    
     $instructors = new Instructors($db, $user);
     $instructorsList = $instructors->getListOfInstructors();
     
