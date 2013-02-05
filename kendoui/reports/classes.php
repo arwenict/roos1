@@ -94,7 +94,7 @@
 							fields: {
 								ClassName: { type: "string", editable: false },
 								StartDate: { type: "date", editable: false },
-                                                                StartTime: { type: "date", editable: false },
+                                                                StartTime: { type: "string", editable: false },
 								Location: { editable: false },
 								InstructorName: { type:"string", editable: true },
 								Minutes: { type: "number", editable: false},

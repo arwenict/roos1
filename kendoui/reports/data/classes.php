@@ -3,9 +3,11 @@
 include_once("../../../boot.php");
 include_once("classes/classes.class.php");
 include_once("classes/instructors.class.php");
+include_once("classes/locations.class.php");
 
 $classes = new Classes($db);
 $instructors = new Instructors($db);
+$locations = new Locations($db);
 
 // add the header line to specify that the content type is JSON
 header("Content-type: application/json");
@@ -20,8 +22,13 @@ if ($verb == "GET") {
         $classesArr = $classes->getClassesList($datefrom, $dateto, $user);
         
         $results = array();
+        $i=0;
         foreach ($classesArr as $class) {
-            $results[] = $class;
+            $locationCode = $locations->getStudioCode($class['Location']);
+            $results[$i] = $class;
+            unset($results[$i]["Location"]);
+            $results[$i]["Location"] = $locationCode;
+            $i++;
         }
 	echo "{\"data\":" .json_encode($results). "}";	
 }

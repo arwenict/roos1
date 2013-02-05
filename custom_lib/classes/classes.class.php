@@ -71,7 +71,7 @@ class Classes {
         }
         
         $sql = " 
-            SELECT ce.id, title as ClassName, loc.name as Location, StartDate, MID(TIME(`startdate`),1,5) AS StartTime, EndDate, InstructorID, u.Name as InstructorName, HourlyRate,
+            SELECT ce.id, title as ClassName, loc.nodeID as Location, StartDate, MID(TIME(`startdate`),1,5) AS StartTime, EndDate, InstructorID, u.Name as InstructorName, HourlyRate,
                 (hour(TIMEDIFF(  `enddate` ,  `startdate` ))*60)  + (Minute(TIMEDIFF(  `enddate` ,  `startdate` )))   AS Minutes, 
                 ((hour(TIMEDIFF(  `enddate` ,  `startdate` )))   + (Minute(TIMEDIFF(  `enddate` ,  `startdate` ))/60 ) )* HourlyRate  as TotalPayable, 
                 CASE ApprovedByManager WHEN 0 THEN 'false' ELSE 'true' END AS ApprovedByManager, AttendeeNumber, CASE Paid WHEN 0 THEN 'false' ELSE 'true' END AS Paid, BankTransactionID 
