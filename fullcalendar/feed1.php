@@ -9,8 +9,8 @@ $locationID = getParameterNumber("location");
 $startTime = getParameterString("start");
 $endTime = getParameterString("end");
 
-$start = date("Y-m-d", $startTime);
-$end = date("Y-m-d", $endTime);
+$start = date("Y-m-d", $startTime)." 00:00:00";
+$end = date("Y-m-d", $endTime)." 23:59:59";
 
 if (count($user->locations['company']) == 1) {
     foreach ($user->locations['company'] as $id => $company) {
